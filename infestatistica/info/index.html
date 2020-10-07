@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Álgebra Linear - Teaching Assistant</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">Teaching Assistant</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Inferência à Estatística <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item">Informações Gerais</a>
+</li>
+                                    
+<li>
+    <a href="../../about/" class="dropdown-item">Notebook 2</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="./" class="nav-link">Equações Diferenciais</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Álgebra Linear</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="./" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" class="nav-link disabled">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#informacoes-gerais" class="nav-link">Informações Gerais</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#topicos-e-exercicios" class="nav-link">Tópicos e Exercícios</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#resumos" class="nav-link">Resumos</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#documentos-adicionais" class="nav-link">Documentos Adicionais</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="informacoes-gerais">Informações Gerais</h1>
+<p>As monitorias ocorrem todas as quinta-feiras, às 16h, através da plataforma
+Zoom. </p>
+<ul>
+<li>
+<p><a href="https://fgv-br.zoom.us/j/91598441676?pwd=YzJVckt0L2owT2lRb0k1S3FwOFVRdz09">Link para acesso</a></p>
+</li>
+<li>
+<p><a href="https://gvmail-my.sharepoint.com/:f:/g/personal/b37214_fgv_edu_br/EkrXFUG0yNRMlwwav0WIWUgBXxOS2UHHummnp4Vqt63csw?e=6mCICi">Monitorias gravadas</a></p>
+</li>
+</ul>
+<h2 id="topicos-e-exercicios">Tópicos e Exercícios</h2>
+<p>Os exercícios resolvidos disponíveis estão linkados ao título da seção. </p>
+<h3 id="a1">A1</h3>
+<table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Título</th>
+<th>Exercícios</th>
+<th>Resolvido em Monitoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7.2</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EVy17SirPtZKsHAxL4hVWRsBcbI-BPVpZWxXV2zME3v2WA?e=JI1pZX">Priori e Posteriori</a></td>
+<td>2,3,10</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.3</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EXV8USKZSSVGmgF9V0uImUsBSptvmbtHDhVB_tGiPe0kzQ?e=dWY15i">Famílias Conjugadas</a></td>
+<td>2,17,19,21</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.4</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EZSyfDcd6EBFj7wvuiUrlN8BXD-SJi6vvtfFxMig2nLLbQ?e=43lAaJ">Estimador de Bayes</a></td>
+<td>2,4,7,11,14</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.5</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EblH0BT7pfJNmBOQFiJTKRUBzUof_mbSI4Ihk7t--tZMEg?e=PtL4tv">Estimador de Máxima Verossimilhança</a></td>
+<td>1,4,9,10</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.6</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EfSWkX5IKfxIpvm8fKUoGsYBiIsP6Kpzi3hlM1WLvRMYmg?e=whC73f">Propriedades EMV</a></td>
+<td>3,5,11,20,22,23</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.7</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/ES9CYP4YOolFtjjuTE70kucB-2XE1ggvMF9xI126E3O4lQ?e=6TnIUl">Estatística Suficiente</a></td>
+<td>4,7,13,16</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.8</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/ER6VEILAjp9KjlBSlJZd5akBGZUyi7GCsNUjHpdyZFxB0w?e=dPgmKG">Estatística Suficiente Conjunta</a></td>
+<td>3,8,12,16</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>7.9</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/ETbm7lM1QO5Nuuvz7hhkIFEBgy6mw5mfFeIRN3F5-VX_Lw?e=wLqQMa">Melhorando um Estimador</a></td>
+<td>2,3,6,9,10</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>8.7</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EUjfHmt6ftZKiQjEqeDyv10BLDCN-ox6zKNG-I4un1X7MA?e=SA1pU8">Estimadores não viesados</a></td>
+<td>4,6,11,13</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>8.8</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EeD_5bf-40ZBjLMPTT9m1LUBpSFKZ710JfdMfeJMI2yO5Q?e=4wlhpz">Informação de Fisher</a></td>
+<td>5,7,10</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>8.1</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EXZsQsg9FapKgRIa-xp8TXUB8f7G7UGqZqSQqp51vBiXmQ?e=qWwThZ">Estimadores de Distribuições Amostrais</a></td>
+<td>1,2,3,9</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>8.2</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EX1bH7_qX7xNmRNePTi2IlEBZlhXSNlgnVgGV55DKhCYlQ?e=i2PFfv">Distribuição Chi-Quadrada</a></td>
+<td>4,7,10,13</td>
+<td>Sim</td>
+</tr>
+<tr>
+<td>-</td>
+<td><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/EcQHn6DROm1PmI0XPqunSj4BTKe_ZFnZBYPQt0DiZ_qtZg?e=Hn6McJ">Exercícios de Revisão</a></td>
+<td>-</td>
+<td>Sim</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a2">A2</h3>
+<table>
+<thead>
+<tr>
+<th>Seção</th>
+<th>Título</th>
+<th>Exercícios</th>
+<th>Resolvido em Monitoria</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8.3</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8.4</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8.5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="resumos">Resumos</h2>
+<p><a href="https://www.amazon.com/Probability-Statistics-4th-Morris-DeGroot/dp/0321500466">Probability and Statistics (Morris H.
+DeGroot)</a></p>
+<ul>
+<li><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/ETzej0ptqCVIvb9_nzeb1gYBgOUE2wPy3ySG2uTHxmoqfw?e=1cKwbb">Capítulo 7</a></li>
+<li><a href="https://gvmail-my.sharepoint.com/:b:/g/personal/b37214_fgv_edu_br/ERy_MG050_5KrK7TRBvYQV0Bn8l8f2TP3zdNvPLO2wGv_A?e=s29p8r">Capítulo 8 - parte 1</a></li>
+</ul>
+<h2 id="documentos-adicionais">Documentos Adicionais</h2>
+<ul>
+<li>
+<p><a href="https://www.cambridge.org/core/journals/mathematical-proceedings-of-the-cambridge-philosophical-society/article/theory-of-statistical-estimation/7A05FB68C83B36C0E91D42C76AB177D4">Theory of Statistical
+  Estimation (Ronald Fisher)</a>:
+  problema da estimação é abordado e as técnicas apresentadas por Ronald
+  Fisher. Ele se debruça sobre estatísticas eficientes e suficientes. </p>
+</li>
+<li>
+<p><a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rsta.1922.0009">Mathematical Foudations Statistics (Ronald
+  Fisher)</a>:
+  referência em estatística com principais conceitos da matéria. </p>
+</li>
+</ul></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
