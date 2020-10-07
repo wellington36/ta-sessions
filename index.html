@@ -4,11 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="None">
+        
         
         
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>Teaching Assistant</title>
+        <title>Notebook 2 - Teaching Assistant</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/font-awesome.min.css" rel="stylesheet">
         <link href="css/base.css" rel="stylesheet">
@@ -20,7 +20,7 @@
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
 
-    <body class="homepage">
+    <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
                 <a class="navbar-brand" href=".">Teaching Assistant</a>
@@ -33,8 +33,21 @@
                 <div id="navbar-collapse" class="navbar-collapse collapse">
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
-                            <li class="navitem active">
-                                <a href="." class="nav-link">Inferência à Estatística</a>
+                            <li class="navitem">
+                                <a href="." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Inferência à Estatística <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="." class="dropdown-item">Notebook 1</a>
+</li>
+                                    
+<li>
+    <a href="." class="dropdown-item active">Notebook 2</a>
+</li>
+                                </ul>
                             </li>
                             <li class="navitem">
                                 <a href="about/" class="nav-link">Equações Diferenciais</a>
@@ -51,7 +64,7 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" class="nav-link disabled">
+                                <a rel="prev" href="." class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
@@ -78,13 +91,13 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#welcome-to-mkdocs" class="nav-link">Welcome to MkDocs</a>
+            <li class="nav-item" data-level="1"><a href="#monitorias" class="nav-link">Monitorias</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#commands" class="nav-link">Commands</a>
+            <li class="nav-item" data-level="2"><a href="#topicos-abordados" class="nav-link">Tópicos abordados</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-level="2"><a href="#project-layout" class="nav-link">Project layout</a>
+            <li class="nav-item" data-level="2"><a href="#referencias-interessantes-de-matematica" class="nav-link">Referências interessantes de matemática</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -95,21 +108,35 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
-<p>For full documentation visit <a href="https://www.mkdocs.org">mkdocs.org</a>.</p>
-<h2 id="commands">Commands</h2>
+<h1 id="monitorias">Monitorias</h1>
+<p>Este website foi desenvolvido para concentrar as informações sobre as
+monitorias que dei ao longo da minha vida acadêmica. Em particular durante a
+Graduação na Escola de Matemática Aplicada, Fundação Getulio Vargas (EMAp/FGV). </p>
+<p>Eu espero que a informação aqui contida seja de interesse!</p>
+<h2 id="topicos-abordados">Tópicos abordados</h2>
 <ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs -h</code> - Print help message and exit.</li>
+<li>Álgebra Linear (2019.2)<ul>
+<li>Professor <a href="https://emap.fgv.br/corpo-docente/eduardo-wagner">Eduardo Wagner</a></li>
 </ul>
-<h2 id="project-layout">Project layout</h2>
-<pre><code>mkdocs.yml    # The configuration file.
-docs/
-    index.md  # The documentation homepage.
-    ...       # Other markdown pages, images and other files.
-</code></pre></div>
+</li>
+<li>Equações Diferenciais Ordinárias (2020.1)<ul>
+<li>Professora <a href="https://emap.fgv.br/corpo-docente/maria-izabel-tavares-camacho">Maria Izabel Camacho</a></li>
+</ul>
+</li>
+<li>Inferência à Estatística (2020.2)<ul>
+<li>Professor <a href="https://emap.fgv.br/corpo-docente/luiz-max-fagundes-de-carvalho">Luiz Max de Carvalho</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="referencias-interessantes-de-matematica">Referências interessantes de matemática</h2>
+<ul>
+<li><a href="https://doc.sagemath.org/html/en/installation/">SageMath</a>: <em>software</em>
+  matemático que facilita cálculos. É uma possibilidade alternativa ao
+  <a href="https://www.wolframalpha.com/">WolframAlpha</a>, porém com código em Python. </li>
+<li><a href="https://github.com/3b1b/manim">Manin</a>: ferramenta para criar vídeos
+  matemáticos explicativos com animação programática, uma biblioteca para
+  Python. </li>
+</ul></div>
             </div>
         </div>
 
@@ -190,8 +217,3 @@ docs/
 
     </body>
 </html>
-
-<!--
-MkDocs version : 1.1.2
-Build Date UTC : 2020-10-07 01:09:37.821069+00:00
--->
