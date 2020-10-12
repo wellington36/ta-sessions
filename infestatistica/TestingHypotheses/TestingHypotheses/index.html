@@ -149,6 +149,18 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-level="2"><a href="#regiao-critica" class="nav-link">Região Crítica</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#estatistica-de-teste" class="nav-link">Estatística de Teste</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#funcao-de-poder-e-tipos-de-erro" class="nav-link">Função de Poder e Tipos de Erro</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -171,7 +183,84 @@ H_1: \theta \in \Omega_1
 </script>
 </p>
 <p>Se <script type="math/tex">\Omega_i</script> contem apenas um valor, então <script type="math/tex">H_i</script> é dita hipótese simples. Se contém mais de um valor, dizemos que é composta. </p>
-<h2 id="hipotese-unilateral-e-bilateral">Hipótese Unilateral e Bilateral</h2></div>
+<h2 id="hipotese-unilateral-e-bilateral">Hipótese Unilateral e Bilateral</h2>
+<p>Seja <script type="math/tex">\theta</script> um parâmetro unidimensional. Dizemos que a hipótese <script type="math/tex">H_0</script> é unilateral (ou <em>one tailed</em>) quando é da forma <script type="math/tex">\theta \leq \theta_0</script> ou <script type="math/tex">\theta \geq \theta_0</script>. Ela será bilateral quando é do tipo <script type="math/tex">H_0 \neq \theta_0</script>. </p>
+<h2 id="regiao-critica">Região Crítica</h2>
+<p>Suponha que queremos testar a hipótese de que </p>
+<p>
+<script type="math/tex; mode=display">
+H_0: \theta \in \Omega_0 \text{ e } H_1: \theta \in \Omega_1
+</script>
+</p>
+<p>Quando queremos decidir qual hipótese escolher, observamos uma amostra dessa distribuição no espaço de amostras <script type="math/tex">S</script>. O dever do estatístico é especificar um procedimento que particione o conjunto em dois subconjuntos <script type="math/tex">S_0</script> e <script type="math/tex">S_1</script>, onde <script type="math/tex">S_1</script> contém os valores de <script type="math/tex">X</script> que rejeitam <script type="math/tex">H_0</script>. </p>
+<p><strong>Região crítica</strong> é o conjunto <script type="math/tex">S_1</script>, isto é, o conjunto de amostras que, a partir de um procedimento, rejeita <script type="math/tex">H_0</script>. </p>
+<p><img alt="cr" src="../images/critical_region_draw.jpg" /></p>
+<h2 id="estatistica-de-teste">Estatística de Teste</h2>
+<p>Seja <script type="math/tex">X_1, ..., X_n \overset{iid}{\sim} F(\theta)</script>. Sejam <script type="math/tex">T = r(X)</script> uma estatística e <script type="math/tex">R</script> um subconjunto da reta. Suponha que nosso procedimento de teste é o seguinte: </p>
+<blockquote>
+<p>Rejeitamos <script type="math/tex">H_0</script> se <script type="math/tex">T\in R</script>.</p>
+</blockquote>
+<p>Chamamos <script type="math/tex">T</script> de <strong>estatística de teste</strong> e <script type="math/tex">R</script> de <strong>região de rejeição</strong>. Dessa forma a região crítica será: <script type="math/tex">S_1 = \{x \in S: r(x) \in R\}</script>. </p>
+<p>Na prática a maioria dos testes é do tipo</p>
+<blockquote>
+<p>Rejeitamos <script type="math/tex">H_0</script> se <script type="math/tex">T \geq c, c \in \mathbb{R}</script>.</p>
+</blockquote>
+<h3 id="observacao-sobre-a-divisao-de-conjuntos">Observação sobre a divisão de conjuntos</h3>
+<p>É importante lembrar que há duas diferentes divisões:
+<script type="math/tex">\Omega = \Omega_0 \dot\cup \Omega_1</script>, que é a divisão do espaço dos parâmetros, e <script type="math/tex">S = S_1 \dot\cup S_1</script> é a divisão do espaço das amostras. Mas qual a relação entre eles? Se <script type="math/tex">X \in S_1</script>, então rejeitamos a hipótese <script type="math/tex">\theta \in \Omega_0</script>. Além do mais, podemos encontrar <script type="math/tex">S_1</script> e <script type="math/tex">S_2</script>, mas dificilmente saberemos em qual dos conjuntos <script type="math/tex">\theta</script> pertence. </p>
+<h2 id="funcao-de-poder-e-tipos-de-erro">Função de Poder e Tipos de Erro</h2>
+<h3 id="funcao-poder">Função Poder</h3>
+<p>Seja <script type="math/tex">\delta</script> um procedimento de teste (como esse assinalado acima). Se <script type="math/tex">S_1</script> é a região crítica, </p>
+<p>
+<script type="math/tex; mode=display">
+\pi(\theta|\delta) = P(X \in S_1|\theta) = P(T \in R|\theta)
+</script>
+</p>
+<p>Sendo que a última igualdade ocorre quando o proocedimento de teste é o citado acima. </p>
+<p><strong>O seu significado?</strong></p>
+<p>É a probabilidade, para cada valor de <script type="math/tex">\theta</script>, de que <script type="math/tex">\delta</script> rejeita <script type="math/tex">H_0</script>. Queremos, intuitivamente que:</p>
+<p>
+<script type="math/tex; mode=display">
+\theta \in \Omega_0 \rightarrow \text{ Queremos não rejeitar} H_0 \rightarrow \pi(\theta|\delta) = 0 
+</script>
+<script type="math/tex; mode=display">
+\theta \in \Omega_1 \rightarrow \text{ Queremos rejeitar} H_0 \rightarrow \pi(\theta|\delta) = 1 
+</script>
+</p>
+<p>Entretanto isso não é em geral o que acontece. Por isso definimos:</p>
+<h3 id="erros-i-e-ii">Erros I e II</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>
+<script type="math/tex">\theta \in \Omega_0</script>
+</th>
+<th>
+<script type="math/tex">\theta \in \Omega_1</script>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<script type="math/tex">\delta</script> rejeita <script type="math/tex">H_0</script>
+</td>
+<td>Erro Tipo I</td>
+<td>Certo</td>
+</tr>
+<tr>
+<td>
+<script type="math/tex">\delta</script> não rejeita <script type="math/tex">H_0</script>
+</td>
+<td>Certo</td>
+<td>Erro Tipo II</td>
+</tr>
+</tbody>
+</table>
+<p>Portanto se <script type="math/tex">\theta \in \Omega_0, \pi(\theta|\delta)</script> é a probabilidade de cometermos o erro do tipo I. Se <script type="math/tex">\theta \in \Omega_1, 1 - \pi(\theta|\delta)</script> é a probabilidade de cometer o erro do tipo II. </p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></div>
             </div>
         </div>
 
