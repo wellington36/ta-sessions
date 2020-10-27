@@ -182,7 +182,7 @@
               </ul>
             </li>
             
-            <li class="nav-item" data-level="1"><a href="#teste-de-verossimilhanca" class="nav-link">Teste de Verossimilhança</a>
+            <li class="nav-item" data-level="1"><a href="#testes-de-razao-verossimilhanca" class="nav-link">Testes de Razão Verossimilhança</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -226,7 +226,7 @@ H_0: \theta \in \Omega_0 \text{ e } H_1: \theta \in \Omega_1
 </p>
 <p>Quando queremos decidir qual hipótese escolher, observamos uma amostra dessa distribuição no espaço de amostras <script type="math/tex">S</script>. O dever do estatístico é especificar um procedimento que particione o conjunto em dois subconjuntos <script type="math/tex">S_0</script> e <script type="math/tex">S_1</script>, onde <script type="math/tex">S_1</script> contém os valores de <script type="math/tex">X</script> que rejeitam <script type="math/tex">H_0</script>. </p>
 <p><strong>Região crítica</strong> é o conjunto <script type="math/tex">S_1</script>, isto é, o conjunto de amostras que, a partir de um procedimento, rejeita <script type="math/tex">H_0</script>. </p>
-<p><img alt="cr" src="../critical_region_draw.jpg" /></p>
+<p><img alt="cr" src="../images/critical_region_draw.jpg" /></p>
 <h2 id="estatistica-de-teste">Estatística de Teste</h2>
 <p>Seja <script type="math/tex">X_1, ..., X_n \overset{iid}{\sim} F(\theta)</script>. Sejam <script type="math/tex">T = r(X)</script> uma estatística e <script type="math/tex">R</script> um subconjunto da reta. Suponha que nosso procedimento de teste é o seguinte: </p>
 <blockquote>
@@ -578,13 +578,35 @@ t = \frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0) \rightarrow \alpha_0 = 1 - \P
 <div class="highlight"><pre><span></span><code><span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">73</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">p_value</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>0.4235452033377154
+<pre><code>0.24842181754953252
 </code></pre>
 <p>Como o p-valor é alto, não faz sentido rejeitar a hipótese nula. </p>
 <p>Encerramos a atividade aqui!</p>
-<h1 id="teste-de-verossimilhanca">Teste de Verossimilhança</h1>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div></div>
+<h1 id="testes-de-razao-verossimilhanca">Testes de Razão Verossimilhança</h1>
+<p>São testes baseados na <a href="https://lucasmoschen.github.io/TA_sessions/infestatistica/MaximumLikelihoodEstimator/MaximumLikelihoodEstimator/#funcao-verossimilhanca">verossimilhaça</a> do modelo <script type="math/tex">f_n(x|\theta)</script>. Suponha que queremos testar a hipótese: </p>
+<p>
+<script type="math/tex; mode=display">
+H_0: \theta \in \Omega_0
+</script>
+<script type="math/tex; mode=display">
+H_1: \theta \in \Omega_1
+</script>
+</p>
+<p>Vamos lembrar que a função de verossimilhança tende a ser mais alta próximo do valor verdadeiro do parâmetro. Com isso em mente, gostaríamos de saber se a verossimilhança é maior em <script type="math/tex">\Omega_0</script> ou em <script type="math/tex">\Omega_1</script>. Para isso, definimos a <strong>estatística de razão de verossimilhança</strong>:
+<script type="math/tex; mode=display">
+\Lambda(x) = \frac{\sup_{\theta \in \Omega_0}f_n(x|\theta)}{\sup_{\theta \in \Omega}f_n(x|\theta)}
+</script>
+Observe que o denominador é o valor da função de verossimilhança no Estimador de Máxima Verossimilhança. Se o parâmetro verdadeiro estiver em <script type="math/tex">\Omega_0</script>, o númerador deve ser mais alto em <script type="math/tex">\Omega_0</script>, então a estatística se aproxima de 1. Baseado nisso, o <strong>teste de razão de verossimilhança</strong> é:</p>
+<blockquote>
+<p>Rejeitamos <script type="math/tex">H_0</script> se <script type="math/tex">\Lambda(x) \le k</script>, para algum <script type="math/tex">k</script>. </p>
+</blockquote>
+<h3 id="teorema_1">Teorema:</h3>
+<p>Seja <script type="math/tex">\Omega \in \mathbb{R}^p</script> aberto e suponha que <script type="math/tex">H_0</script> seja <script type="math/tex">\theta_{i_1} = \theta_{01}, ..., \theta_{i_k} = \theta_{0k}</script>, onde <script type="math/tex">\theta = (\theta_1, ..., \theta_p)</script>. Assuma que <script type="math/tex">H_0</script> seja verdadeira e a função de verossimilhança satisfaça as condições para que o MLE seja assintoticamente normal e assintoticamente eficiente. Então:
+<script type="math/tex; mode=display">
+-2\log\Lambda(x) \overset{d}{\to} \chi^2(k)
+</script>
+(converge em distribuição quando <script type="math/tex">n \to \infty</script>).</p>
+<p>A demonstração pode ser encontrada no <a href="https://www.statlect.com/fundamentals-of-statistics/likelihood-ratio-test">StatLect</a></p></div>
             </div>
         </div>
 
