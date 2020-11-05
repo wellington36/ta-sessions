@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../../img/favicon.ico">
-        <title>Teste de Hipóteses II - Teaching Assistant</title>
+        <title>Testes Uniformemente mais Poderosos - Teaching Assistant</title>
         <link href="../../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../../css/font-awesome.min.css" rel="stylesheet">
         <link href="../../../css/base.css" rel="stylesheet">
@@ -93,11 +93,11 @@
 </li>
                                     
 <li>
-    <a href="./" class="dropdown-item active">Teste de Hipóteses II</a>
+    <a href="../../TestingHypothesesII/TestingHypothesesII/" class="dropdown-item">Teste de Hipóteses II</a>
 </li>
                                     
 <li>
-    <a href="../../TestsUniformlyPoweful/TestsUniformlyPoweful/" class="dropdown-item">Testes Uniformemente mais Poderosos</a>
+    <a href="./" class="dropdown-item active">Testes Uniformemente mais Poderosos</a>
 </li>
                                 </ul>
                             </li>
@@ -116,12 +116,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="../../TestingHypotheses/TestingHypotheses/" class="nav-link">
+                                <a rel="prev" href="../../TestingHypothesesII/TestingHypothesesII/" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../../TestsUniformlyPoweful/TestsUniformlyPoweful/" class="nav-link">
+                                <a rel="next" href="../../../edo/info/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -143,20 +143,8 @@
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
             
-            <li class="nav-item" data-level="1"><a href="#teste-de-hipoteses-ii" class="nav-link">Teste de Hipóteses II</a>
+            <li class="nav-item" data-level="1"><a href="#testes-uniformemente-mais-poderosos" class="nav-link">Testes Uniformemente mais Poderosos</a>
               <ul class="nav flex-column">
-            <li class="nav-item" data-level="2"><a href="#teste-de-hipotese-simples" class="nav-link">Teste de Hipótese Simples</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#hipotese-alternativa-bilateral" class="nav-link">Hipótese Alternativa Bilateral</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-level="2"><a href="#o-teste-t" class="nav-link">O Teste t</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
               </ul>
             </li>
         </ul>
@@ -164,48 +152,9 @@
 </div></div>
                     <div class="col-md-9" role="main">
 
-<h1 id="teste-de-hipoteses-ii">Teste de Hipóteses II</h1>
-<p>Nesse notebook veremos:</p>
-<ol>
-<li>Teste de Hipóteses Simples </li>
-<li>Hipótese Alternativa Bilateral </li>
-<li>Teste T</li>
-</ol>
-<h2 id="teste-de-hipotese-simples">Teste de Hipótese Simples</h2>
-<p>O objetivo é considerar se um vetor de observações vem de uma entre duas observações. Nesse caso o espaço <script type="math/tex">\Omega</script> é formado por dois pontos, e não é um espaço de parâmetros, mas espaço de distribuições, em particular dessas duas distribuições. </p>
-<p>Isto é, vamos assumir que <script type="math/tex">X = (X_1, ..., X_n)</script> vem de <script type="math/tex">f_0(x)</script> ou <script type="math/tex">f_1(x)</script>. Assim <script type="math/tex">\Omega = \{\theta_0, \theta_1\}</script> e <script type="math/tex">\theta = \theta_i</script> se os dados tem distribuição <script type="math/tex">f_i(x), i = 0,1</script>. </p>
-<p>Vamos denotar:</p>
-<p>
-<script type="math/tex">
-\alpha(\delta) = P(\text{Rejeitar} H_0|\theta = \theta_0) = P(\text{Erro I})
-</script>
-</p>
-<p>
-<script type="math/tex">
-\beta(\delta) = P(\text{Não rejeitar} H_0|\theta = \theta_1) = P(\text{Erro II})
-</script>
-</p>
-<h3 id="teorema">Teorema</h3>
-<p>Seja <script type="math/tex">\delta^*</script> o procedimento de teste que não rejeita <script type="math/tex">H_0</script> se <script type="math/tex">af_0(x) > bf_1(x)</script> e rejeita se <script type="math/tex">af_0(x) < bf_1(x)</script>. Então, para todo outro procedimento de teste <script type="math/tex">\delta</script>, 
-<script type="math/tex; mode=display">
-a\alpha(\delta^*) + b\beta(\delta^*) \le a\alpha(\delta) + b\beta(\delta) 
-</script>
-</p>
-<p>Queremos escolher um teste que minimize essa combinação linear <script type="math/tex">a\alpha(\delta) + b\beta(\delta)</script>. Claro que seria ótimmo ter esse erro zerado, mas sabemos que existe uma espécie de <em>trade off</em> entre esses erros. Esse teorema dá o teste necessário para que isso acontença. </p>
-<h3 id="corolario">Corolário</h3>
-<p>Considere as hipóteses do teorema anterior, <script type="math/tex">a > 0</script> e <script type="math/tex">b > 0</script>. Defina estatística de teste <strong>razão de verossimilhança</strong>:
-<script type="math/tex; mode=display">
-\Lambda(x) = \begin{cases}
-              \frac{f_0(x)}{f_1(x)}, \text{ se } f_0(x) \le f_1(x) \\
-              1, \text{ caso contrário }. 
-\end{cases}
-</script>
-Defina o procedimento de teste <script type="math/tex">\delta</script>: Rejeita <script type="math/tex">H_0</script> se <script type="math/tex">\Lambda(x) > a/b</script>. Então o valor de <script type="math/tex">af_0(x) + bf_1(x)</script> é mínimo.  </p>
-<h3 id="lema-nayman-pearson">Lema Nayman-Pearson</h3>
-<p>Suponha que <script type="math/tex">\delta '</script> tem a seguinte forma, para algum <script type="math/tex">k > 0</script>: <script type="math/tex">H_0</script> não é rejeitada se <script type="math/tex">f_1(x) < kf_0(x)</script> e o é quando <script type="math/tex">f_1(x) > kf_0(x).</script> Se <script type="math/tex">\delta</script> é outro procedimento de teste tal que <script type="math/tex">\alpha(\delta) \le \alpha(\delta ')</script>, então <script type="math/tex">\beta(\delta) \ge \beta(\delta ').</script>
-</p>
-<h2 id="hipotese-alternativa-bilateral">Hipótese Alternativa Bilateral</h2>
-<h2 id="o-teste-t">O Teste t</h2></div>
+<h1 id="testes-uniformemente-mais-poderosos">Testes Uniformemente mais Poderosos</h1>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></div>
             </div>
         </div>
 
