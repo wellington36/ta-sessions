@@ -205,7 +205,7 @@
 
 <h1 id="teste-de-hipoteses-definicoes">Teste de Hipóteses: Definições</h1>
 <ol>
-<li>Hipótese Nula e Alternatica </li>
+<li>Hipótese Nula e Alternativa </li>
 <li>Região Crítica </li>
 <li>Estatística de Teste</li>
 <li>Função de Poder</li>
@@ -451,9 +451,9 @@ P[g(\theta_0) \in \omega(\vec{X})|\theta = \theta_0] \geq 1 - \alpha_0,
 </p>
 <p>O problema é que em geral esse tipo de procedimento não é interessante. Para isso estabelecemos uma <strong>estatística de teste</strong> <script type="math/tex">T</script> e uma <strong>Região de Rejeição</strong> <script type="math/tex">T</script>, tal que nosso procedimento seja: </p>
 <blockquote>
-<p>Rejeitamos <script type="math/tex">H_0</script> se <script type="math/tex">T \geq R</script>. </p>
+<p>Rejeitamos <script type="math/tex">H_0</script> se <script type="math/tex">T \in R</script>. </p>
 </blockquote>
-<p>Nesse caso vamos considerar <script type="math/tex">T = \left|\frac{X_1 + X_2}{2}\right|</script> e vamos rejeitar a hipótese se <script type="math/tex">T</script> estiver muito longe de <script type="math/tex">0</script>, isto é, se <script type="math/tex">T \geq c</script>. Portanto definimor nossa <strong>Região de Rejeição</strong> como <script type="math/tex">[c, + \infty]</script>, o que reduz nosso problema a determinar <script type="math/tex">c</script>. </p>
+<p>Nesse caso vamos considerar <script type="math/tex">T = \frac{X_1 + X_2}{2}</script> e vamos rejeitar a hipótese se <script type="math/tex">|T|</script> estiver muito longe de <script type="math/tex">0</script>, isto é, se <script type="math/tex">|T| \geq c</script>. Portanto definimor nossa <strong>Região de Rejeição</strong> como <script type="math/tex">(-\infty,-c]\cup[c, + \infty)</script>, o que reduz nosso problema a determinar <script type="math/tex">c</script>. </p>
 <p>Qual <script type="math/tex">c</script> seria razoável? 4, 5, 1? Essa pergunta não vai ser respondida. Antes vamos visualizar como fica a região crítica (2). Rejeitamos a hipótese se </p>
 <p>
 <script type="math/tex; mode=display">
@@ -534,28 +534,35 @@ P[g(\theta_0) \in \omega(\vec{X})|\theta = \theta_0] \geq 1 - \alpha_0,
 \pi(0) = P_{\mu = 0}(T \geq c) \leq \alpha_0
 </script>
 </p>
-<p>Precisamos então encontrar <script type="math/tex">c</script> tal que <script type="math/tex">\pi(\mu) = P_{\mu \neq 0}(T \ge c)</script> seja maximado. </p>
-<p>Observamos que <script type="math/tex">T \sim N(0, \sigma^2/2) \rightarrow \sqrt{2}T/\sigma = Z \sim N(0,1)</script>, quando <script type="math/tex">\mu = 0</script>. Logo <script type="math/tex">P(T \ge c) = P(Z \ge \sqrt{2}c/\sigma) = 1 - \Phi(\sqrt{2}c/\sigma) \leq \alpha_0</script>
+<p>Precisamos então encontrar <script type="math/tex">c</script> tal que <script type="math/tex">\pi(\mu) = P_{\mu \neq 0}(T \ge c)</script> seja maximado.</p>
+<p>Observamos que, quando <script type="math/tex">\mu = 0</script>, <script type="math/tex">T \sim N(0, \sigma^2/2) \rightarrow \sqrt{2}T/\sigma = Z \sim N(0,1)</script>. Logo </p>
+<p>
+<script type="math/tex; mode=display">P(|T| \ge c) = P(|Z| \ge \sqrt{2}c/\sigma) = 2(1 - \Phi(\sqrt{2}c/\sigma)) \leq \alpha_0</script>
 </p>
-<p>Para maximizar <script type="math/tex">\pi(\mu)</script> em <script type="math/tex">\Omega_1</script>, observamos que <script type="math/tex">\pi(\mu)</script> decresce com <script type="math/tex">c</script> (os gráficos acima representam bem isso). Como queremos maximizar, gostaríamos de tomar <script type="math/tex">c</script> o mínimo possível, restrito a <script type="math/tex">1 - \Phi(\sqrt{2}c/\sigma) \leq \alpha_0 \rightarrow 1 - \alpha_0 \leq \Phi(\sqrt{2}c/\sigma)</script> como vimos acima. Estamos lidando com uma função inversível, então 
+<p>Para maximizar <script type="math/tex">\pi(\mu)</script> em <script type="math/tex">\Omega_1</script>, observamos que <script type="math/tex">\pi(\mu)</script> decresce com <script type="math/tex">c</script> (os gráficos acima representam bem isso). Como queremos maximizar, gostaríamos de tomar <script type="math/tex">c</script> o mínimo possível, restrito a </p>
+<p>
+<script type="math/tex; mode=display">2(1 - \Phi(\sqrt{2}c/\sigma)) \leq \alpha_0 \rightarrow 1 - \alpha_0/2 \leq \Phi(\sqrt{2}c/\sigma)</script>
+</p>
+<p>como vimos acima. Estamos lidando com uma função inversível, então </p>
+<p>
 <script type="math/tex; mode=display">
-\frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0) \leq c
+\frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0/2) \leq c
 </script>
 </p>
 <p>O melhor valor de <script type="math/tex">c</script> que respeita essa condição e maximiza a relação é, portanto </p>
 <p>
 <script type="math/tex; mode=display">
-c = \frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0) 
+c = \frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0/2) 
 </script>
 </p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 </code></pre></div>
 <p>Lembre que <script type="math/tex">\alpha_0</script> indica o máximo de Erro I que aceitamos. </p>
 <div class="highlight"><pre><span></span><code><span class="n">alpha0</span> <span class="o">=</span> <span class="mf">0.05</span>
-<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">73</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha0</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">73</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha0</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>9.937420997144207
+<pre><code>11.841167465893536
 </code></pre>
 <p>É bem próximo do gráfico acima mostrado, quando testamos para <script type="math/tex">c = 10</script>. </p>
 <div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
@@ -584,13 +591,13 @@ c = \frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0)
 <p>Assim não escolhemos <script type="math/tex">\alpha_0</script>, só observamos seu menor valor e vemos se faz sentido. Em geral se p-valor &lt; 0.05, as pessoas rejeitam a hipótese nula. </p>
 <p>No nosso caso calcular o p-valor é tranquilo. Para calcular o p-valor, <strong>precisamos dos dados</strong>. Queremos rejeitar a hipótese nula, isto é, queremos que <script type="math/tex">t \geq c</script> que <script type="math/tex">\alpha_0</script> seja o menor possível, onde <script type="math/tex">t</script> é o valor observado de <script type="math/tex">T</script>. Vamos diminuindo <script type="math/tex">\alpha_0</script> e para cada <script type="math/tex">\alpha_0</script> podemos calcular <script type="math/tex">c</script> e verificamos se <script type="math/tex">t \ge c</script>. Podemos fazer isso até que <script type="math/tex">c = t</script>, assim:
 <script type="math/tex; mode=display">
-t = \frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0) \rightarrow \alpha_0 = 1 - \Phi\left(\frac{\sqrt{2}}{\sigma}t\right)
+t = \frac{\sigma}{\sqrt{2}}\Phi^{-1}(1 - \alpha_0/2) \rightarrow \alpha_0 = 2\left(1 - \Phi\left(\frac{\sqrt{2}}{\sigma}t\right)\right)
 </script>
 </p>
-<div class="highlight"><pre><span></span><code><span class="n">p_value</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">73</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">p_value</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">73</span><span class="p">)</span><span class="o">*</span><span class="n">T</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">p_value</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>0.24842181754953252
+<pre><code>0.8477386286989927
 </code></pre>
 <p>Como o p-valor é alto, não faz sentido rejeitar a hipótese nula. </p>
 <p>Encerramos a atividade aqui!</p>
