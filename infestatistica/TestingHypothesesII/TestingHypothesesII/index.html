@@ -178,6 +178,36 @@
             </li>
               </ul>
             </li>
+            
+            <li class="nav-item" data-level="1"><a href="#comparando-medias-de-duas-normais" class="nav-link">Comparando médias de duas normais</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#funcao-poder_1" class="nav-link">Função Poder</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#p-valor_1" class="nav-link">P-valor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#variancias-diferentes" class="nav-link">Variâncias diferentes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+            
+            <li class="nav-item" data-level="1"><a href="#comparando-variancias-de-duas-normais" class="nav-link">Comparando variâncias de duas Normais</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#funcao-poder_2" class="nav-link">Função Poder</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#p-valor_2" class="nav-link">P-valor</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
@@ -189,6 +219,8 @@
 <li>Teste de Hipóteses Simples </li>
 <li>Hipótese Alternativa Bilateral </li>
 <li>Teste T</li>
+<li>Comparando médias de duas Normais</li>
+<li>Comparando variâncias de duas Normais </li>
 </ol>
 <h1 id="teste-de-hipotese-simples">Teste de Hipótese Simples</h1>
 <p>O objetivo é considerar se um vetor de observações vem de uma entre duas observações. Nesse caso o espaço <script type="math/tex">\Omega</script> é formado por dois pontos, e não é um espaço de parâmetros, mas espaço de distribuições, em particular dessas duas distribuições. </p>
@@ -374,15 +406,15 @@ H_1: \mu > \mu_0 \implies \Omega_1 = \{(x,y) \in \mathbb{R}^2 | x > \mu_0 \text{
 <p>Seja <script type="math/tex">c</script> o <script type="math/tex">1 - \alpha_0</script> quartil da distribuição <script type="math/tex">t</script> com <script type="math/tex">n-1</script> graus de liberdade. Então, segundo o teste citado acima, a função poder tem as seguintes propriedades: </p>
 <ol>
 <li>
-<script type="math/tex">\pi(\mu, \sigma|\delta) = \alpha_0</script>, quando <script type="math/tex">\mu = \mu_0</script>.</li>
+<script type="math/tex">\pi(\mu, \sigma^2|\delta) = \alpha_0</script>, quando <script type="math/tex">\mu = \mu_0</script>.</li>
 <li>
-<script type="math/tex">\pi(\mu, \sigma|\delta) < \alpha_0</script>, quando <script type="math/tex">\mu < \mu_0</script>.</li>
+<script type="math/tex">\pi(\mu, \sigma^2|\delta) < \alpha_0</script>, quando <script type="math/tex">\mu < \mu_0</script>.</li>
 <li>
-<script type="math/tex">\pi(\mu, \sigma|\delta) > \alpha_0</script>, quando <script type="math/tex">\mu > \mu_0</script>.</li>
+<script type="math/tex">\pi(\mu, \sigma^2|\delta) > \alpha_0</script>, quando <script type="math/tex">\mu > \mu_0</script>.</li>
 <li>
-<script type="math/tex">\pi(\mu, \sigma|\delta) \to 0</script>, quando <script type="math/tex">\mu \to -\infty</script>.</li>
+<script type="math/tex">\pi(\mu, \sigma^2|\delta) \to 0</script>, quando <script type="math/tex">\mu \to -\infty</script>.</li>
 <li>
-<script type="math/tex">\pi(\mu, \sigma|\delta) \to 1</script>, quando <script type="math/tex">\mu \to \infty</script>.</li>
+<script type="math/tex">\pi(\mu, \sigma^2|\delta) \to 1</script>, quando <script type="math/tex">\mu \to \infty</script>.</li>
 </ol>
 <p>O teste também é não enviesado como consequência.</p>
 <h3 id="p-valores-para-testes-t">P-valores para testes t</h3>
@@ -764,7 +796,98 @@ P(|U| \ge c|\mu = \mu_0) = \alpha_0 = P(U \le -c) + P(U \ge c) \overset{simetria
 |u| \ge c = T_{n-1}^{-1}(1 - \alpha_0/2) \implies \alpha_0 \ge 2 - 2T_{n-1}(|u|)
 </script>
 </p>
-<p>Logo o p-valor é <script type="math/tex">2 - 2T_{n-1}(|u|)</script>.</p></div>
+<p>Logo o p-valor é <script type="math/tex">2 - 2T_{n-1}(|u|)</script>.</p>
+<h1 id="comparando-medias-de-duas-normais">Comparando médias de duas normais</h1>
+<p>Assumimos que <script type="math/tex">X = (X_1,...,X_m)</script> é uma amostra da distribuição normal com média <script type="math/tex">\mu_1</script> e variância <script type="math/tex">\sigma^2</script>, enquanto <script type="math/tex">Y = (Y_1, ..., Y_n)</script> é normal com média <script type="math/tex">\mu_2</script> e variância <script type="math/tex">\sigma^2</script>. Estamos interessados no teste 
+<script type="math/tex; mode=display">
+H_0: \mu_1 \le \mu_2
+</script>
+<script type="math/tex; mode=display">
+H_1: \mu_1 > \mu_2
+</script>
+A função poder é dada por <script type="math/tex">\pi(\mu_1, \mu_2, \sigma^2|\delta)</script>. A discussão quando as normais tem diferentes normais será postergada. </p>
+<p>Defina 
+<script type="math/tex; mode=display">
+S_x = \sum_{i=1}^m (X_i - \bar{X}_m)^2
+</script>
+<script type="math/tex; mode=display">
+S_y = \sum_{i=1}^n (Y_i - \bar{Y}_n)^2
+</script>
+<script type="math/tex; mode=display">
+U = \frac{(m + n - 2)^{1/2}(\bar{X}_m - \bar{Y}_n)}{\left(\frac{1}{n} + \frac{1}{m}\right)^{1/2}(S_x^2 + S_y^2)^{1/2}}
+</script>
+</p>
+<p>A distribuição: <script type="math/tex">U \sim t</script> com <script type="math/tex">m + n - 2</script> graus de liberdade, com parâmetro de não centralidade
+<script type="math/tex; mode=display">
+\psi= \frac{\mu_1 - \mu_2}{\sigma\left(\frac{1}{m} + \frac{1}{n}\right)^{1/2}}
+</script>
+</p>
+<p>Note que se <script type="math/tex">\mu_1 = \mu_2</script>, <script type="math/tex">U</script> é uma distribuição t padrão.</p>
+<h2 id="funcao-poder_1">Função Poder</h2>
+<p>Considere o procedimento de teste <script type="math/tex">\delta</script> que rejeite <script type="math/tex">H_0</script> se <script type="math/tex">U \ge T_{m+n-2}^{-1}(1 - \alpha_0)</script>. Assim:</p>
+<ol>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma^2|\delta) = \alpha_0</script>, quando <script type="math/tex">\mu_1 = \mu_2</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma^2|\delta) < \alpha_0</script>, quando <script type="math/tex">\mu_1 < \mu_2</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma^2|\delta) > \alpha_0</script>, quando <script type="math/tex">\mu_1 > \mu_2</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma^2|\delta) \to 0</script>, quando <script type="math/tex">\mu_1 - \mu_2 \to -\infty</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma^2|\delta) \to 1</script>, quando <script type="math/tex">\mu_1 - \mu_2 \to \infty</script>.</li>
+</ol>
+<p>Além do mais o teste é não enviesado. </p>
+<h2 id="p-valor_1">P-valor</h2>
+<p>Depois de termos observado as amostras, seja <script type="math/tex">u</script> a estatística observada de <script type="math/tex">U</script>. O p-valor da hipótese é <script type="math/tex">1 - T_{m+n-2}(u)</script>.</p>
+<blockquote>
+<p>Equivalentemente com o teste t do item 3, podemos expressar tudo com a hipótese bilateral e só altera o graude liberade quando comparado com o teste t anterior.  </p>
+</blockquote>
+<h2 id="variancias-diferentes">Variâncias diferentes</h2>
+<h3 id="razao-entre-as-variancias-e-conhecida">Razão entre as variâncias é conhecida</h3>
+<p>Suponha que se as variâncias de <script type="math/tex">X</script> e <script type="math/tex">Y</script> são <script type="math/tex">\sigma_1^2</script> e <script type="math/tex">\sigma_2^2</script> e que <script type="math/tex">\sigma^2_2 = k\sigma^2_1, k > 0</script>. Então podemos usar a estatística </p>
+<p>
+<script type="math/tex; mode=display">
+U = \frac{(m + n - 2)^{1/2}(\bar{X}_m - \bar{Y}_n)}{\left(\frac{1}{n} + \frac{k}{m}\right)^{1/2}(S_x^2 + \frac{S_y^2}{k})^{1/2}}
+</script>
+</p>
+<h3 id="problema-de-behrens-fisher">Problema de Behrens-Fisher</h3>
+<p>Quando os 4 parâmetros das normais são desconhecidos, tão pouco a razão de variâncias, nem a estatística de razão de verossimilhança tem distribuição conhecida. Algumas tentativas já foram feitas, como <a href="https://en.wikipedia.org/wiki/Welch%27s_t-test">Welch</a> e <a href="https://en.wikipedia.org/wiki/Behrens%E2%80%93Fisher_problem#Other_approaches">outros</a>.</p>
+<h1 id="comparando-variancias-de-duas-normais">Comparando variâncias de duas Normais</h1>
+<p>Assumimos que <script type="math/tex">X = (X_1,...,X_m)</script> é uma amostra da distribuição normal com média <script type="math/tex">\mu_1</script> e variância <script type="math/tex">\sigma^2</script>, enquanto <script type="math/tex">Y = (Y_1, ..., Y_n)</script> é normal com média <script type="math/tex">\mu_2</script> e variância <script type="math/tex">\sigma^2</script>. Estamos interessados no teste 
+<script type="math/tex; mode=display">
+H_0: \sigma_1^2 \le \sigma_2^2
+</script>
+<script type="math/tex; mode=display">
+H_1: \sigma_1^2 > \sigma_2^2
+</script>
+A função poder é dada por <script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta)</script>. COnsidere <script type="math/tex">S_x^2</script> e <script type="math/tex">S_y^2</script> definidos anteriormente. Então temos que <script type="math/tex">S_x^2/(m-1)</script> é estimador para <script type="math/tex">\sigma_1^2</script>, enquanto <script type="math/tex">S_y^2/(n-1)</script> é estimador para <script type="math/tex">\sigma_2^2</script>.</p>
+<p>Defina 
+<script type="math/tex; mode=display">
+V = \frac{S_x^2/(m-1)}{S_y^2/(n-1)}
+</script>
+</p>
+<p>Rejeitaremos <script type="math/tex">X_0</script> se <script type="math/tex">V \ge c</script>, onde <script type="math/tex">c</script> será escolhido para que esse teste tenha nível de significância <script type="math/tex">\alpha_0</script>. Esse teste é chamado de teste F, pois a distribuição de <script type="math/tex">(\sigma_1^2/\sigma_2^2)V</script> é F com parâmetros <script type="math/tex">m-1</script> e <script type="math/tex">n-1</script>. Em particular se <script type="math/tex">\sigma_1^2 = \sigma_2^2</script>, <script type="math/tex">V</script> tem distribuição F. Onde a <a href="https://lucasmoschen.github.io/TA_sessions/infestatistica/SamplingDistribution/SamplingDistribution/#distribuicao-f">distribuição F é descrita aqui</a>. </p>
+<h2 id="funcao-poder_2">Função Poder</h2>
+<p>Considere o procedimento de teste <script type="math/tex">\delta</script> que rejeite <script type="math/tex">H_0</script> se <script type="math/tex">V \ge F_{m-1,n-1}^{-1}(1 - \alpha_0)</script>. Assim:</p>
+<ol>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta) = 1 - F_{m-1,n-1}(\frac{\sigma_2^2}{\sigma_1^2}c)</script>
+</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta) = \alpha_0</script>, quando <script type="math/tex">\sigma_1^2 = \sigma^2_2</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta) < \alpha_0</script>, quando <script type="math/tex">\sigma_1^2 < \sigma_2^2</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta) > \alpha_0</script>, quando <script type="math/tex">\sigma^2_1 > \sigma_2^2</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta) \to 0</script>, quando <script type="math/tex">\sigma_1^2/\sigma_2^2 \to 0</script>.</li>
+<li>
+<script type="math/tex">\pi(\mu_1, \mu_2, \sigma_1^2, \sigma_2^2|\delta) \to 1</script>, quando <script type="math/tex">\sigma_1^2/\sigma_2^2 \to \infty</script>.</li>
+</ol>
+<p>Além do mais o teste é não enviesado. </p>
+<h2 id="p-valor_2">P-valor</h2>
+<p>Depois de termos observado as amostras, seja <script type="math/tex">v</script> a estatística observada de <script type="math/tex">V</script>. O p-valor da hipótese é <script type="math/tex">1 - F_{m-1,n-1}(v)</script>.</p></div>
             </div>
         </div>
 
