@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Monitoria 4 - Teaching Assistant</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Teaching Assistant</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Inferência à Estatística <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../../infestatistica/info/" class="dropdown-item">Informações Gerais</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/LargeRandomSamples/LargeRandomSamples/" class="dropdown-item">Grandes Amostras</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/StatisticalInference/StatisticalInference/" class="dropdown-item">Introdução</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/PrioriPosteriori/PrioriPosteriori/" class="dropdown-item">Priori e Posteriori</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/ConjugateDistributions/ConjugateDistributions/" class="dropdown-item">Distribuições Conjugada e Estimador de Bayes</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/MaximumLikelihoodEstimator/MaximumLikelihoodEstimator/" class="dropdown-item">Estimador de Máxima Verossimilhança</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/SufficientStatistics/" class="dropdown-item">Estatísticas Suficientes</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/SamplingDistribution/SamplingDistribution/" class="dropdown-item">Distribuição Amostral</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/ConfidenceIntervals/ConfidenceIntervals/" class="dropdown-item">Intervalos de Confiança</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/BayesianAnalysisNormal/BayesianAnalysisNormal/" class="dropdown-item">Análise Bayesiana da Normal</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/UnbiasedEstimators/UnbiasedEstimators/" class="dropdown-item">Estimadores não enviesados</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/FisherInformation/FisherInformation/" class="dropdown-item">Informação de Fisher</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/TestingHypotheses/TestingHypotheses/" class="dropdown-item">Teste de Hipóteses</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/TestingHypothesesII/TestingHypothesesII/" class="dropdown-item">Teste de Hipóteses II</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/ExampleHypothesesTesting/ExampleHypothesesTesting/" class="dropdown-item">Exemplos Básicos Testes de Hipótese</a>
+</li>
+                                    
+<li>
+    <a href="../../../infestatistica/TestsUniformlyPoweful/TestsUniformlyPoweful/" class="dropdown-item">Testes Uniformemente mais Poderosos</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../edo/info/" class="nav-link">Equações Diferenciais</a>
+                            </li>
+                            <li class="dropdown active">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Álgebra Linear <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../info/" class="dropdown-item">Informações Gerais</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active">Monitoria 4</a>
+</li>
+                                    
+<li>
+    <a href="../monitoria6/" class="dropdown-item">Monitoria 6</a>
+</li>
+                                    
+<li>
+    <a href="../monitoria7/" class="dropdown-item">Monitoria 7</a>
+</li>
+                                    
+<li>
+    <a href="../monitoria10/" class="dropdown-item">Monitorias 10 e 11</a>
+</li>
+                                    
+<li>
+    <a href="../monitoria12/" class="dropdown-item">Monitorias 12 e 13</a>
+</li>
+                                    
+<li>
+    <a href="../decompositionLU/" class="dropdown-item">Decomposição LU</a>
+</li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../../info/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../monitoria6/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#monitoria-4" class="nav-link">Monitoria 4</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#topicos-ja-estudados" class="nav-link">Tópicos já estudados</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#exercicios" class="nav-link">Exercícios</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#conjuntos-geradores" class="nav-link">Conjuntos Geradores</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#teste-1-2018" class="nav-link">Teste 1 2018</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="monitoria-4">Monitoria 4</h1>
+<hr />
+<h2 id="topicos-ja-estudados">Tópicos já estudados</h2>
+<ul>
+<li>
+<p>Matrizes e suas propriedade</p>
+<ul>
+<li>Notação</li>
+<li>Operações com matrizes e suas propriedades</li>
+<li>A transposta e suas propriedades: <script type="math/tex">(AB)^T = B^TA^T</script>
+</li>
+<li>Simétrica e Antissimétrica: <script type="math/tex">(A + A^T)</script> é simétrica e <script type="math/tex">(A - A^T)</script> é antissimétrica, <script type="math/tex">\forall A</script>. </li>
+<li>A inversa, quando existe, e suas propriedades</li>
+<li>Método para obtenção da inversa utilizando matrizes elementares</li>
+<li>Matrizes em outros conjuntos, como <script type="math/tex">Z_5</script>. </li>
+<li>Matriz singular: matriz não invertível.</li>
+<li>Decomposição LU</li>
+</ul>
+</li>
+<li>
+<p>Sistemas Lineares e sua representação matricial</p>
+<ul>
+<li>Escalonamento: método de Gauss e método de Gauss-Jordan</li>
+<li>A é equivalente a B se, e só se, existe uma sequência de operações elementares que transformam A em B.</li>
+<li>Posto de uma matriz e grau de liberdade (Teorema do Posto)</li>
+<li>Posto (rank em inglês) pode ser definido como a dimensão do espaço linha ou a dimensão do espaço coluna de uma matriz.</li>
+<li>Sistema homogêneo: sempre existe solução (trivial)</li>
+<li>
+<script type="math/tex">Posto(A) = Posto(A^T)</script>
+</li>
+<li>Matrizes Elementares: representantes matriciais das três operações elementares, trocar linha, multiplicação por constante e somar a linha a um múltiplo de outra linha</li>
+<li>Matriz Completa: <script type="math/tex">[A|b]</script>
+</li>
+</ul>
+</li>
+<li>
+<p>Espaços Vetorias e vetores</p>
+<ul>
+<li>Combinação Linear de vetores</li>
+<li>O produto escalar -&gt; módulo </li>
+<li>Projeção: <script type="math/tex">\vec{z} = \frac{\vec{v}\cdot\vec{u}}{\vec{u}\cdot\vec{u}}\cdot u</script>
+</li>
+<li>Desigualdade de Cauchy-Schwarz e cosseno: <script type="math/tex">\|u\|\|v\| \geq \|u\cdot v\|</script>
+</li>
+<li>Conjuntos geradores: <script type="math/tex">S = \{v_1,v_2,...,v_k\} \subset\mathbb{R}^n</script>. O conjunto de todas as combinações dos elementos de S é <script type="math/tex">ger(S)</script>. </li>
+<li>Depenência: um conjunto é linearmente dependente se um vetor do conjunto pode ser escrito como combinação linear de outros. Independente, caso contrário. Lembrar que se <script type="math/tex">\alpha_1\vec{v_1} + \alpha_2\vec{v_2} + ... + \alpha_k\vec{v_k} = 0 \implies \alpha_1 = \alpha_2 = ... = \alpha_k = 0</script>, o conjuntos dos vetores é linearmente independente. </li>
+<li>Espaços vetorias dotam-se de: comutatividade e associatividade da soma, existência do nulo e da identidade, existência do simétrico, distribuitividade com real. </li>
+<li>Subespaços vetoriais: tem o vetor nulo e a soma e produto por real são fechados.</li>
+<li>Subespaços associados a matrizes: <ul>
+<li>Espaço linha: conjunto gerado por suas linhas: <script type="math/tex">lin(A) = ger(\{L_1,L_2,...,L_m\})</script>
+</li>
+<li>Espaço coluna: conjunto gerado por suas colunas: <script type="math/tex">col(A) = ger(\{c_1,c_2,...,c_m\})</script>
+</li>
+</ul>
+</li>
+<li>Espaço anulado por uma matriz: Também chamado de núcleo, é o conjunto solução do sistema <script type="math/tex">Ax = 0</script>
+</li>
+<li>Bases de um espaço vetorial: É um conjunto LIque gera um espaço vetorial --- Próxima monitoria</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="kn">as</span> <span class="nn">splin</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sc</span>
+</code></pre></div>
+<h2 id="exercicios">Exercícios</h2>
+<h3 id="exemplo-14-espacos-vetorias">Exemplo 1.4: Espaços Vetorias</h3>
+<p>Seja <script type="math/tex">X</script> um conjunto não vazio. O símbolo <script type="math/tex">\mathbb{F}(X;\mathbb{R})</script> representa o conjunto das funções reais <script type="math/tex">f,g: X \to \mathbb{R} </script>. Defino a soma: <script type="math/tex">f + g</script> como <script type="math/tex">(f + g)(x) = f(x) + g(x)</script> e o produto <script type="math/tex">\alpha\cdot f</script> como <script type="math/tex">(\alpha f)(x) = \alpha\cdot f(x)</script>
+</p>
+<h3 id="exercicio-213-combinacao-linear">Exercício 2.13: Combinação Linear</h3>
+<p>Mostre que a matriz <script type="math/tex">d = <script type="math/tex; mode=display">\begin{pmatrix} 4 & -4 \\ -6 & 16 \end{pmatrix}</script>
+</script> pode ser escrita como combinação linear das matrizes:
+<script type="math/tex; mode=display">
+a = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, b = \begin{pmatrix} -1 & 2 \\ 3 & -4\end{pmatrix},  
+c =\begin{pmatrix} 1 & -2 \\ -3 & 4 \end{pmatrix}
+</script>
+</p>
+<h3 id="exemplo-subespacos">Exemplo: Subespaços</h3>
+<p>Seja <script type="math/tex">P_4</script> o espaço vetorial de todos os polinômios de grau 4 ou menos com coeficientes reais. A soma e o produto por real são definidos naturalmente. <script type="math/tex">S_5</script> é um subespaço? 
+<script type="math/tex; mode=display">S_5 = \{f(x) \in P_4 \| f(1)~ is~ a ~rational~ number\}</script>
+</p>
+<h3 id="questao-teste-2-operacoes-com-matrizes">Questão Teste 2: Operações com matrizes</h3>
+<p>A matriz <script type="math/tex">A = \frac{1}{\sqrt{2}} <script type="math/tex; mode=display">\begin{pmatrix} 1 & -1 \\ 1 & 1 \end{pmatrix}</script>
+</script>. Questão: <script type="math/tex">\exists n \in \mathbb{N}</script>, tal que <script type="math/tex">A^n = A</script>? </p>
+<p>Obs.: Observe que <script type="math/tex">\frac{1}{\sqrt{2}} = \frac{\sqrt{2}}{2}</script>, e se eu tratar <script type="math/tex">\theta = \frac{\pi}{4}</script>, temos que <script type="math/tex">A</script> é matriz de rotação. Logo, basta encontrar <script type="math/tex">n</script> tal que <script type="math/tex">n\cdot\frac{\pi}{4} = k\cdot2\cdot\pi \to n = 8\cdot k \to n = 8</script> é solução, logo <script type="math/tex">A^8 = I \to A^9 = A</script>
+</p>
+<h3 id="questao-237">Questão 2.37</h3>
+<p>Dado <script type="math/tex">X \subset E</script>, seja <script type="math/tex">Y</script> o conjunto obtido de <script type="math/tex">X</script> substituindo um dos seus elementos <script type="math/tex">v</script> por <script type="math/tex">v + \alpha u</script>, onde <script type="math/tex">u\in X</script> e <script type="math/tex">\alpha \in \mathbb{R}</script>. Prove que X e Y geram o mesmo subespaço vetorial de <script type="math/tex">E</script>. Conclua, então que <script type="math/tex">\{v_1,...,v_k\} \subset E</script> e <script type="math/tex">\{v_1, v_2 - v_1, ..., v_k - v_1\} \subset E</script> geram o mesmo subespaço vetorial de <script type="math/tex">E</script>. </p>
+<p>Alguém percebe a implicação prática dessa questão? </p>
+<ol>
+<li>Lembre que <script type="math/tex">S(Y)</script> é o subespaço gerado por Y. </li>
+<li>Uma ajuda para desenvolver essa questão é reconhecer que <script type="math/tex">X \subset S(Y) \implies S(X) \subset S(Y)</script>. Você consegue demonstrar? </li>
+</ol>
+<h2 id="conjuntos-geradores">Conjuntos Geradores</h2>
+<p>
+<script type="math/tex">u_1 = (1,1,2,3)</script>
+</p>
+<p>
+<script type="math/tex">u_2 = (2,-1,1,2)</script>
+</p>
+<p>
+<script type="math/tex">\pi = ger(\{u_1, u_2\})</script>
+</p>
+<p>
+<script type="math/tex">w = (-2,7,5,6) \in \pi</script>
+</p>
+<p>Queremos saber se, <script type="math/tex">\exists ~\alpha, \beta</script>, tal que: </p>
+<p>
+<script type="math/tex; mode=display">\alpha \begin{pmatrix} 1 \\ 1 \\ 2 \\ 3 \end{pmatrix} + \beta 
+\begin{pmatrix} 2 \\ -1 \\ 1 \\ 2 \end{pmatrix} = 
+\begin{pmatrix} -2 \\ 7 \\ 5 \\ 6 \end{pmatrix}</script>
+</p>
+<h2 id="teste-1-2018">Teste 1 2018</h2>
+<h3 id="exercicio-1">Exercício 1:</h3>
+<p>Escreva a seguinte matriz como a soma de uma matriz simétrica e uma antissimétrica:
+<script type="math/tex">
+A = <script type="math/tex; mode=display">\begin{pmatrix} 
+4 & 6 & 3\\ -2 & 0 & 5 \\ 5 & -1 & 2 
+\end{pmatrix}</script>
+</script>
+</p>
+<h3 id="resolucao">Resolução</h3>
+<p>
+<script type="math/tex; mode=display">A = \frac{1}{2}((A + A^T) + (A - A^T))</script>
+</p>
+<p>Ora, mas <script type="math/tex">A + A^T</script> e <script type="math/tex">A - A^T</script> são simétrica e antissimétrica, respectivamente.</p>
+<p>Logo:</p>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]])</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">A_T</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span>
+<span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">A_T</span><span class="p">)</span>
+</code></pre></div>
+<p>
+<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}4.0 & 2.0 & 4.0\\2.0 & 0 & 2.0\\4.0 & 2.0 & 2.0\end{matrix}</script>\right]</script>
+</p>
+<div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">A_T</span><span class="p">)</span>
+</code></pre></div>
+<p>
+<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}0 & 4.0 & -1.0\\-4.0 & 0 & 3.0\\1.0 & -3.0 & 0\end{matrix}</script>\right]</script>
+</p>
+<h3 id="exercicio-2">Exercício 2:</h3>
+<p>Encontre a inversa da seguinte matriz e depois resolva <script type="math/tex">AX = B</script>:
+<script type="math/tex; mode=display">
+A = \begin{pmatrix} 
+4 & 6 & 3\\ -2 & 0 & 5 \\ 5 & -1 & 2 
+\end{pmatrix} \\
+B = \begin{pmatrix} 
+7 & 1 & 4\\ -5 & 2 & 4 \\ 9 & 3 & -1 
+\end{pmatrix}
+</script>
+</p>
+<h3 id="resolucao_1">Resolução</h3>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span> <span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">7</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">9</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">A_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A_inv</span><span class="p">,</span><span class="n">B</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">A_inv</span><span class="p">)</span>
+</code></pre></div>
+<p>
+<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}0.025 & -0.075 & 0.15\\0.145 & -0.035 & -0.13\\0.01 & 0.17 & 0.06\end{matrix}</script>\right]</script>
+</p>
+<div class="highlight"><pre><span></span><code><span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</code></pre></div>
+<p>
+<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}1.9 & 0.325 & -0.125\\0.0199999999999999 & -0.315 & 0.275\\-0.24 & 0.53 & 0.95\end{matrix}</script>\right]</script>
+</p>
+<h3 id="exercicio-3">Exercício 3:</h3>
+<p>Resolva o sistema em <script type="math/tex">\mathbb{Z}_5</script>:</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{pmatrix} 
+4 & 1 & 3\\ 3 & 0 & 2 \\ 0 & 4 & 2 
+\end{pmatrix}
+\begin{pmatrix}
+x \\ y \\ z 
+\end{pmatrix} =
+\begin{pmatrix}
+1 \\ 2 \\ 4
+\end{pmatrix}
+</script>
+</p>
+<h3 id="exercicio-4">Exercício 4:</h3>
+<p>Uma <b> rede </b> consiste em um número finito de <b> nós </b> conectados por <b> arestas </b>. Cada aresta é rotulada com um <b> fluxo </b>, que relaciona uma direção e uma quantidade. A regra fundamental é a <b> conservação de fluxo </b>, isto é, em cada nó, o fluxo de entrada é igual ao fluxo de saída. </p>
+<p>Considere a seguinte rede: </p>
+<p><img src="rede.png"></p>
+<p>Encontre os intervalos de <script type="math/tex">f_1, f_2, f_3, f_4</script>
+</p>
+<h3 id="exercicio-5">Exercício 5:</h3>
+<p>Faça a fatoração LU da matriz </p>
+<p>
+<script type="math/tex; mode=display">\begin{pmatrix} 1 & 2 & 4 \\ 3 & 8 & 14 \\ 2 & 6 & 13 \end{pmatrix}</script>
+</p>
+<h3 id="resolucao_2">Resolução:</h3>
+<div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">13</span><span class="p">]])</span>
+<span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s2">&quot;L:&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>L:
+</code></pre>
+<p>
+<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}1.0 & 0.0 & 0.0\\0.666666666666667 & 1.0 & 0.0\\0.333333333333333 & -0.999999999999999 & 1.0\end{matrix}</script>\right]</script>
+</p>
+<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="s2">&quot;U:&quot;</span><span class="p">)</span>
+<span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>U:
+</code></pre>
+<p>
+<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}3.0 & 8.0 & 14.0\\0.0 & 0.666666666666667 & 3.66666666666667\\0.0 & 0.0 & 3.0\end{matrix}</script>\right]</script>
+</p>
+<p>⎛</p>
+<h3 id="curiosidades">Curiosidades</h3>
+<ol>
+<li>O conjunto <script type="math/tex">H</script> dos pontos <script type="math/tex">x = (x_1,...,x_n) \in \mathbb{R^n}</script>, tais que <script type="math/tex">a_1x_1 + ... + a_nx+n = b</script> é uma <b> variedade afim </b>. Se <script type="math/tex">a_i</script> não são todos nulos, <script type="math/tex">H</script> é um hiperplano. </li>
+<li>Por que é necessário que <script type="math/tex">0 \in F</script>, sendo <script type="math/tex">F \subset E</script> um subespaço? Essa condição pode ser alterada po outra? Sugestão: Demonstrar que essa condição pode ser alterada por <script type="math/tex">F \neq \emptyset</script>
+</li>
+<li>Definição de segmento de reta: <script type="math/tex">[u,v] = \{(1 - t)\cdot u + t\cdot v ~; ~ 0 \leq t \leq 1\}</script>, sendo <script type="math/tex">u, v \in E</script>, espaço vetorial. </li>
+</ol></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
