@@ -336,12 +336,12 @@ A = <script type="math/tex; mode=display">\begin{pmatrix}
 <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">A_T</span><span class="p">)</span>
 </code></pre></div>
 <p>
-<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}4.0 & 2.0 & 4.0\\2.0 & 0 & 2.0\\4.0 & 2.0 & 2.0\end{matrix}</script>\right]</script>
+<script type="math/tex; mode=display">\left[\begin{matrix}4.0 & 2.0 & 4.0\\2.0 & 0 & 2.0\\4.0 & 2.0 & 2.0\end{matrix}\right]</script>
 </p>
 <div class="highlight"><pre><span></span><code><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">A</span> <span class="o">-</span> <span class="n">A_T</span><span class="p">)</span>
 </code></pre></div>
 <p>
-<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}0 & 4.0 & -1.0\\-4.0 & 0 & 3.0\\1.0 & -3.0 & 0\end{matrix}</script>\right]</script>
+<script type="math/tex; mode=display">\left[\begin{matrix}0 & 4.0 & -1.0\\-4.0 & 0 & 3.0\\1.0 & -3.0 & 0\end{matrix}\right]</script>
 </p>
 <h3 id="exercicio-2">Exercício 2:</h3>
 <p>Encontre a inversa da seguinte matriz e depois resolva <script type="math/tex">AX = B</script>:
@@ -362,12 +362,12 @@ B = \begin{pmatrix}
 <span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">A_inv</span><span class="p">)</span>
 </code></pre></div>
 <p>
-<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}0.025 & -0.075 & 0.15\\0.145 & -0.035 & -0.13\\0.01 & 0.17 & 0.06\end{matrix}</script>\right]</script>
+<script type="math/tex; mode=display">\left[\begin{matrix}0.025 & -0.075 & 0.15\\0.145 & -0.035 & -0.13\\0.01 & 0.17 & 0.06\end{matrix}\right]</script>
 </p>
 <div class="highlight"><pre><span></span><code><span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 </code></pre></div>
 <p>
-<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}1.9 & 0.325 & -0.125\\0.0199999999999999 & -0.315 & 0.275\\-0.24 & 0.53 & 0.95\end{matrix}</script>\right]</script>
+<script type="math/tex; mode=display">\left[\begin{matrix}1.9 & 0.325 & -0.125\\0.0199999999999999 & -0.315 & 0.275\\-0.24 & 0.53 & 0.95\end{matrix}\right]</script>
 </p>
 <h3 id="exercicio-3">Exercício 3:</h3>
 <p>Resolva o sistema em <script type="math/tex">\mathbb{Z}_5</script>:</p>
@@ -404,7 +404,8 @@ x \\ y \\ z
 <pre><code>L:
 </code></pre>
 <p>
-<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}1.0 & 0.0 & 0.0\\0.666666666666667 & 1.0 & 0.0\\0.333333333333333 & -0.999999999999999 & 1.0\end{matrix}</script>\right]</script>
+<script type="math/tex; mode=display">\left[\begin{matrix}1.0 & 0.0 & 0.0\\0.666666666666667 & 1.0 &
+0.0\\0.333333333333333 & -0.999999999999999 & 1.0\end{matrix}\right]</script>
 </p>
 <div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="s2">&quot;U:&quot;</span><span class="p">)</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
@@ -412,9 +413,8 @@ x \\ y \\ z
 <pre><code>U:
 </code></pre>
 <p>
-<script type="math/tex">\displaystyle \left[<script type="math/tex; mode=display">\begin{matrix}3.0 & 8.0 & 14.0\\0.0 & 0.666666666666667 & 3.66666666666667\\0.0 & 0.0 & 3.0\end{matrix}</script>\right]</script>
+<script type="math/tex; mode=display">\left[\begin{matrix}3.0 & 8.0 & 14.0\\0.0 & 0.666666666666667 & 3.66666666666667\\0.0 & 0.0 & 3.0\end{matrix}\right]</script>
 </p>
-<p>⎛</p>
 <h3 id="curiosidades">Curiosidades</h3>
 <ol>
 <li>O conjunto <script type="math/tex">H</script> dos pontos <script type="math/tex">x = (x_1,...,x_n) \in \mathbb{R^n}</script>, tais que <script type="math/tex">a_1x_1 + ... + a_nx+n = b</script> é uma <b> variedade afim </b>. Se <script type="math/tex">a_i</script> não são todos nulos, <script type="math/tex">H</script> é um hiperplano. </li>
