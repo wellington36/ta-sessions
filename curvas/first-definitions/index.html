@@ -131,6 +131,8 @@
                 
             <li class="second-level"><a href="#reparametrizacao">Reparametrização</a></li>
                 
+                <li class="third-level"><a href="#proposicoes-importantes">Proposições importantes</a></li>
+                <li class="third-level"><a href="#teorema-da-reparametrizacao">Teorema da reparametrização</a></li>
             <li class="second-level"><a href="#curvas-fechadas">Curvas fechadas</a></li>
                 
     </ul>
@@ -146,7 +148,7 @@ x^2 + y^2 = 1
 que é uma circunferência </p>
 <p><img alt = "circle" src = "/ta-sessions/curvas/first-definitions_files/circle-curve.png" width = 200> </p>
 <p>ou talvez na reta <script type="math/tex">y = ax + b</script>. Chamamos essas curvas de <strong>curvas de nível</strong>, aquelas que são do tipo <script type="math/tex">f(x,y) = c</script> para uma função <script type="math/tex">f:\mathbb{R}^2 \to \mathbb{R}</script> continua. Todavia uma definição um tanto melhor é pensar em uma curva como um caminho traçado por um ponto se movimentando. </p>
-<p><strong>Curva parametrizada:</strong> Seja <script type="math/tex">I</script> um intervalo. Uma curva parametrizada é uma aplicação contínua <script type="math/tex">\alpha: I \subset \mathbb{R} \to \mathbb{R}^n</script>, muitas vezes notada como <script type="math/tex">\alpha(t) = (\alpha_1(t), ..., \alpha_n(t))</script> e <script type="math/tex">t</script> é chamado de parâmetro. </p>
+<p><strong>Curva parametrizada:</strong> Seja <script type="math/tex">I</script> um intervalo. Uma curva parametrizada é uma aplicação contínua <script type="math/tex">\alpha: I \subset \mathbb{R} \to \mathbb{R}^n</script>, muitas vezes notada como <script type="math/tex">\alpha(t) = (\alpha_1(t), ..., \alpha_n(t))</script> e <script type="math/tex">t</script> é chamado de parâmetro. Algumas definições pedem intervalo aberto. Dizemos que ela é <strong>diferenciável</strong> quando a aplicação é diferenciável. Por fim dizemos que a curva é <strong>regular</strong> quando <script type="math/tex">\alpha '(t) \neq 0, \forall t \in I</script>.</p>
 <p><strong>Traço da curva:</strong> Seja uma curma <script type="math/tex">\alpha:I \to \mathbb{R}^n</script>. Dizemos que o traço de <script type="math/tex">\alpha</script> é a imagem da aplicação <script type="math/tex">\alpha</script>, denotada <script type="math/tex">\alpha(I)</script>. Algumas definições de curva são precisamento o que definimos de traço da curva. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -203,10 +205,45 @@ que é uma circunferência </p>
 </script>
 Se <script type="math/tex">c \neq 0</script>, esta é a equação paramétrica de um segmento de reta (potencialmente infinito). Se <script type="math/tex">c = 0</script>, a imagem da curva é um único ponto. </p>
 <h2 id="comprimento-de-arco">Comprimento de arco</h2>
+<p>Definimos o comprimento de arco de uma curva <script type="math/tex">\gamma</script> começando no ponto <script type="math/tex">\gamma(t_0)</script> como a função 
+<script type="math/tex; mode=display">
+s(t) = \int_{t_0}^t ||\dot{\gamma}(s)||ds
+</script>
+Se escolhermos um ponto <script type="math/tex">\tilde{t}_0</script> diferente, o resultado será diferente. </p>
+<p>Dizemos que a curva tem <strong>velocidade unitária</strong> se <script type="math/tex">||\dot{\gamma}(t)|| = 1</script>
+</p>
 <h2 id="reparametrizacao">Reparametrização</h2>
-<h2 id="curvas-fechadas">Curvas fechadas</h2>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div></div>
+<p>Sejam <script type="math/tex">I</script> e <script type="math/tex">J</script> intervalos. Uma <strong>mudança de parâmetro</strong> é uma função <script type="math/tex">h: J \to I</script> bijetiva contínua com inversa contínua. Em particular, uma função com essa propriedade é chamada de <strong>homeomorfismo</strong>. </p>
+<p>Sejam <script type="math/tex">\tilde{\gamma}:J \to \mathbb{R}^n</script> e <script type="math/tex">\gamma: I \to \mathbb{R}^n</script> dua curvas. Dizemos que <script type="math/tex">\tilde{\gamma}</script> é reparametrização da curva <script type="math/tex">\gamma</script> se existe uma mudança de parâmetro <script type="math/tex">h</script> tal que 
+<script type="math/tex; mode=display">
+\tilde{\gamma} = \gamma \circ h 
+</script>
+Essa notação significa que <script type="math/tex">\forall t \in J, \tilde{\gamma}(t) = \gamma(h(t))</script>. Observe que se <script type="math/tex">\tilde{\gamma}</script> é reparametrização de <script type="math/tex">\gamma</script>, essa é reparametrização da primeira. </p>
+<p>Lembre que uma curva pode ter muitas parametrizações, mas nem todas são reparametrizações uma da outra, como no exemplo a baixo: </p>
+<p><strong>Exemplo:</strong> Considere as seguintes parametrizações da circunferência: 
+<script type="math/tex; mode=display">
+\alpha(t) = (cos(t), sen(t)), t \in [0,2\pi]
+</script>
+<script type="math/tex; mode=display">
+\beta(t) = (cos(2t), sen(2t)), t \in [0,2\pi]
+</script>
+A segunda parametrização "dá uma volta a mais na circunferência". Devemos nos perguntar se existe uma mudança de parâmetro <script type="math/tex">h</script> entre esses intervalos que garanta 
+<script type="math/tex; mode=display">
+cos(2t) = cos(h(t))
+</script>
+<script type="math/tex; mode=display">
+sen(2t) = sen(h(t))
+</script>
+Não conseguimos fazer isso e manter a bijetividade de <script type="math/tex">h</script> entre os intervalos. Uma solução para esse problema seria considerar o domínio de <script type="math/tex">\beta</script> o intervalor <script type="math/tex">[0,\pi]</script>. Nesse caso <script type="math/tex">h(t) = 2t</script> é uma mudança de parâmetro entre as parametrizações. </p>
+<h3 id="proposicoes-importantes">Proposições importantes</h3>
+<p>Tente demonstrar essas proposições:</p>
+<ol>
+<li>Toda reparametrização de uma curva regular é regular. </li>
+<li>O comprimento de uma curva diferenciável regular não muda depois de uma reparametrização. </li>
+</ol>
+<h3 id="teorema-da-reparametrizacao">Teorema da reparametrização</h3>
+<p>Uma curva parametrizada tem uma reparametrização com velocidade unitária se, e somente se, é regular. </p>
+<h2 id="curvas-fechadas">Curvas fechadas</h2></div>
         
         
     </div>
