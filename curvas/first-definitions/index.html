@@ -133,8 +133,11 @@
                 
                 <li class="third-level"><a href="#proposicoes-importantes">Proposições importantes</a></li>
                 <li class="third-level"><a href="#teorema-da-reparametrizacao">Teorema da reparametrização</a></li>
+                <li class="third-level"><a href="#demonstracao">Demonstração</a></li>
             <li class="second-level"><a href="#curvas-fechadas">Curvas fechadas</a></li>
                 
+                <li class="third-level"><a href="#curva-t-periodica">Curva T-periódica</a></li>
+                <li class="third-level"><a href="#auto-interseccao">Auto-intersecção</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -149,6 +152,7 @@ que é uma circunferência </p>
 <p><img alt = "circle" src = "/ta-sessions/curvas/first-definitions_files/circle-curve.png" width = 200> </p>
 <p>ou talvez na reta <script type="math/tex">y = ax + b</script>. Chamamos essas curvas de <strong>curvas de nível</strong>, aquelas que são do tipo <script type="math/tex">f(x,y) = c</script> para uma função <script type="math/tex">f:\mathbb{R}^2 \to \mathbb{R}</script> continua. Todavia uma definição um tanto melhor é pensar em uma curva como um caminho traçado por um ponto se movimentando. </p>
 <p><strong>Curva parametrizada:</strong> Seja <script type="math/tex">I</script> um intervalo. Uma curva parametrizada é uma aplicação contínua <script type="math/tex">\alpha: I \subset \mathbb{R} \to \mathbb{R}^n</script>, muitas vezes notada como <script type="math/tex">\alpha(t) = (\alpha_1(t), ..., \alpha_n(t))</script> e <script type="math/tex">t</script> é chamado de parâmetro. Algumas definições pedem intervalo aberto. Dizemos que ela é <strong>diferenciável</strong> quando a aplicação é diferenciável. Por fim dizemos que a curva é <strong>regular</strong> quando <script type="math/tex">\alpha '(t) \neq 0, \forall t \in I</script>.</p>
+<p><strong>Observação:</strong> Definições de curva podem variar em cada livro. Alguns livros pedem que a aplicação seja de classe <script type="math/tex">C^{\infty}</script> ou suave, enquanto outras pedem apenas classe <script type="math/tex">C^2</script> e assim por diante. De forma geral exigir apenas a continuidade é mais fraco e podemos pedir diferenciabilidade ou suavidade posteriormente. </p>
 <p><strong>Traço da curva:</strong> Seja uma curma <script type="math/tex">\alpha:I \to \mathbb{R}^n</script>. Dizemos que o traço de <script type="math/tex">\alpha</script> é a imagem da aplicação <script type="math/tex">\alpha</script>, denotada <script type="math/tex">\alpha(I)</script>. Algumas definições de curva são precisamento o que definimos de traço da curva. </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -219,6 +223,7 @@ Se escolhermos um ponto <script type="math/tex">\tilde{t}_0</script> diferente, 
 \tilde{\gamma} = \gamma \circ h 
 </script>
 Essa notação significa que <script type="math/tex">\forall t \in J, \tilde{\gamma}(t) = \gamma(h(t))</script>. Observe que se <script type="math/tex">\tilde{\gamma}</script> é reparametrização de <script type="math/tex">\gamma</script>, essa é reparametrização da primeira. </p>
+<p><strong>Observação:</strong> Dependendo em como definimos curva, existem variações nessa definição. De forma geral, podemos dizer que duas curvas de classe <script type="math/tex">C^k</script> são equivalentes, isto é, uma é reparametrização da outra, quando existe uma mapa bijetivo de classe  <script type="math/tex">C^k</script> com inversa também de classe <script type="math/tex">C^k</script> tal que a igualdade acima é válida em todo ponto. Para mais detalhes, consulte o <a href="https://en.wikipedia.org/wiki/Curve#Differential_geometry">Wikipedia</a>. </p>
 <p>Lembre que uma curva pode ter muitas parametrizações, mas nem todas são reparametrizações uma da outra, como no exemplo a baixo: </p>
 <p><strong>Exemplo:</strong> Considere as seguintes parametrizações da circunferência: 
 <script type="math/tex; mode=display">
@@ -243,7 +248,35 @@ Não conseguimos fazer isso e manter a bijetividade de <script type="math/tex">h
 </ol>
 <h3 id="teorema-da-reparametrizacao">Teorema da reparametrização</h3>
 <p>Uma curva parametrizada tem uma reparametrização com velocidade unitária se, e somente se, é regular. </p>
-<h2 id="curvas-fechadas">Curvas fechadas</h2></div>
+<h3 id="demonstracao">Demonstração</h3>
+<p>Um rascunho da demonstração supondo a regularidade da curva. Seja <script type="math/tex">\alpha</script> uma curve (diferenciável). Queremos encontrar <script type="math/tex">\beta : J \to \mathbb{R}^n</script> tal que <script type="math/tex">\beta = \alpha \circ h</script> para algum <script type="math/tex">h</script>
+<strong>difeomorfismo</strong> (bijeito diferenciável com inversa diferenciável). Se existesse, ele deveria ter o seguinte comportamento, 
+<script type="math/tex; mode=display">
+||\beta '(t)|| = ||\alpha'(h(t))h'(t)|| = 1, 
+</script>
+por hipótese. Dado <script type="math/tex">t_0 \in I, t \in I, </script>
+<script type="math/tex; mode=display">
+s(t) := \int_{t_0}^t ||\alpha '(\tau)||d\tau
+</script>
+é uma função crescente e derivável, pois <script type="math/tex">\alpha</script> é regular. Então ela possui uma função inversa <script type="math/tex">t: s(I) \to I</script> também crescente e derivável, de forma que 
+<script type="math/tex; mode=display">
+t'(s) = \frac{1}{\frac{ds}{dt}(t(s))} = \frac{1}{s'(t(s))} = \frac{1}{||\alpha'(t(s))||}
+</script>
+Então defina <script type="math/tex">\beta: s(I) \to \mathbb{R}^n</script> de forma que <script type="math/tex">\beta(s) = \alpha(t(s))</script>. Então, 
+<script type="math/tex; mode=display">
+||\beta'(s)|| = ||\alpha'(t(s))t'(s)|| = 1
+</script>
+Então a mudança de parâmetro que estávamos procurando era a inversa da função de comprimento de curva. </p>
+<h2 id="curvas-fechadas">Curvas fechadas</h2>
+<h3 id="curva-t-periodica">Curva T-periódica</h3>
+<p>Seja <script type="math/tex">T \in \mathbb{R}</script>. Dizemos que uma curva suave <script type="math/tex">\alpha : \mathbb{R} \to \mathbb{R}^n</script> é T-periódica se 
+<script type="math/tex; mode=display">
+\alpha(t + T) = \alpha(t), t \in \mathbb{R}
+</script>
+Se <script type="math/tex">\alpha</script> é não constante, mas T-periódica, com <script type="math/tex">T \neq 0</script>, então ela é dita <strong>fechada</strong>. Dizemos que o período da curva fechada é o menor número positivo <script type="math/tex">T</script> tal que <script type="math/tex">\alpha</script> seja T-periódica. </p>
+<p><strong>Exemplo:</strong> A elipse é um exemplo onde o perído é <script type="math/tex">2\pi</script>. </p>
+<h3 id="auto-interseccao">Auto-intersecção</h3>
+<p>Uma curva <script type="math/tex">\alpha</script> tem uma auto-intersecção no ponto <script type="math/tex">p</script> se existem <script type="math/tex">a \neq b</script> tal que <script type="math/tex">\alpha(a) = \alpha(b) = p</script> e se <script type="math/tex">\alpha</script> é fechada com período <script type="math/tex">T</script>, então <script type="math/tex">a - b</script> não é um inteiro múltiplo de <script type="math/tex">T</script>. </p></div>
         
         
     </div>
