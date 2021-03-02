@@ -122,14 +122,38 @@
         <li class="first-level active"><a href="#curvatura-de-uma-curva">Curvatura de uma curva</a></li>
             <li class="second-level"><a href="#curvatura">Curvatura</a></li>
                 
+                <li class="third-level"><a href="#curvatura-de-uma-curva-regular">Curvatura de uma curva regular</a></li>
+                <li class="third-level"><a href="#curvatura-com-sinal">Curvatura com sinal</a></li>
+                <li class="third-level"><a href="#funcao-angulo">Função Ângulo</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="curvatura-de-uma-curva">Curvatura de uma curva</h1>
 <h2 id="curvatura">Curvatura</h2>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div></div>
+<p>Seja <script type="math/tex">\gamma</script> uma curva parametrizada pelo comprimeto de arco. Definimos <strong>curvatura</strong> como a função <script type="math/tex">\kappa(t) = ||\ddot{\gamma}(t)||</script>. Essa definição é consistente com o que esperávamos de uma reta (curvatura nula) e de um círculo (curvatura constante positiva). Porém se <script type="math/tex">\gamma</script> é uma curva regular qualquer, podemos definir a sua curvatura como sendo a curvatura de sua reparametrização pelo comprimento de arco. Isto é, seja <script type="math/tex">\hat{\gamma}</script> uma reparametrização pelo comprimento de arco de <script type="math/tex">\gamma</script> com curvatura <script type="math/tex">\kappa</script>. Então a curvatura de <script type="math/tex">\gamma</script> será <script type="math/tex">\kappa</script>. </p>
+<p>Uma questão que se levanta é: e se houver outra reparametrização de <script type="math/tex">\gamma</script>? Para isso, precisamos mostrar que a curvatura é invariante (não muda) segundo a reparametrização. Isso não é dificíl de ver pois as tangentes das reparametrização tem mesmo tamanho e, possivelmente, diferente sinal.</p>
+<h3 id="curvatura-de-uma-curva-regular">Curvatura de uma curva regular</h3>
+<p>Seja <script type="math/tex">\gamma(t)</script> uma curva em <script type="math/tex">\mathbb{R}^3</script>, então sua curvatura é dada pela expressão</p>
+<p>
+<script type="math/tex; mode=display">
+\kappa = \frac{||\ddot{\gamma} \times \dot{\gamma}||}{||\dot{\gamma}||^3}
+</script>
+</p>
+<p>Observe que para curvas no plano essa expressão pode também ser utilizada, 
+<script type="math/tex; mode=display">
+\kappa = \frac{|\ddot{\gamma}_1\dot{\gamma}_2 - \ddot{\gamma}_2\dot{\gamma}_1|}{||\dot{\gamma}||^3}
+</script>
+</p>
+<h3 id="curvatura-com-sinal">Curvatura com sinal</h3>
+<p>Definimos a <strong>normal unitária com sinal</strong> o vetor unitário que rotaciona o vetor tangente no sentido anti-horário em <script type="math/tex">\pi/2</script>. Em particular, <script type="math/tex">\ddot{\gamma}</script> e <script type="math/tex">\dot{\gamma}</script> são perpendiculares (pois a curva é parametrizada pelo comprimento de arco) e, portanto, 
+<script type="math/tex; mode=display">
+\ddot{\gamma} = \kappa_s \dot{\gamma}
+</script>
+Chamamos <script type="math/tex">\kappa_s</script> de <strong>curvatura com sinal</strong>. Em particular, <script type="math/tex">\kappa = |\kappa_s|</script>.</p>
+<h3 id="funcao-angulo">Função Ângulo</h3>
+<p>Dada uma curva diferenciável <script type="math/tex">\gamma:I\to \mathcal{S}^1</script>
+</p></div>
         
         
     </div>
