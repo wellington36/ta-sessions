@@ -125,6 +125,14 @@
                 <li class="third-level"><a href="#curvatura-de-uma-curva-regular">Curvatura de uma curva regular</a></li>
                 <li class="third-level"><a href="#curvatura-com-sinal">Curvatura com sinal</a></li>
                 <li class="third-level"><a href="#funcao-angulo">Função Ângulo</a></li>
+            <li class="second-level"><a href="#movimento-rigido">Movimento Rígido</a></li>
+                
+                <li class="third-level"><a href="#teorema">Teorema</a></li>
+                <li class="third-level"><a href="#invariancia-da-curvatura">Invariância da curvatura</a></li>
+            <li class="second-level"><a href="#equacoes-de-frenet">Equações de Frenet</a></li>
+                
+            <li class="second-level"><a href="#teorema-fundamental-das-curvas-no-plano">Teorema Fundamental das Curvas no Plano</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -146,14 +154,92 @@
 </script>
 </p>
 <h3 id="curvatura-com-sinal">Curvatura com sinal</h3>
-<p>Definimos a <strong>normal unitária com sinal</strong> o vetor unitário que rotaciona o vetor tangente no sentido anti-horário em <script type="math/tex">\pi/2</script>. Em particular, <script type="math/tex">\ddot{\gamma}</script> e <script type="math/tex">\dot{\gamma}</script> são perpendiculares (pois a curva é parametrizada pelo comprimento de arco) e, portanto, 
+<p>Definimos a <strong>normal unitária com sinal</strong> <script type="math/tex">n_s</script> o vetor unitário que rotaciona o vetor tangente no sentido anti-horário em <script type="math/tex">\pi/2</script>. Em particular, <script type="math/tex">\ddot{\gamma}</script> e <script type="math/tex">\dot{\gamma}</script> são perpendiculares (pois a curva é parametrizada pelo comprimento de arco) e, portanto, é paralelo a <script type="math/tex">n_s</script>, assim
 <script type="math/tex; mode=display">
-\ddot{\gamma} = \kappa_s \dot{\gamma}
+\ddot{\gamma} = \kappa_s n_s
 </script>
 Chamamos <script type="math/tex">\kappa_s</script> de <strong>curvatura com sinal</strong>. Em particular, <script type="math/tex">\kappa = |\kappa_s|</script>.</p>
 <h3 id="funcao-angulo">Função Ângulo</h3>
-<p>Dada uma curva diferenciável <script type="math/tex">\gamma:I\to \mathcal{S}^1</script>
-</p></div>
+<p>Dada uma curva diferenciável <script type="math/tex">\gamma:I\to \mathcal{S}^1</script>, onde <script type="math/tex">\mathcal{S}^1</script> é o círculo centrado na origem. Dizemos que <script type="math/tex">\theta : I \to \mathbb{R}</script> é função ângulo de <script type="math/tex">\gamma</script> quando 
+<script type="math/tex; mode=display">
+\gamma(s) = (\cos(\theta(s)), \sin(\theta(s)), \forall s \in I
+</script>
+</p>
+<p>Observe que nessa definição, a imagem de <script type="math/tex">\gamma</script> é um subconjunto de <script type="math/tex">\mathcal{S}^1</script>, como se fosse um arco. Por exemplo, </p>
+<p>
+<script type="math/tex">\gamma(s) = (\cos(2s), \sin(2s)) \implies \theta(s) = 2s</script>.</p>
+<p>Considere o operador que rotaciona no sentido anti-horário em 90° um vetor. Podemos descrevê-lo em forma matricial como </p>
+<p>
+<script type="math/tex; mode=display">
+J = \begin{bmatrix}
+0 & -1 \\
+1 & 0
+\end{bmatrix}
+</script>
+</p>
+<p>Defina o <strong>determinante</strong> entre dois vetores como </p>
+<p>
+<script type="math/tex; mode=display">
+det(v,w) = \langle Jv , w \rangle
+</script>
+</p>
+<p>que é o produto interno do vetor <script type="math/tex">v</script> rotacionado e <script type="math/tex">w</script>.</p>
+<h4 id="diferenciabilidade">Diferenciabilidade</h4>
+<p>Seja <script type="math/tex">\gamma : I \to \mathcal{S}^1</script> uma curva diferenciável. Então <script type="math/tex">\gamma</script> admite uma função ângulo <script type="math/tex">\theta</script> diferenciável. Além disso, se <script type="math/tex">\theta '</script> é função ângulo diferenciável de <script type="math/tex">\gamma</script>, ela difere de <script type="math/tex">\theta</script> por uma constante. </p>
+<blockquote>
+<p>Note que supondo a existência dessa função diferenciável, temos que, por aplicação da Regra da Cadeia, 
+<script type="math/tex; mode=display">
+\gamma '(s) = \theta '(s)(-\sin(\theta(s)), \cos(\theta(s))) = \theta '(s) J\gamma(s)
+</script>
+Portanto, aplicando o produto interno em ambos os lados, observamos que 
+<script type="math/tex; mode=display">
+\theta '(s) = det(\gamma(s), \gamma '(s))
+</script>
+Assim, a demonstração se dá defininido <script type="math/tex">\theta</script> com essa derivada (Teorema Fundamental do Cálculo). </p>
+</blockquote>
+<p>Agora seja <script type="math/tex">\alpha</script> uma curva regular, sem perda de generalidade, parametrizada pelo comprimento de arco. Seja <script type="math/tex">t(s) = \alpha '(s)</script>. Como <script type="math/tex">||t(s)|| = 1</script>, pela proposição anterior, existe uma função ângulo diferenciável <script type="math/tex">\theta</script> de forma que definimos a curvatura de <script type="math/tex">\alpha</script> como</p>
+<p>
+<script type="math/tex; mode=display">
+k(s) = \theta '(s) = det(t(s), t'(s)) = det(a'(s), a''(s))
+</script>
+</p>
+<p>Observe que estamos rotacionando o vetor tangente, obtendo o que chamamos de vetor normal unitário e fazendo o produto interno com a aceleração da curva, o que coincide com a definição prévia! </p>
+<p><strong>Exemplo:</strong> Considere a parametrização do círculo 
+<script type="math/tex; mode=display">
+\alpha(s) = p + r(\cos(s/r), \sin(s/r)), s \in \mathbb{R}
+</script>
+Assim 
+<script type="math/tex; mode=display">
+\alpha'(s) = (-\sin(s/r), \cos(s/r))
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\alpha''(s) = -\frac{1}{r}(\cos(s/r), \sin(s/r)) = \frac{1}{r}J\alpha '(s)
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\kappa(s) = \langle J\alpha '(s), \alpha ''(s) \rangle = \frac{1}{r}
+</script>
+</p>
+<h2 id="movimento-rigido">Movimento Rígido</h2>
+<p><strong>Isometria:</strong> Uma aplicação <script type="math/tex">F: \mathbb{R}^n \to \mathbb{R}^n</script> que preserva distância, isto é, <script type="math/tex">||x - y|| = ||F(x) - F(y)||, \forall x, y \in \mathbb{R}^n</script>. Diremos uma <strong>movimento rígido</strong> é uma isometria (a rigidez em mudar distâncias).</p>
+<p><strong>Translação:</strong> Uma aplicação <script type="math/tex">F: \mathbb{R}^n \to \mathbb{R}^n</script>  do tipo <script type="math/tex">v \mapsto F(v) := v + a</script>, para algum <script type="math/tex">a \in \mathbb{R}^n</script> fixo. </p>
+<p><strong>Transformação Ortogonal:</strong> Uma transformação <strong>linear</strong> que presetva o produto interno, isto é, <script type="math/tex">\langle u, v \rangle = \langle T(u), T(v) \rangle</script>. A matriz associada a essa transformação é ortogonal. </p>
+<p>Dizemos que o movimento é <strong>direto</strong> se <script type="math/tex">det(P) = 1</script> e oposto ou inverso quando <script type="math/tex">det(P) = -1</script>. </p>
+<h3 id="teorema">Teorema</h3>
+<p>Seja <script type="math/tex">P_{n\times n}</script> uma matriz ortogonal e <script type="math/tex">a \in \mathbb{R}^n</script>. Então <script type="math/tex">F: \mathbb{R}^n \to \mathbb{R}^n</script> definido como <script type="math/tex">F(v) = Pv + a</script> é uma isometria. Reciprocamente, toda isometria pode ser escrito nessa forma.  Esse teorema permite uma caracterização simples de um movimento rígido.</p>
+<h3 id="invariancia-da-curvatura">Invariância da curvatura</h3>
+<p>Sejam <script type="math/tex">\Phi = A + p_0</script> um movimento rígido direto de <script type="math/tex">R^2</script> e <script type="math/tex">\alpha : I \to \mathbb{R}^2</script> uma curva regular parametrizada por comprimento de arco. Então, <script type="math/tex">\beta = \Phi \circ \alpha : I \to \mathbb{R}^2</script> é uma curva regular de <script type="math/tex">\mathbb{R}^2</script>, parametrizada por comprimento de arco, cuja função curvatura coincide com a de <script type="math/tex">\alpha</script>, isto é, <script type="math/tex">\kappa_{\alpha}(s) = \kappa_{\beta}(s) \forall s \in I</script>.</p>
+<blockquote>
+<p>Observe que derivar <script type="math/tex">\beta ' = \Phi'(\alpha) = A\alpha '</script> o que garante que <script type="math/tex">\beta</script> é parametrizada pelo comprimento de arco e que <script type="math/tex">\beta '' = A\alpha ''</script>. Portanto, como <script type="math/tex">det(A) = 1</script>, vale que as curvaturas são as mesmas. </p>
+</blockquote>
+<h2 id="equacoes-de-frenet">Equações de Frenet</h2>
+<p>Página 21 (Ronaldo)</p>
+<h2 id="teorema-fundamental-das-curvas-no-plano">Teorema Fundamental das Curvas no Plano</h2>
+<p>Páginas 39-40 (Pressley)
+Páginas 22-23 (Ronaldo)</p></div>
         
         
     </div>
