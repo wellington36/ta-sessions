@@ -139,8 +139,8 @@
 
 <h1 id="curvatura-de-uma-curva">Curvatura de uma curva</h1>
 <h2 id="curvatura">Curvatura</h2>
-<p>Seja <script type="math/tex">\gamma</script> uma curva parametrizada pelo comprimeto de arco. Definimos <strong>curvatura</strong> como a função <script type="math/tex">\kappa(t) = ||\ddot{\gamma}(t)||</script>. Essa definição é consistente com o que esperávamos de uma reta (curvatura nula) e de um círculo (curvatura constante positiva). Porém se <script type="math/tex">\gamma</script> é uma curva regular qualquer, podemos definir a sua curvatura como sendo a curvatura de sua reparametrização pelo comprimento de arco. Isto é, seja <script type="math/tex">\hat{\gamma}</script> uma reparametrização pelo comprimento de arco de <script type="math/tex">\gamma</script> com curvatura <script type="math/tex">\kappa</script>. Então a curvatura de <script type="math/tex">\gamma</script> será <script type="math/tex">\kappa</script>. </p>
-<p>Uma questão que se levanta é: e se houver outra reparametrização de <script type="math/tex">\gamma</script>? Para isso, precisamos mostrar que a curvatura é invariante (não muda) segundo a reparametrização. Isso não é dificíl de ver pois as tangentes das reparametrização tem mesmo tamanho e, possivelmente, diferente sinal.</p>
+<p>Seja <script type="math/tex">\gamma</script> uma curva parametrizada pelo comprimeto de arco. Definimos <strong>curvatura</strong> como a função <script type="math/tex">\kappa(t) = ||\ddot{\gamma}(t)||</script>. Essa definição é consistente com o que esperávamos de uma reta (curvatura nula) e de um círculo (curvatura constante). Além disso se <script type="math/tex">\gamma</script> é uma curva regular qualquer, ela tem uma reparametrização pelo comprimento de arco. Portanto, podemos definir a sua curvatura como sendo a curvatura de sua reparametrização pelo comprimento de arco. Isto é, seja <script type="math/tex">\hat{\gamma}</script> uma reparametrização pelo comprimento de arco de <script type="math/tex">\gamma</script> com curvatura <script type="math/tex">\kappa</script>. Então a curvatura de <script type="math/tex">\gamma</script> será <script type="math/tex">\kappa</script>. </p>
+<p>Uma questão que se levanta é: e se houver outra reparametrização pelo comprimento de  arco para <script type="math/tex">\gamma</script>? Para isso, precisamos mostrar que a curvatura é invariante (não muda) segundo a reparametrização. Isso não é dificíl de ver pois as tangentes das reparametrizações têm mesmo tamanho e, possivelmente, diferentes sinal.</p>
 <h3 id="curvatura-de-uma-curva-regular">Curvatura de uma curva regular</h3>
 <p>Seja <script type="math/tex">\gamma(t)</script> uma curva em <script type="math/tex">\mathbb{R}^3</script>, então sua curvatura é dada pela expressão</p>
 <p>
@@ -148,24 +148,27 @@
 \kappa = \frac{||\ddot{\gamma} \times \dot{\gamma}||}{||\dot{\gamma}||^3}
 </script>
 </p>
-<p>Observe que para curvas no plano essa expressão pode também ser utilizada, 
+<p>Observe que para curvas no plano essa expressão pode também ser utilizada, </p>
+<p>
 <script type="math/tex; mode=display">
 \kappa = \frac{|\ddot{\gamma}_1\dot{\gamma}_2 - \ddot{\gamma}_2\dot{\gamma}_1|}{||\dot{\gamma}||^3}
 </script>
 </p>
 <h3 id="curvatura-com-sinal">Curvatura com sinal</h3>
-<p>Definimos a <strong>normal unitária com sinal</strong> <script type="math/tex">n_s</script> o vetor unitário que rotaciona o vetor tangente no sentido anti-horário em <script type="math/tex">\pi/2</script>. Em particular, <script type="math/tex">\ddot{\gamma}</script> e <script type="math/tex">\dot{\gamma}</script> são perpendiculares (pois a curva é parametrizada pelo comprimento de arco) e, portanto, é paralelo a <script type="math/tex">n_s</script>, assim
+<p>Definimos a <strong>normal unitária com sinal</strong> <script type="math/tex">n(s)</script> o vetor unitário que rotaciona o vetor tangente no sentido anti-horário em <script type="math/tex">\pi/2</script>. Em particular, <script type="math/tex">\ddot{\gamma}(s)</script> e <script type="math/tex">\dot{\gamma}(s)</script> são perpendiculares (pois a curva é parametrizada pelo comprimento de arco) e, portanto, é paralelo a <script type="math/tex">n(s)</script>, e assim</p>
+<p>
 <script type="math/tex; mode=display">
-\ddot{\gamma} = \kappa_s n_s
+\ddot{\gamma}(s) = \kappa_s(s) n(s)
 </script>
-Chamamos <script type="math/tex">\kappa_s</script> de <strong>curvatura com sinal</strong>. Em particular, <script type="math/tex">\kappa = |\kappa_s|</script>.</p>
+</p>
+<p>Chamamos <script type="math/tex">\kappa_s</script> de <strong>curvatura com sinal</strong>. Em particular, <script type="math/tex">\kappa = |\kappa_s|</script>.</p>
 <h3 id="funcao-angulo">Função Ângulo</h3>
-<p>Dada uma curva diferenciável <script type="math/tex">\gamma:I\to \mathcal{S}^1</script>, onde <script type="math/tex">\mathcal{S}^1</script> é o círculo centrado na origem. Dizemos que <script type="math/tex">\theta : I \to \mathbb{R}</script> é função ângulo de <script type="math/tex">\gamma</script> quando 
+<p>Dada uma curva diferenciável <script type="math/tex">\gamma: I \to \mathcal{S}^1</script>, onde <script type="math/tex">\mathcal{S}^1</script> é o círculo centrado na origem, dizemos que <script type="math/tex">\theta : I \to \mathbb{R}</script> é função ângulo de <script type="math/tex">\gamma</script> quando 
 <script type="math/tex; mode=display">
 \gamma(s) = (\cos(\theta(s)), \sin(\theta(s)), \forall s \in I
 </script>
 </p>
-<p>Observe que nessa definição, a imagem de <script type="math/tex">\gamma</script> é um subconjunto de <script type="math/tex">\mathcal{S}^1</script>, como se fosse um arco. Por exemplo, </p>
+<p><em>Observe que nessa definição, a imagem de <script type="math/tex">\gamma</script> é um subconjunto de <script type="math/tex">\mathcal{S}^1</script>, como se fosse um arco. Por exemplo,</em></p>
 <p>
 <script type="math/tex">\gamma(s) = (\cos(2s), \sin(2s)) \implies \theta(s) = 2s</script>.</p>
 <p>Considere o operador que rotaciona no sentido anti-horário em 90° um vetor. Podemos descrevê-lo em forma matricial como </p>
@@ -185,7 +188,7 @@ det(v,w) = \langle Jv , w \rangle
 </p>
 <p>que é o produto interno do vetor <script type="math/tex">v</script> rotacionado e <script type="math/tex">w</script>.</p>
 <h4 id="diferenciabilidade">Diferenciabilidade</h4>
-<p>Seja <script type="math/tex">\gamma : I \to \mathcal{S}^1</script> uma curva diferenciável. Então <script type="math/tex">\gamma</script> admite uma função ângulo <script type="math/tex">\theta</script> diferenciável. Além disso, se <script type="math/tex">\theta '</script> é função ângulo diferenciável de <script type="math/tex">\gamma</script>, ela difere de <script type="math/tex">\theta</script> por uma constante. </p>
+<p>Seja <script type="math/tex">\gamma : I \to \mathcal{S}^1</script> uma curva diferenciável. Então <script type="math/tex">\gamma</script> admite uma função ângulo <script type="math/tex">\theta</script> diferenciável. Além disso, se <script type="math/tex">\hat{\theta}</script> é função ângulo diferenciável de <script type="math/tex">\gamma</script>, ela difere de <script type="math/tex">\theta</script> por uma constante. </p>
 <blockquote>
 <p>Note que supondo a existência dessa função diferenciável, temos que, por aplicação da Regra da Cadeia, 
 <script type="math/tex; mode=display">
@@ -200,15 +203,17 @@ Assim, a demonstração se dá defininido <script type="math/tex">\theta</script
 <p>Agora seja <script type="math/tex">\alpha</script> uma curva regular, sem perda de generalidade, parametrizada pelo comprimento de arco. Seja <script type="math/tex">t(s) = \alpha '(s)</script>. Como <script type="math/tex">||t(s)|| = 1</script>, pela proposição anterior, existe uma função ângulo diferenciável <script type="math/tex">\theta</script> de forma que definimos a curvatura de <script type="math/tex">\alpha</script> como</p>
 <p>
 <script type="math/tex; mode=display">
-k(s) = \theta '(s) = det(t(s), t'(s)) = det(a'(s), a''(s))
+k(s) = \theta '(s) = det(t(s), t'(s)) = det(\alpha'(s), \alpha''(s))
 </script>
 </p>
-<p>Observe que estamos rotacionando o vetor tangente, obtendo o que chamamos de vetor normal unitário e fazendo o produto interno com a aceleração da curva, o que coincide com a definição prévia! </p>
-<p><strong>Exemplo:</strong> Considere a parametrização do círculo 
+<p><strong>Observação 1:</strong> Se <script type="math/tex">\alpha</script> é regular, sua curvatura é 
 <script type="math/tex; mode=display">
-\alpha(s) = p + r(\cos(s/r), \sin(s/r)), s \in \mathbb{R}
+\kappa(s) = \frac{det(\alpha'(s), \alpha''(s))}{||\alpha '(s)||^3}
 </script>
-Assim 
+</p>
+<p><strong>Observação 2:</strong> Estamos rotacionando o vetor tangente, obtendo o que chamamos de <em>vetor normal unitário</em> e fazendo o produto interno com a aceleração da curva, o que coincide com a definição prévia! </p>
+<p><strong>Exemplo:</strong> Considere a parametrização do círculo <script type="math/tex">\alpha(s) = p + r(\cos(s/r), \sin(s/r)), s \in \mathbb{R}</script>. Assim</p>
+<p>
 <script type="math/tex; mode=display">
 \alpha'(s) = (-\sin(s/r), \cos(s/r))
 </script>
@@ -236,10 +241,25 @@ Assim
 <p>Observe que derivar <script type="math/tex">\beta ' = \Phi'(\alpha) = A\alpha '</script> o que garante que <script type="math/tex">\beta</script> é parametrizada pelo comprimento de arco e que <script type="math/tex">\beta '' = A\alpha ''</script>. Portanto, como <script type="math/tex">det(A) = 1</script>, vale que as curvaturas são as mesmas. </p>
 </blockquote>
 <h2 id="equacoes-de-frenet">Equações de Frenet</h2>
-<p>Página 21 (Ronaldo)</p>
+<p>Seja <script type="math/tex">\alpha</script> uma curva parametrizada pelo compimento de arco com vetor normal <script type="math/tex">n(s)</script> e vetor tangente <script type="math/tex">t(s)</script>. Observe que para cada <script type="math/tex">s</script>, esses vetores formam um base ortonormal para <script type="math/tex">\mathbb{R}^2</script>. Chamamos essa base de  <em>diedro de Frenet</em>. Já definimos curvatura com sinal <script type="math/tex">\kappa</script> quando <script type="math/tex">t'(s) = \kappa(s) n(s)</script>. Além disso, <script type="math/tex">||n(s)|| = 1 \implies n(s) \perp n'(s)</script>. Portanto <script type="math/tex">n'(s)</script> é paralelo a <script type="math/tex">t(s)</script>. Logo <script type="math/tex">n'(s) = \langle n'(s), t(s) \rangle t(s)</script> e: </p>
+<p>
+<script type="math/tex; mode=display">
+\langle n'(s), t(s) \rangle = \langle Jt'(s), t(s) \rangle = -\langle t'(s), Jt(s) \rangle = -det(t(s), t'(s)) = -\kappa(s)
+</script>
+</p>
+<p>Assim obtemos as <em>equações de Frenet</em>: </p>
+<p>
+<script type="math/tex; mode=display">
+t' = \kappa \cdot n
+</script>
+<script type="math/tex; mode=display">
+n' = -\kappa \cdot t
+</script>
+</p>
+<p>As equações de Frenet são, portanto, um sistema de equações diferenciais envolvendo a base ortonormal para cada <script type="math/tex">s</script>. </p>
 <h2 id="teorema-fundamental-das-curvas-no-plano">Teorema Fundamental das Curvas no Plano</h2>
-<p>Páginas 39-40 (Pressley)
-Páginas 22-23 (Ronaldo)</p></div>
+<p>Sejam <script type="math/tex">I</script> um intervalo aberto e <script type="math/tex">\kappa : I \to \mathbb{R}</script> uma função diferenciável. Então, existe
+uma curva diferenciável, <script type="math/tex">\alpha : I \to \mathbb{R}^2</script>, parametrizada por comprimento de arco, cuja função curvatura <script type="math/tex">\kappa_{\alpha}</script> coincide com <script type="math/tex">\kappa</script>. Além disso, para toda curva <script type="math/tex">\beta : I \to \mathbb{R}^2</script>, parametrizada por comprimento de arco, que cumpre <script type="math/tex">\kappa_{\beta} = \kappa</script>, existe um movimento rígido <script type="math/tex">\Phi : \mathbb{R}^2 \to \mathbb{R}^2</script>, tal que <script type="math/tex">\alpha = \Phi \circ \beta</script>.</p></div>
         
         
     </div>
