@@ -122,6 +122,8 @@
         <li class="first-level active"><a href="#superficies">Superfícies</a></li>
             <li class="second-level"><a href="#superficies-suaves">Superfícies suaves</a></li>
                 
+            <li class="second-level"><a href="#mapas-suaves">Mapas suaves</a></li>
+                
             <li class="second-level"><a href="#tangentes">Tangentes</a></li>
                 
             <li class="second-level"><a href="#normais-e-orientabilidade">Normais e orientabilidade</a></li>
@@ -161,7 +163,41 @@ Dizemos que <script type="math/tex">\sigma</script> e <script type="math/tex">\t
 <p>Esse princípio permite que definhamos uma propriedade para superfícies
 regulares desde que definhamos para qualquer patch regular de forma que será
 inalterada para outra parametrização. </p>
+<h2 id="mapas-suaves">Mapas suaves</h2>
+<p>Queremos entender a noção de mapa suave entre duas superfícies suaves. Até
+agora, definimos a suavidade entre conjuntos de <script type="math/tex">\mathbb{R}^n</script>. Suponha que as
+superfícies <script type="math/tex">S_1</script> e <script type="math/tex">S_2</script> são cobertas pelos patches <script type="math/tex">\sigma_1 : U_1 \to
+\mathbb{R}^3</script> e <script type="math/tex">\sigma_2 : U_2 \to \mathbb{R}^3</script>, respectivamente. Dizemos
+que <script type="math/tex">f</script> é <em>suave</em> se <script type="math/tex">\sigma_2^{-1} \circ f \circ \sigma_1 : U_1 \to U_2</script> é
+suave. </p>
+<p>Além disso, se <script type="math/tex">f: S_1 \to S_2</script> é um difeomorfismo e <script type="math/tex">\sigma_1</script> é um patch
+regular <script type="math/tex">S_1</script>, então <script type="math/tex">f \circ \sigma_1</script> é um patch regular em <script type="math/tex">S_2</script>. </p>
 <h2 id="tangentes">Tangentes</h2>
+<p><strong>Definição:</strong> Um <em>vetor tangente</em> a uma superfície <script type="math/tex">S</script> em um ponto <script type="math/tex">p \in
+S</script> é o vetor tangente em <script type="math/tex">p</script> de uma curva em <script type="math/tex">S</script> que passa por <script type="math/tex">p</script>. O <em>espaço
+tangente</em> é o conjunto desses vetores e é denotado por <script type="math/tex">T_pS</script>.  </p>
+<p>Seja uma curva <script type="math/tex">\alpha</script> em <script type="math/tex">S</script>. que passa por <script type="math/tex">p</script>. Em uma vizinhança de <script type="math/tex">p</script>,
+podemos dizer que <script type="math/tex">\alpha(t) = \sigma(u(t), v(t))</script> tal que <script type="math/tex">\alpha(t_0) = p</script>.
+Podemos provar que <script type="math/tex">u</script> e <script type="math/tex">v</script> são suaves. Essa curva tem uma tangente em <script type="math/tex">p</script>
+denotada por <script type="math/tex">\alpha '(t_0)</script>. Mas note que, essa curva não é necessariamente a
+única que passa por <script type="math/tex">p</script>. </p>
+<p>Essa definição é pouco tratável para enxergar o espaço tangente. Para
+isso, o teorema a seguir propõe uma caracterização mais palatável: </p>
+<p><strong>Proposição:</strong> Seja <script type="math/tex">\sigma : U \to \mathbb{R}^3</script> um patch da superfície <script type="math/tex">S</script>
+que passa pelo ponto <script type="math/tex">p</script> em <script type="math/tex">(u_0, v_0)</script>. O espaço tangente a <script type="math/tex">S</script> em <script type="math/tex">p</script> é o
+plano gerado pelos vetores <script type="math/tex">\sigma_u(u_0, v_0)</script> e <script type="math/tex">\sigma_v(u_0, v_0)</script> que
+passa pela origem.  Observe que o plano tangente é independente da escolha do
+patch. </p>
+<p><strong>Derivada de mapa suave:</strong> Com a definição de mapa tangente, podemos definir
+a derivada de um para <script type="math/tex">f: S_1 \to S_2</script>. A derivada de <script type="math/tex">f</script> em <script type="math/tex">p \in S_1</script> mede
+a variação de <script type="math/tex">f(p) \in S_2</script> quando <script type="math/tex">p</script> se move em sua vizinhança. </p>
+<p>Assim, dizemos que a derivada <script type="math/tex">D_pf</script> de <script type="math/tex">f</script> em <script type="math/tex">p \in S</script> é um mapa 
+<script type="math/tex; mode=display">
+D_pf : T_pS_1 \to T_{f(p)}S_2
+</script>
+tal que, se <script type="math/tex">w \in T_pS_1</script>, existe uma curva <script type="math/tex">\alpha</script> em <script type="math/tex">S_1</script> tal que <script type="math/tex">w = \alpha
+'(t_0)</script>. Então <script type="math/tex">\gamma = f \circ \alpha</script> é uma curva em <script type="math/tex">S_2</script> passando por
+<script type="math/tex">f(p)</script> em <script type="math/tex">t_0</script> e, então <script type="math/tex">D_{f(p)}S_2 = \gamma '(t_0)</script>. </p>
 <h2 id="normais-e-orientabilidade">Normais e orientabilidade</h2></div>
         
         
