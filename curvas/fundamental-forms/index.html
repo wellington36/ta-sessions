@@ -130,6 +130,38 @@
 
 <h1 id="formas-fundamentais">Formas fundamentais</h1>
 <h2 id="primeira-forma-fundamental">Primeira forma fundamental</h2>
+<p>A primeira preocupação que podemos ter em uma superfície é medir a distância
+entre dois pontos (o ser humano sempre fez isso de diversas formas no planeta
+terra). Para isso, introduzimos o conceito da <em>primeira forma fundamental</em>. </p>
+<p><strong>Definição:</strong> Seja <script type="math/tex">p</script> um ponto na superfície de <script type="math/tex">S</script>. A primeira forma
+fundamental de <script type="math/tex">S</script> em <script type="math/tex">p</script> associa <script type="math/tex">v, w \in T_pS</script> ao escalar 
+<script type="math/tex; mode=display">
+\langle v, w \rangle_{p,S} = v \cdot w
+</script>
+Seja <script type="math/tex">v \in T_pS</script>. Então, podemos representar <script type="math/tex">w</script> como uma combinação linear
+dos vetores <script type="math/tex">\sigma_u</script> e <script type="math/tex">\sigma_v</script>: <script type="math/tex">w = \lambda \sigma_u + \mu \sigma_v</script>.
+Assim
+<script type="math/tex; mode=display">
+\langle w, w \rangle = \lambda^2\langle \sigma_u, \sigma_u \rangle +
+2\lambda\mu\langle \sigma_u, \sigma_v \rangle + \mu^2\langle \sigma_v,
+\sigma_v \rangle
+</script>
+Definimos <script type="math/tex">E = ||\sigma_u||^2, F = \sigma_u \cdot \sigma_v, G =
+||\sigma_v||^2</script> e assim, exprimimos a forma fundamental como 
+<script type="math/tex; mode=display">
+Edu^2 + 2Fdudv + Gdv^2
+</script>
+em que <script type="math/tex">du = \lambda</script> e <script type="math/tex">dv = \mu</script>. </p>
+<p>Se <script type="math/tex">\gamma(t) = \sigma(u(t), v(t))</script>, podemos calcular o comprimento de arco
+utilizando que <script type="math/tex">\dot{\gamma} = \dot{u}\sigma_u + \dot{v}\sigma_v</script> e, então, 
+<script type="math/tex; mode=display">
+||\dot{\gamma}||^2 = E\dot{u}^2 + 2F\dot{u}\dot{v} + G\dot{v}^2
+</script>
+Portanto 
+<script type="math/tex; mode=display">
+L(\gamma) = \int (E\dot{u}^2 + 2F\dot{u}\dot{v} + G\dot{v}^2)^{1/2} dt
+</script>
+</p>
 <h2 id="segunda-forma-fundamental">Segunda forma fundamental</h2></div>
         
         

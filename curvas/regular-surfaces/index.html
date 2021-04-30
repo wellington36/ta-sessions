@@ -198,7 +198,28 @@ D_pf : T_pS_1 \to T_{f(p)}S_2
 tal que, se <script type="math/tex">w \in T_pS_1</script>, existe uma curva <script type="math/tex">\alpha</script> em <script type="math/tex">S_1</script> tal que <script type="math/tex">w = \alpha
 '(t_0)</script>. Então <script type="math/tex">\gamma = f \circ \alpha</script> é uma curva em <script type="math/tex">S_2</script> passando por
 <script type="math/tex">f(p)</script> em <script type="math/tex">t_0</script> e, então <script type="math/tex">D_{f(p)}S_2 = \gamma '(t_0)</script>. </p>
-<h2 id="normais-e-orientabilidade">Normais e orientabilidade</h2></div>
+<h2 id="normais-e-orientabilidade">Normais e orientabilidade</h2>
+<p><strong>Definição:</strong> O vetor normal unitário a <script type="math/tex">S</script> no ponto <script type="math/tex">p</script> é dado por 
+<script type="math/tex; mode=display">
+N_{\sigma} = \frac{\sigma_u \times \sigma_v}{||\sigma_u \times \sigma_v||}
+</script>
+que é exatamente o vetor normal ao plano tangente. Note que esse vetor não é
+independente da escolha do patch <script type="math/tex">\sigma U \to \mathbb{R}^3</script>. Se
+<script type="math/tex">\tilde{\sigma} : \tilde{U} \to \mathbb{R}^3</script> é outro patch regular para <script type="math/tex">S</script>
+em <script type="math/tex">p</script>, podemos demostrar que:</p>
+<p><strong>Proposição:</strong> Seja <script type="math/tex">\phi : \tilde{U} \to U</script> um difeomorfismo. Então
+<script type="math/tex">\tilde{\sigma} = \sigma \circ \phi : \tilde{U} \to \mathbb{R}^3</script> é um mapa
+regular. Além disso, 
+<script type="math/tex; mode=display">
+\tilde{\sigma}_{\tilde{u}} \times \tilde{\sigma}_{\tilde{v}} = \operatorname{det}(J(\phi)) \,
+\tilde{\sigma}_u \times \tilde{\sigma}_v  
+</script>
+em que <script type="math/tex">\operatorname{det}(J(\phi))</script> é o determinante do Jacobiano da transformação <script type="math/tex">\phi</script>.
+Portanto <script type="math/tex">N_{\tilde{\sigma}} = \operatorname{sign}(\operatorname{det}(J(\phi))) N_{\sigma}</script>.</p>
+<p><strong>Orientabilidade:</strong> Dizemos que <script type="math/tex">S</script> é superfície orientável se existe um
+atlas <script type="math/tex">A</script> para <script type="math/tex">S</script>, de forma que, para quaisquer dois patches <script type="math/tex">\sigma_1</script> e
+<script type="math/tex">\sigma_2</script> em <script type="math/tex">A</script>, se <script type="math/tex">\phi</script> é o mapa de transição entre eles, então
+<script type="math/tex">\operatorname{det}(J(\phi)) > 0</script>. </p></div>
         
         
     </div>
