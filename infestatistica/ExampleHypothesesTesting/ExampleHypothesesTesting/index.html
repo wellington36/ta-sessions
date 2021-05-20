@@ -149,10 +149,10 @@
 <li>Média de uma população. </li>
 <li>Diferença enre médias de populações. </li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </code></pre></div>
 <h2 id="proporcao-de-uma-populacao">Proporção de uma População</h2>
 <ol>
@@ -212,7 +212,7 @@ P(Z \ge c) &= P\left(\frac{\bar{X}_n - \pi_0}{\sqrt{(\pi_0(1 - \pi_0)/n)}} \ge c
                                            <span class="n">value</span> <span class="o">=</span> <span class="n">pnull</span><span class="p">,</span>    <span class="c1">#pi_0</span>
                                            <span class="n">alternative</span> <span class="o">=</span> <span class="s1">&#39;larger&#39;</span><span class="p">)</span> <span class="c1">#hipótese alternativa </span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O valor da estatística de teste foi {} e o p-valor {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ztest</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">))</span>                        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O valor da estatística de teste foi </span><span class="si">{}</span><span class="s1"> e o p-valor </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ztest</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">))</span>                        
 </code></pre></div>
 <pre><code>O valor da estatística de teste foi 0.6392739759907055 e o p-valor 0.26132235751888716
 </code></pre>
@@ -228,7 +228,7 @@ P(Z \ge c) &= P\left(\frac{\bar{X}_n - \pi_0}{\sqrt{(\pi_0(1 - \pi_0)/n)}} \ge c
                                            <span class="n">value</span> <span class="o">=</span> <span class="n">pnull</span><span class="p">,</span>    <span class="c1">#pi_0</span>
                                            <span class="n">alternative</span> <span class="o">=</span> <span class="s1">&#39;larger&#39;</span><span class="p">)</span> <span class="c1">#hipótese alternativa </span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O valor da estatística de teste foi {} e o p-valor {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ztest</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">))</span>        
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O valor da estatística de teste foi </span><span class="si">{}</span><span class="s1"> e o p-valor </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ztest</span><span class="p">,</span> <span class="n">pvalue</span><span class="p">))</span>        
 </code></pre></div>
 <pre><code>O valor da estatística de teste foi 0.6392739759907055 e o p-valor 0.26132235751888716
 </code></pre>
@@ -275,7 +275,7 @@ t = \frac{\bar{X}_n - \bar{Y}_m}{SE}
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">_</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">england</span><span class="p">,</span> <span class="n">germany</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O p-valor foi {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_value</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O p-valor foi </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_value</span><span class="p">))</span>
 </code></pre></div>
 <pre><code>O p-valor foi 0.2615435082780627
 </code></pre>
@@ -293,7 +293,7 @@ t = \frac{\bar{X}_n - \bar{Y}_m}{SE}
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">_</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">england</span><span class="p">,</span> <span class="n">germany</span><span class="p">)</span>
 
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;O p-valor foi {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_value</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O p-valor foi </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">p_value</span><span class="p">))</span>
 </code></pre></div>
 <pre><code>O p-valor foi 0.027721099791980015
 </code></pre>

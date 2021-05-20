@@ -193,8 +193,8 @@
 <script type="math/tex; mode=display">L(W = 1|s_1 = 0, s_2 = 0) = F(s_1 = 0, s_2 = 0 | W = 1) = (0.5)(0.5) = 0.25</script>
 <script type="math/tex; mode=display">L(W = 0|s_1 = 0, s_2 = 0) = (1)(1) = 1</script>
 </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">priori</span> <span class="o">=</span> <span class="mf">0.5</span>   <span class="c1"># P(W = 1)</span>
@@ -205,7 +205,7 @@
 <span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">posteriori</span> <span class="o">=</span> <span class="n">Likelihood</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="n">priori</span><span class="o">/</span><span class="p">(</span><span class="n">Likelihood</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="n">priori</span> <span class="o">+</span> <span class="n">Likelihood</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">priori</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A probabilidade da mãe portar é {} com dois filhos não portadores.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">posteriori</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A probabilidade da mãe portar é </span><span class="si">{}</span><span class="s2"> com dois filhos não portadores.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">posteriori</span><span class="p">))</span>
 </code></pre></div>
 <pre><code>A probabilidade da mãe portar é 0.2 com dois filhos não portadores.
 </code></pre>
@@ -214,7 +214,7 @@
 <span class="n">priori</span> <span class="o">=</span> <span class="n">posteriori</span>
 
 <span class="n">posteriori</span> <span class="o">=</span> <span class="n">Likelihood</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="n">priori</span><span class="o">/</span><span class="p">(</span><span class="n">Likelihood</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="n">priori</span> <span class="o">+</span> <span class="n">Likelihood</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">s</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">priori</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;A probabilidade da mãe portar é {:.3f} com três filhos não portadores.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">posteriori</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A probabilidade da mãe portar é </span><span class="si">{:.3f}</span><span class="s2"> com três filhos não portadores.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">posteriori</span><span class="p">))</span>
 </code></pre></div>
 <pre><code>A probabilidade da mãe portar é 0.111 com três filhos não portadores.
 </code></pre>
@@ -246,7 +246,7 @@
 <p><strong>Qual o problema?</strong></p>
 <p><a href="https://en.wikipedia.org/wiki/Harold_Jeffreys">Jeffreys</a>: 
 "An hypothesis that may be true is rejected because it has failed to predict observable results that have not occurred. "</p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymc3</span> <span class="kn">as</span> <span class="nn">pm</span> 
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm</span> 
 <span class="kn">from</span> <span class="nn">pymc3</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Normal</span><span class="p">,</span> <span class="n">Slice</span>
 <span class="kn">from</span> <span class="nn">pymc3</span> <span class="kn">import</span> <span class="n">sample</span>
 <span class="kn">from</span> <span class="nn">pymc3</span> <span class="kn">import</span> <span class="n">traceplot</span> 
@@ -254,7 +254,7 @@
 
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span> 
 
-<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="kn">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-darkgrid&#39;</span><span class="p">)</span>
 </code></pre></div>

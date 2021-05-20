@@ -177,14 +177,14 @@ com a prática científica</strong>." (Batista, 2009)</p>
 <p>Como referência, estou utilizando <a href="https://towardsdatascience.com/a-gentle-introduction-to-maximum-likelihood-estimation-9fbff27ea12f">este site</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># importando bibliotecas</span>
 
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span><span class="o">,</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">minimize</span>
-<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="kn">as</span> <span class="nn">stats</span>
-<span class="kn">import</span> <span class="nn">pymc3</span> <span class="kn">as</span> <span class="nn">pm3</span>
-<span class="kn">import</span> <span class="nn">numdifftools</span> <span class="kn">as</span> <span class="nn">ndt</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="kn">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">import</span> <span class="nn">pymc3</span> <span class="k">as</span> <span class="nn">pm3</span>
+<span class="kn">import</span> <span class="nn">numdifftools</span> <span class="k">as</span> <span class="nn">ndt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="kn">from</span> <span class="nn">statsmodels.base.model</span> <span class="kn">import</span> <span class="n">GenericLikelihoodModel</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 </code></pre></div>
@@ -228,14 +228,14 @@ com a prática científica</strong>." (Batista, 2009)</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Esse é o chute inicial</span>
 <span class="n">initial_guess</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 
-<span class="n">results</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">MLE</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">})</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">MLE</span><span class="p">,</span> <span class="n">initial_guess</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;Nelder-Mead&#39;</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span>
 </code></pre></div>
 <pre><code>Optimization terminated successfully.
          Current function value: 307.745486
          Iterations: 56
          Function evaluations: 107
 </code></pre>
-<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 </code></pre></div>
 <pre><code> final_simplex: (array([[-1.03428809,  3.11012856],
        [-1.0342294 ,  3.110121  ],
@@ -425,8 +425,8 @@ com a prática científica</strong>." (Batista, 2009)</p>
 </table>
 <p>Modelamos <script type="math/tex">X_1, ..., X_{280}</script> como uma variável de contagem. Considere a distribuição <script type="math/tex">Poisson(\theta)</script>. Escolhemos a distribuição <script type="math/tex">Gamma(\alpha,\beta)</script>, dada que ela pertence à familia conjungada. Em particular, a distribuição a posteriori será <script type="math/tex">Gamma(\alpha + \sum X_i, \beta + n)</script>, onde <script type="math/tex">\sum X_i = 196</script>. </p>
 <p>Se assumirmos <script type="math/tex">\alpha</script> inteiro por simplicidade, vemos que a distribuição <script type="math/tex">Gamma</script> pode ser vista como a soma de <script type="math/tex">\alpha + \sum X_i</script> distribuições <script type="math/tex">Exponencial(\beta + n)</script>. Logo a soma dessas variáveis será aproximadamente normal com média <script type="math/tex">196/280</script> e variância <script type="math/tex">196/280^2</script>. </p>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gamma</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span>
@@ -448,10 +448,10 @@ com a prática científica</strong>." (Batista, 2009)</p>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">poisson</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">size</span> <span class="o">=</span> <span class="n">n</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">!=</span> <span class="mi">280</span><span class="p">:</span> 
         <span class="n">T</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;n = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;n = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">T</span> <span class="o">=</span> <span class="n">sum_xi</span>  <span class="c1">#Valor dos dados</span>
-        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dados Oficiais: n = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Dados Oficiais: n = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
 
     <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mf">0.00001</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">)</span>
 

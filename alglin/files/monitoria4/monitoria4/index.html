@@ -207,10 +207,10 @@
 </ul>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="kn">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="kn">as</span> <span class="nn">splin</span>
-<span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sc</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">scipy.linalg</span> <span class="k">as</span> <span class="nn">splin</span>
+<span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sc</span>
 </code></pre></div>
 <h2 id="exercicios">Exercícios</h2>
 <h3 id="exemplo-14-espacos-vetorias">Exemplo 1.4: Espaços Vetorias</h3>
@@ -342,7 +342,7 @@ x \\ y \\ z
 <h3 id="resolucao_2">Resolução:</h3>
 <div class="highlight"><pre><span></span><code><span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">13</span><span class="p">]])</span>
 <span class="n">P</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">U</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s2">&quot;L:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L:&quot;</span><span class="p">)</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>L:
@@ -351,7 +351,7 @@ x \\ y \\ z
 <script type="math/tex; mode=display">\left[\begin{matrix}1.0 & 0.0 & 0.0\\0.666666666666667 & 1.0 &
 0.0\\0.333333333333333 & -0.999999999999999 & 1.0\end{matrix}\right]</script>
 </p>
-<div class="highlight"><pre><span></span><code><span class="k">print</span><span class="p">(</span><span class="s2">&quot;U:&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U:&quot;</span><span class="p">)</span>
 <span class="n">sc</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>U:

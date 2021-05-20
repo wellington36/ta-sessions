@@ -146,12 +146,12 @@ R(\theta, \delta) = Var(\delta) + Viés(\delta)^2
 <script type="math/tex; mode=display">s^2 = \hat{\sigma}_1^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar{X}_n)^2</script>
 </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Importando bibliotecas</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span> 
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span>  <span class="c1"># Display latex</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span> 
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span> 
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span> <span class="c1"># Garantindo reprodutibilidade</span>
@@ -183,8 +183,8 @@ R(\theta, \delta) = Var(\delta) + Viés(\delta)^2
 <div class="highlight"><pre><span></span><code><span class="n">sigma_square_hat</span> <span class="o">=</span> <span class="p">((</span><span class="n">population_height</span> <span class="o">-</span> <span class="n">population_height</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="n">N</span>
 <span class="n">sigma1_square_hat</span> <span class="o">=</span> <span class="p">((</span><span class="n">population_height</span> <span class="o">-</span> <span class="n">population_height</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\hat\sigma^2 = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma_square_hat</span><span class="p">)))</span>
-<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\hat\sigma_1^2 = {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma1_square_hat</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\hat\sigma^2 = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma_square_hat</span><span class="p">)))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Math</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\hat\sigma_1^2 = </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sigma1_square_hat</span><span class="p">)))</span>
 </code></pre></div>
 <p>
 <script type="math/tex">\displaystyle \hat\sigma^2 = 100.02715420713488</script>
@@ -198,7 +198,7 @@ R(\theta, \delta) = Var(\delta) + Viés(\delta)^2
 <span class="n">sample_size</span> <span class="o">=</span> <span class="mi">30</span> 
 
 <span class="n">sample</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">population_height</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="n">number_simulations</span><span class="o">*</span><span class="n">sample_size</span><span class="p">,</span> 
-                                               <span class="n">replace</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">100</span><span class="p">),</span> 
+                                               <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">100</span><span class="p">),</span> 
                       <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">])</span>
 
 <span class="n">reshape</span> <span class="o">=</span> <span class="n">sample</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>

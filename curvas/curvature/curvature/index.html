@@ -141,10 +141,10 @@
         <div class="col-md-9" role="main">
 
 <h1 id="curvatura-de-uma-curva">Curvatura de uma curva</h1>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="kn">as</span> <span class="nn">sp</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span> 
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 <span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </code></pre></div>
 <h2 id="curvatura">Curvatura</h2>
 <p>Seja <script type="math/tex">\gamma</script> uma curva parametrizada pelo comprimeto de arco. Definimos <strong>curvatura</strong> como a função <script type="math/tex">\kappa(t) = ||\ddot{\gamma}(t)||</script>. Essa definição é consistente com o que esperávamos de uma reta (curvatura nula) e de um círculo (curvatura constante). Além disso se <script type="math/tex">\gamma</script> é uma curva regular qualquer, ela tem uma reparametrização pelo comprimento de arco. Portanto, podemos definir a sua curvatura como sendo a curvatura de sua reparametrização pelo comprimento de arco. Isto é, seja <script type="math/tex">\hat{\gamma}</script> uma reparametrização pelo comprimento de arco de <script type="math/tex">\gamma</script> com curvatura <script type="math/tex">\kappa</script>. Então a curvatura de <script type="math/tex">\gamma</script> será <script type="math/tex">\kappa</script>. </p>
@@ -238,8 +238,8 @@ k(s) = \theta '(s) = det(t(s), t'(s)) = det(\alpha'(s), \alpha''(s))
 </p>
 <p><strong>Exemplo 2:</strong> Vamos usar python para calcular a curvatura da espiral equiangular <script type="math/tex">z(t) = e^{(a + i)t}</script> onde <script type="math/tex">a</script> é uma constante e <script type="math/tex">i^2 = -1</script>. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Definimos as variáveis </span>
-<span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="bp">True</span><span class="p">,</span> <span class="n">constant</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="n">real</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">constant</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="c1"># Definimos a função z</span>
 <span class="n">z</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">exp</span><span class="p">((</span><span class="n">a</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">I</span><span class="p">)</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
 <span class="c1"># Derivando </span>
