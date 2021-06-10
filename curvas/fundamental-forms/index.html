@@ -125,6 +125,8 @@
                 <li class="third-level"><a href="#isometrias-em-superficies">Isometrias em superfícies</a></li>
             <li class="second-level"><a href="#segunda-forma-fundamental">Segunda forma fundamental</a></li>
                 
+            <li class="second-level"><a href="#mapa-de-gauss-e-de-weingarten">Mapa de Gauss e de Weingarten</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -182,7 +184,69 @@ invertibilidade de sua derivada <script type="math/tex">D_pf</script>. </p>
 <p>Um corolário interessante é que para todo mapa <script type="math/tex">\sigma_1</script> de <script type="math/tex">\mathcal{S}_1</script>,
 os patches <script type="math/tex">\sigma_1</script> de <script type="math/tex">\mathcal{S}_1</script>, e <script type="math/tex">f \circ \sigma_1</script> de
 <script type="math/tex">\mathcal{S}_2</script> tem a mesma forma fundamental. </p>
-<h2 id="segunda-forma-fundamental">Segunda forma fundamental</h2></div>
+<h2 id="segunda-forma-fundamental">Segunda forma fundamental</h2>
+<p>Seja <script type="math/tex">p=\sigma(u,v)</script> um ponto em uma superfície. A medida que nos afastamos de
+<script type="math/tex">(u,v)</script>, a superfície se distancia do plano tangente segundo a distância
+(aproximada) 
+<script type="math/tex; mode=display">
+(\sigma(u + \Delta u, v + \Delta v) - \sigma(u,v))\cdot N.
+</script>
+Pelo teorema de Taylor, essa distância vale 
+<script type="math/tex; mode=display">
+(\sigma_u\Delta u + \sigma_v\Delta v + \frac{1}{2}(\sigma_{uu}(\Delta u)^2 +
+2\sigma_{uv}\Delta u\Delta v + \sigma_{vv}(\Delta v)^2) + R(\Delta u, \Delta
+v))\cdot N
+</script>
+onde esse esse resto sobre <script type="math/tex">(\Delta u)^2 + (\Delta v)^2</script> tende a 0. Como <script type="math/tex">N</script> é
+perpendicular a <script type="math/tex">\sigma_u, \sigma_v</script>, o resto da expressão é escrita como 
+<script type="math/tex; mode=display">
+\frac{1}{2}(e(\Delta u)^2 + 2f\Delta u\Delta v + g(\Delta v)^2) + R(\Delta u,
+\Delta v),
+</script>
+em que 
+<script type="math/tex; mode=display">
+e = \sigma_{uu}\cdot N, f = \sigma_{uv}\cdot N, f = \sigma_{vv}\cdot N.
+</script>
+A expressão acima é a <em>segunda forma fundamental</em> e está associada ao
+curvamento da superfície em relação ao plano tangente. </p>
+<h2 id="mapa-de-gauss-e-de-weingarten">Mapa de Gauss e de Weingarten</h2>
+<p><strong>Mapa de Gauss:</strong> O mapa <script type="math/tex">\mathcal{G} : \mathcal{S} \to \mathcal{S}^2</script> que
+associa cada ponto da superfície <script type="math/tex">p \in \mathcal{S}</script>, o ponto <script type="math/tex">N_p \in
+\mathcal{S}^2</script> que é o vetor normal unitário de <script type="math/tex">\mathcal{S}</script> em <script type="math/tex">p</script>. </p>
+<p>Medimos a variação de <script type="math/tex">N</script> ao longo de <script type="math/tex">\mathcal{S}</script> pela derivada 
+<script type="math/tex; mode=display">
+D_p \mathcal{G} : T_p\mathcal{S} \to T_{\mathcal{G}(p)}\mathcal{S}^2.
+</script>
+Seja <script type="math/tex">q = \mathcal{G}(p)</script>. O plano tangente a esse ponto é perpendicular a <script type="math/tex">q</script>
+e passa pela origem. Observe, no entanto, que esse plano, é perpendicular a
+<script type="math/tex">N_p</script>, que é exatamente <script type="math/tex">T_p\mathcal{S}</script>. Portanto esse mapa pode ser escrito
+como 
+<script type="math/tex; mode=display">
+D_p \mathcal{G} : T_p\mathcal{S} \to  T_p\mathcal{S}.
+</script>
+</p>
+<p><strong>Mapa de Weingarten:</strong> O <em>mapa de Weingarten</em> da superfície <script type="math/tex">\mathcal{S}</script> no
+ponto <script type="math/tex">p</script> é definida como <script type="math/tex">\mathcal{W}_{p,S} = - D_p\mathcal{S}</script>. A segunda
+forma fundamental pode ser equivalentemente escrita como 
+<script type="math/tex; mode=display">
+\langle \langle v, w \rangle \rangle_{p,S} = \langle \mathcal{W}_{p,S}(v), w
+\rangle_{p,S}, v, w \in T_p\mathcal{S}. 
+</script>
+</p>
+<p>Podemos provar essa relação, além de provar que o mapa de Weingarten é
+<a href="https://en.wikipedia.org/wiki/Self-adjoint_operator#Bounded_self-adjoint_operators">autoadjunto</a>.</p>
+<p><strong>Curvatura normal e geodésica:</strong> Seja uma curva <script type="math/tex">\gamma</script> na superfície
+<script type="math/tex">\mathcal{S}</script>. A segunda derivada de <script type="math/tex">\gamma</script> (relacionada com sua curvatura)
+pode ser escrita como combinação linear 
+<script type="math/tex; mode=display">
+\ddot{\gamma} = \kappa_n N + \kappa_g(N\times\dot{\gamma}).
+</script>
+Chamamos <script type="math/tex">\kappa_n</script> de curvatura normal e <script type="math/tex">\kappa_g</script> de geodésica. Em geral só
+a magnitude desses valores é bem definida. Além disso 
+<script type="math/tex; mode=display">
+\kappa_n = L\dot{u}^2 + 2M\dot{u}\dot{v} + N\dot{v}^2
+</script>
+</p></div>
         
         
     </div>
