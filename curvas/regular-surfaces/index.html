@@ -128,6 +128,7 @@
                 
             <li class="second-level"><a href="#normais-e-orientabilidade">Normais e orientabilidade</a></li>
                 
+                <li class="third-level"><a href="#abordagem-alternativa">Abordagem alternativa</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -204,7 +205,7 @@ tal que, se <script type="math/tex">w \in T_pS_1</script>, existe uma curva <scr
 N_{\sigma} = \frac{\sigma_u \times \sigma_v}{||\sigma_u \times \sigma_v||}
 </script>
 que é exatamente o vetor normal ao plano tangente. Note que esse vetor não é
-independente da escolha do patch <script type="math/tex">\sigma U \to \mathbb{R}^3</script>. Se
+independente da escolha do patch <script type="math/tex">\sigma : U \to \mathbb{R}^3</script>. Se
 <script type="math/tex">\tilde{\sigma} : \tilde{U} \to \mathbb{R}^3</script> é outro patch regular para <script type="math/tex">S</script>
 em <script type="math/tex">p</script>, podemos demostrar que:</p>
 <p><strong>Proposição:</strong> Seja <script type="math/tex">\phi : \tilde{U} \to U</script> um difeomorfismo. Então
@@ -219,7 +220,29 @@ Portanto <script type="math/tex">N_{\tilde{\sigma}} = \operatorname{sign}(\opera
 <p><strong>Orientabilidade:</strong> Dizemos que <script type="math/tex">S</script> é superfície orientável se existe um
 atlas <script type="math/tex">A</script> para <script type="math/tex">S</script>, de forma que, para quaisquer dois patches <script type="math/tex">\sigma_1</script> e
 <script type="math/tex">\sigma_2</script> em <script type="math/tex">A</script>, se <script type="math/tex">\phi</script> é o mapa de transição entre eles, então
-<script type="math/tex">\operatorname{det}(J(\phi)) > 0</script>. </p></div>
+<script type="math/tex">\operatorname{det}(J(\phi)) > 0</script>. </p>
+<h3 id="abordagem-alternativa">Abordagem alternativa</h3>
+<p>A abordagem utilizada por <a href="https://www.sbm.org.br/wp-content/uploads/2016/06/Introdu%C3%A7%C3%A3o-a-Geometria-Diferencial_Ronaldo-Freire-Lima.pdf">Ronaldo
+Freire</a>
+é um pouco diferente e será apresentada nessa subseção. </p>
+<p><strong>Definição (campos):</strong> Seja uma superfície <script type="math/tex">\mathcal{S}</script>. Uma aplicação <script type="math/tex">f:
+\mathcal{S} \to \R^3</script> é chamada de campo. Ela será <em>unitária</em> quando <script type="math/tex">||f(p)||
+= 1</script> para todo ponto da superfície; <em>tangente</em> se sua imagem está contida no
+espaço (plano) tangente; e <em>normal</em> se pertence ao complemento ortogonal do
+espaço tangente, isto é, sua imagem é ortogonal ao plano tangente. </p>
+<p>Quando o campo é normal, unitário, e diferencial, denotamos por <script type="math/tex">N : \mathcal{S} \to
+\mathbb{R}^3</script>. Note que sempre podemos definir essa função associando cada
+ponto da superfície ao vetor normal à superfície que passe no ponto. </p>
+<p><strong>Superfície orientável:</strong> Uma superfície regular é <em>orientável</em> quando
+podemos definir um campo <script type="math/tex">N</script> nessa superfície. Esse campo define a orientação
+da superfície, quando existir. </p>
+<p>Uma superfície regular não orientável é a <a href="https://www.youtube.com/watch?v=vLgCq4ikl78"><em>fita de Moebius</em></a>, uma faixa de
+papel com uma das extremidades torcidas. </p>
+<p><strong>Atlas coerente:</strong> Um atlas (família de parametrizações de uma superfície) é
+<em>coerente</em> quando dadas duas parametrizações <script type="math/tex">\sigma_1</script> e <script type="math/tex">\sigma_2</script> do atlas,
+o mapa de transição entre as parametrizações tem determinante positivo. Note
+que essa é a definição que Pressley utiliza. Podemos provar (inclusive Freire
+prova) que ambas são definições equivalentes.</p></div>
         
         
     </div>
