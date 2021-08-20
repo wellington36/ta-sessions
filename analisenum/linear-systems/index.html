@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>Análise Numérica - Teaching Assistant</title>
+    <title>Métodos iterativos para resolver sistemas lineares - Teaching Assistant</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -75,8 +75,8 @@
                 
                 
                 
-                    <li class="active">
-                        <a href="./">Análise Numérica</a>
+                    <li >
+                        <a href="../info/">Análise Numérica</a>
                     </li>
                 
                 
@@ -118,16 +118,6 @@
                             <i class="fas fa-search"></i> Search
                         </a>
                     </li>
-                    <li >
-                        <a rel="prev" href="../..">
-                            <i class="fas fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="next" href="../../edp/info/">
-                            Next <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </li>
                     <li>
                         <a href="https://lucasmoschen.github.io">Página Inicial</a>
                     </li>
@@ -141,74 +131,52 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#informacoes-gerais">Informações Gerais</a></li>
-            <li class="second-level"><a href="#topicos">Tópicos</a></li>
+        <li class="first-level active"><a href="#metodos-iterativos-para-resolver-sistemas-lineares">Métodos iterativos para resolver sistemas lineares</a></li>
+            <li class="second-level"><a href="#metodo-de-jacobi">Método de Jacobi</a></li>
                 
-            <li class="second-level"><a href="#listas">Listas</a></li>
-                
-            <li class="second-level"><a href="#notas">Notas</a></li>
-                
-            <li class="second-level"><a href="#sugestoes-adicionais">Sugestões Adicionais</a></li>
+            <li class="second-level"><a href="#metodo-de-gauss-seidel">Método de Gauss-Seidel</a></li>
                 
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="informacoes-gerais">Informações Gerais</h1>
-<p>Monitoria de Introdução à Análise Numérica correspondente ao período de 2021.2.  </p>
+<h1 id="metodos-iterativos-para-resolver-sistemas-lineares">Métodos iterativos para resolver sistemas lineares</h1>
+<p>Suponha que queremos resolver um problema do tipo <script type="math/tex">Ax = b</script>, em que <script type="math/tex">A</script> é uma
+matriz real <script type="math/tex">n \times n</script> e <script type="math/tex">b</script> é um vetor em <script type="math/tex">\mathbb{R}^n</script>. Matematicamente,
+se estamos interessados em encontrar <script type="math/tex">x</script>, podemos apenas calcular a inversa de
+<script type="math/tex">A</script>, caso exista. Se sim <script type="math/tex">x = A^{-1}b</script>. Apesar de ser fácil de calcular, esse
+procedimento precisa fazer <script type="math/tex">O(n^3)</script> operações, o que pode ser muito custoso
+quando <script type="math/tex">n</script> aumenta.  Nesse caso, precisamos de alternativas mais palatáveis
+para resolver esse problema, principalmente para <script type="math/tex">n</script> grande. Utilizamos
+métodos iterativos para ajudar!</p>
+<p>De forma geral, vamos querer reescrever o problema da forma: 
+<script type="math/tex; mode=display">
+x = Cx + D, 
+</script>
+em que são matrizes. Se conseguirmos expressar <script type="math/tex">Ax = b</script> dessa forma, estaremos
+interessados nos pontos fixos do operador <script type="math/tex">L(x) = Cx + D</script>. </p>
+<p><strong>Teorema:</strong> O processo iterativo <script type="math/tex">x^{k+1} = Cx^k + D</script> satisfaz o seguinte:
+Para todo valor inicial <script type="math/tex">x^0</script>, a sequência <script type="math/tex">\{x^k\}_{k \in \mathbb{N}}</script>
+converge para o ponto fixo <script type="math/tex">x^* = Cx* + D</script> se, e somente se, <script type="math/tex">\rho(C) < 1</script>,
+em que <script type="math/tex">\rho(C)</script> é o raio espectral da matriz <script type="math/tex">C</script>, isto é, o maior autovalor
+em módulo. </p>
+<p>Uma demonstração desse resultado pode ser encontrado no livro de Richard
+L.Burden <em>Numerical Analysis</em> (página 457).</p>
+<p><strong>Corolário:</strong> Se <script type="math/tex">||C|| < 1</script> para qualquer norma matricial induzida (induzida
+por uma norma vetorial), então a
+iteração anterior converge para o ponto fixo do operador <script type="math/tex">L</script> para qualquer
+chute inicial <script type="math/tex">x^0</script>. Esse resultado é uma consequência de <script type="math/tex">\rho(A) \le ||A||</script>
+para todo norma natural <script type="math/tex">||\cdot||</script>. </p>
 <ul>
-<li>Dia: Sexta-feira, 11:10am até 12:50pm</li>
-<li><a href="https://meet.google.com/kfq-nuoh-bos">Link Google Meet</a></li>
-<li><a href="">Monitorias gravadas</a></li>
-<li><a href="/files/numerical-analysis/ementa.pdf">Ementa da disciplina</a></li>
+<li>Método de Jacobi</li>
+<li>Método de Gauss-Seidel</li>
+<li>Método Successive Over-Relaxation (SOR)</li>
+<li>Método Gradiente Conjugado</li>
 </ul>
-<h2 id="topicos">Tópicos</h2>
-<table>
-<thead>
-<tr>
-<th>Computação</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/ta-sessions/analisenum/computing">Aritmética do computador</a></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Algoritmos</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/ta-sessions/analisenum/linear-systems">Métodos iterativos para sistemas lineares</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="listas">Listas</h2>
-<table>
-<thead>
-<tr>
-<th>Número</th>
-<th>Itens discutidos</th>
-<th>Solução</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="/files/disciplines/numerical-analysis/lista1.pdf">1</a></td>
-<td>Aritmética do computador e equação recursiva</td>
-<td><a href="/files/disciplines/numerical-analysis/solutions1.pdf">1</a></td>
-</tr>
-</tbody>
-</table>
-<h2 id="notas">Notas</h2>
-<h2 id="sugestoes-adicionais">Sugestões Adicionais</h2>
-<ul>
-<li><a href="https://www-users.cse.umn.edu/~arnold/disasters/">Disasters attributable to bad numerical computing</a></li>
-</ul></div>
+<p><strong>Teorema:</strong> Se <script type="math/tex">A</script> é diagonalmente estritamente dominante, então para
+qualquer escolha de <script type="math/tex">x^0</script>, os métodos de Jacobi e Gauss-Seidel convergem. </p>
+<h2 id="metodo-de-jacobi">Método de Jacobi</h2>
+<h2 id="metodo-de-gauss-seidel">Método de Gauss-Seidel</h2></div>
         
         
     </div>
