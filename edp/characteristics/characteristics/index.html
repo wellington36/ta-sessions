@@ -136,6 +136,8 @@
                 
             <li class="second-level"><a href="#f-e-linear">F é linear</a></li>
                 
+            <li class="second-level"><a href="#solucao-fraca-ou-integral">Solução fraca (ou integral)</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -222,7 +224,61 @@ Assim, </p>
 </script>
 Com isso, mesmo sem saber <script type="math/tex">p</script>, ainda conseguimos derivar <script type="math/tex">z</script>, o que simplifica
 bastante o problema. </p>
-<p><img src="../example.png" alt="Exemplo de solução de EDP" style="width:500px;height:600px;"></p></div>
+<p><img src="../example.png" alt="Exemplo de solução de EDP"
+style="width:500px;height:600px;"></p>
+<h2 id="solucao-fraca-ou-integral">Solução fraca (ou integral)</h2>
+<p>Nesse caso, temos a noção de que <script type="math/tex">u</script> não precisa ser diferenciável.
+Consideraremos um problema da forma</p>
+<p>
+<script type="math/tex; mode=display">
+u_t + [f(u)]_x = 0, x \in \mathbb{R}, t > 0 \\
+u(x,0) = \phi(x).
+</script>
+</p>
+<p>Lembre que um conjunto em <script type="math/tex">\mathbb{R}^n</script> é <em>compacto</em> quando é fechado e
+limitado. Uma função tem suporte compacto quando existe um compacto <script type="math/tex">\Lambda</script>
+tal que para todo <script type="math/tex">x \in \mathbb{R}^n / \Lambda</script> a função se anula. Definimos
+uma solução fraca <script type="math/tex">u</script> quando </p>
+<p>
+<script type="math/tex; mode=display">
+\int_0^{+\infty}\int_{-\infty}^{+\infty} [uv_t + f(u)v_x] \, dx \, dt +
+\int_{-\infty}^{+\infty} \phi(x) v(x,0) \, dx = 0,
+</script>
+</p>
+<p>para todas as funções infinitamente diferenciáveis definidas em um conjunto
+compacto <script type="math/tex">v</script>. De forma equivalente, </p>
+<p>
+<script type="math/tex; mode=display">
+\int_0^{+\infty}\int_{-\infty}^{+\infty} v[u + f(u)_x] \, dx \, dt = 0,
+</script>
+</p>
+<p><strong>Teorema:</strong> Se <script type="math/tex">u</script> é uma solução forte (no sentido de ser <script type="math/tex">k</script> vezes
+continuamente diferenciável), então <script type="math/tex">u</script> será uma solução fraca. </p>
+<p>Como <script type="math/tex">v</script> é um solução que é nula para um valor suficientemente grande e o
+integrando é zero na solução, então a integral converge e, em particular, será
+zero. Claro que precisamos primeiro mostrar a equivalência acima usando
+Integral por partes. </p>
+<p>Agora suponha que <script type="math/tex">u</script> é uma função não contínua em uma curva <script type="math/tex">x = \xi(t)</script>, mas
+<script type="math/tex">u</script> é suave em ambos os lados da curva (pensando em <script type="math/tex">\mathbb{R}^2</script>). Denotamos
+<script type="math/tex">u^{+}(x,t)</script> para o limite de <script type="math/tex">u</script> quando se aproxima de <script type="math/tex">(x,t)</script> pela direita e
+<script type="math/tex">u^{-}(x,t)</script> pela esquerda. Vamos mostrar que existe uma relação entre
+<script type="math/tex">\xi(t)</script>, <script type="math/tex">u^{-}</script>, e <script type="math/tex">u^+</script>.</p>
+<p><strong>Teorema:</strong> Se <script type="math/tex">u</script> é uma solução fraca com a descontinuidade mencionada
+acima, então, 
+<script type="math/tex; mode=display">
+\frac{f(u^{-}) - f(u^{+})}{u^{-} - u^{+}} = \xi'(t)
+</script>
+na curva de descontinuidade. Chamamos <script type="math/tex">\xi '(t)</script> de <em>velocidade da curva de descontinuidade</em>. 
+O denominador e o numerador são chamados de <em>saltos</em>. Essa condição é chamada
+de <strong>Condição de Salto Rankine-Hugoniot</strong>. </p>
+<p>Nas imagens você confere um exemplo de quando <script type="math/tex">u</script> não é contínua da Equação de
+Berger. </p>
+<p><img src="../example-2.png" alt="Exemplo de solução de EDP - Parte 2"
+style="width:500px;height:600px;">
+<img src="../example-3.png" alt="Exemplo de solução de EDP - Parte 3"
+style="width:500px;height:600px;">
+<img src="../example-4.png" alt="Exemplo de solução de EDP - Parte 4"
+style="width:500px;height:600px;"></p></div>
         
         
     </div>
