@@ -8,7 +8,7 @@
     
     
     
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
 
     
     <title>O Método das Características - Teaching Assistant</title>
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="../../css/base.min.css" rel="stylesheet">
-    <link href="../../css/cinder.min.css" rel="stylesheet">
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -59,7 +59,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="../..">Teaching Assistant</a>
+              <a class="navbar-brand" href="../../..">Teaching Assistant</a>
             
         </div>
 
@@ -70,43 +70,43 @@
                 
                 
                     <li >
-                        <a href="../..">Home</a>
+                        <a href="../../..">Home</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../analisenum/info/">Análise Numérica</a>
+                        <a href="../../../analisenum/info/">Análise Numérica</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../info/">EDP</a>
+                        <a href="../../info/">EDP</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../curvas/info/">Curvas</a>
+                        <a href="../../../curvas/info/">Curvas</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../infestatistica/info/">Estatística</a>
+                        <a href="../../../infestatistica/info/">Estatística</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../edo/info/">EDO</a>
+                        <a href="../../../edo/info/">EDO</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../alglin/info/">Álgebra Linear</a>
+                        <a href="../../../alglin/info/">Álgebra Linear</a>
                     </li>
                 
                 
@@ -132,6 +132,10 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#o-metodo-das-caracteristicas">O Método das Características</a></li>
+            <li class="second-level"><a href="#descricao-do-metodo">Descrição do método</a></li>
+                
+            <li class="second-level"><a href="#f-e-linear">F é linear</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -144,6 +148,7 @@ u}{\partial x_n}\right) = F(x, u, \nabla u) = F(x, u, Du) = 0,
 </script>
 definida em um conjunto <script type="math/tex">U</script>. Além disso, suponha que <script type="math/tex">u = g</script> na fronteira
 de <script type="math/tex">U</script>, em que <script type="math/tex">g</script> é dada função suave. </p>
+<h2 id="descricao-do-metodo">Descrição do método</h2>
 <p>A ideia geral desse método é transformar a EDP em um sistema de EDOs, em que
 temos uma teoria de resolução bem estabelecida. Nisso, vamos construir
 curvas da superfície formada por <script type="math/tex">u</script> e integrar nessas curvas. Seja <script type="math/tex">\gamma(s)
@@ -162,7 +167,62 @@ Voltando à EDP <script type="math/tex">F(x, u, Du) = 0</script>, derivando com 
 \sum_{j=1}^n F_{p_j} (Du, u, x)u_{x_j x_i} + F_z(Du, u, x)u_{x_i} +
 F_{x_i}(Du, u, x) = 0.
 </script>
-</p></div>
+Vamos usar essa expressão para remover as segundas derivadas de <script type="math/tex">u</script> (que são
+em geral complicadas de se encontrar) Para isso, definimos 
+<script type="math/tex; mode=display">
+\frac{d}{ds}a_i(s) = F_{p_i}(p(s), z(s), \gamma(s)), i = 1, \dots n, 
+</script>
+isto é, estamos definindo uma curva a partir de sua função tangente. Assumindo
+isso e avaliando a expressão em <script type="math/tex">\gamma(s)</script>, obtemos que <script type="math/tex">u_{x_i}(\gamma(s)) =
+p_i(s)</script>, logo 
+<script type="math/tex; mode=display">
+\sum_{j=1}^n F_{p_j} (p(s), z(s), \gamma(s))u_{x_j x_i}(\gamma(s)) + F_z(p(s), z(s), \gamma(s))p_i(s) +
+F_{x_i}(p(s), z(s), \gamma(s)) = 0.
+</script>
+Usando a expressão de <script type="math/tex">\frac{d}{ds}p_i(s)</script> dada mais acima, teremos que 
+<script type="math/tex; mode=display">
+\frac{d}{ds}p_i(s) = - F_{x_i}(p(s), z(s), \gamma(s)) - F_z(p(s), z(s),
+\gamma(s))p_i(s), 
+</script>
+o que nos dá uma EDO para a função <script type="math/tex">p(s) = \nabla u(\gamma(s))</script>. Além disso,
+diferenciando <script type="math/tex">z</script> obtemos 
+<script type="math/tex; mode=display">
+\frac{d}{ds}z(s) = \sum_{j=1}^n u_{x_j}(\gamma(s))\frac{d}{ds}a_j(s) =
+\sum_{j=1}^n p_j(s)F_{p_j}(p(s), z(s), \gamma(s)). 
+</script>
+Isso nos reduz a um sistema de EDOs: 
+<script type="math/tex; mode=display">
+\begin{cases}
+    \dot{p}(s) = - D_x F(p(s), z(s), \gamma(s)) - D_z F(p(s), z(s),
+    \gamma(s))p(s) \\
+    \dot{z}(s) = D_p F(p(s), z(s), \gamma(s))\cdot p(s) \\
+    \dot{\gamma}(s) = D_p(p(s), z(s), \gamma(s)),
+\end{cases}
+</script>
+em que <script type="math/tex">D</script> é a derivada (no caso vetorial, mas você pode pensar indivíduo a
+indíviduo usando as expressões derivadas acima). Além disso, ao longo da curva
+<script type="math/tex">\gamma(s)</script>, 
+<script type="math/tex; mode=display">
+F(p(s), z(s), \gamma(s)) = 0, 
+</script>
+pela própria definição da <script type="math/tex">F</script>. </p>
+<h2 id="f-e-linear">F é linear</h2>
+<p>Considere <script type="math/tex">F(Du, u, x) = b(x)\cdot Du(x) + c(x)u(x) = 0</script>, isto é, o caso
+linear. Ao longo das curvas características, <script type="math/tex">F(p,z,x) = b(x)\cdot p + c(x)z</script>.
+Assim, </p>
+<p>
+<script type="math/tex; mode=display">
+\begin{cases}
+    \dot{p}(s) = - D_x F(p(s), z(s), \gamma(s)) - D_z F(p(s), z(s),
+    \gamma(s))p(s) \\
+    \dot{z}(s) = D_p F(p(s), z(s), \gamma(s))\cdot p(s) = b(\gamma(s))\cdot
+    p(s) = -c(\gamma(s))z(s) \\
+    \dot{\gamma}(s) = D_p(p(s), z(s), \gamma(s)) = b(\gamma(s)),
+\end{cases}
+</script>
+Com isso, mesmo sem saber <script type="math/tex">p</script>, ainda conseguimos derivar <script type="math/tex">z</script>, o que simplifica
+bastante o problema. </p>
+<p><img src="example.png" alt="Exemplo de solução de EDP" style="width:500px;height:600px;"></p></div>
         
         
     </div>
@@ -182,7 +242,7 @@ F_{x_i}(Du, u, x) = 0.
       </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
 
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
@@ -190,11 +250,11 @@ F_{x_i}(Du, u, x) = 0.
     <script>hljs.initHighlightingOnLoad();</script>
     
 
-    <script>var base_url = "../.."</script>
+    <script>var base_url = "../../.."</script>
     
-    <script src="../../js/base.js"></script>
+    <script src="../../../js/base.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="../../search/main.js"></script>
+    <script src="../../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
