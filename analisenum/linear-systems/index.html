@@ -136,6 +136,8 @@
                 
             <li class="second-level"><a href="#metodo-de-gauss-seidel">Método de Gauss-Seidel</a></li>
                 
+            <li class="second-level"><a href="#metodo-successive-over-relaxation-sor">Método Successive Over-Relaxation (SOR)</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -157,7 +159,7 @@ em que são matrizes. Se conseguirmos expressar <script type="math/tex">Ax = b</
 interessados nos pontos fixos do operador <script type="math/tex">L(x) = Cx + D</script>. </p>
 <p><strong>Teorema:</strong> O processo iterativo <script type="math/tex">x^{k+1} = Cx^k + D</script> satisfaz o seguinte:
 Para todo valor inicial <script type="math/tex">x^0</script>, a sequência <script type="math/tex">\{x^k\}_{k \in \mathbb{N}}</script>
-converge para o ponto fixo <script type="math/tex">x^* = Cx* + D</script> se, e somente se, <script type="math/tex">\rho(C) < 1</script>,
+converge para o ponto fixo <script type="math/tex">x^* = Cx^* + D</script> se, e somente se, <script type="math/tex">\rho(C) < 1</script>,
 em que <script type="math/tex">\rho(C)</script> é o raio espectral da matriz <script type="math/tex">C</script>, isto é, o maior autovalor
 em módulo. </p>
 <p>Uma demonstração desse resultado pode ser encontrado no livro de Richard
@@ -176,7 +178,92 @@ para todo norma natural <script type="math/tex">||\cdot||</script>. </p>
 <p><strong>Teorema:</strong> Se <script type="math/tex">A</script> é diagonalmente estritamente dominante, então para
 qualquer escolha de <script type="math/tex">x^0</script>, os métodos de Jacobi e Gauss-Seidel convergem. </p>
 <h2 id="metodo-de-jacobi">Método de Jacobi</h2>
-<h2 id="metodo-de-gauss-seidel">Método de Gauss-Seidel</h2></div>
+<p>Esse método é derivado resolvendo a <script type="math/tex">i</script>th equação de <script type="math/tex">Ax = b</script> para <script type="math/tex">x_i</script> (dado
+que <script type="math/tex">a_{ii} \neq 0</script>)</p>
+<p>
+<script type="math/tex; mode=display">
+x_i = \sum_{j\neq i} \left(-\frac{a_{ij}x_j}{a_{ii}}\right) +
+\frac{b_i}{a_{ii}}, ~~~ \text{ for } i = 1, 2, \dots, n.
+</script>
+</p>
+<p>Assim, geramos iterativamente, </p>
+<p>
+<script type="math/tex; mode=display">
+x_i^{(k)} = \frac{1}{a_{ii}} \left[ \sum_{j\neq i} \left(-a_{ij} x_j^{(k-1)}\right) + b_i\right]
+</script>
+</p>
+<p>Vamos escrever em formato matricial. Observe que </p>
+<p>
+<script type="math/tex; mode=display">
+x^{(k)} = \begin{bmatrix}
+    0 & -a_{12}/a_{11} & -a_{13}/a_{11} & \dots & -a_{1n}/a_{11} \\
+    -a_{21}/a_{22} & 0 & -a_{23}/a_{22} & \dots & -a_{2n}/a_{22} \\
+    -a_{31}/a_{33} & -a_{32}/a_{33} & 0 & \dots & -a_{3n}/a_{33} \\
+    \vdots & \vdots & \vdots & \ddots & \vdots \\
+    -a_{n1}/a_{nn} & -a_{n2}/a_{nn} & -a_{n3}/a_{nn} & \dots & 0\\
+\end{bmatrix}x^{(k-1)} + \begin{bmatrix}
+    b_1/a_{11} \\ b_2/a_{22} \\ b_3/a_{33} \\ \vdots \\ b_n/a_{nn}
+\end{bmatrix}
+</script>
+</p>
+<p>e sendo <script type="math/tex">U</script> e <script type="math/tex">L</script> as matrizes triangulares superiores e inferiores, e <script type="math/tex">D</script> a
+matriz diagonal de <script type="math/tex">A</script>,</p>
+<p>
+<script type="math/tex; mode=display">
+x^{(k)} = -D^{-1}(L + U)x^{(k-1)} + D^{-1}b
+</script>
+</p>
+<p>Assim, o procedimento Jacobi pode ser sumarizado da seguinte forma: </p>
+<ul>
+<li>Sejam as entradas as matrizes <script type="math/tex">A</script> e <script type="math/tex">b</script> com uma aproximação inicial
+  <script type="math/tex">x^{(0)}</script>. Defina uma tolerância para o critério de parada. </li>
+<li>Realize a iteração até o critério de parada.</li>
+<li>Lembre de pré-calcular as matrizes <script type="math/tex">D^{-1}(L + U)</script> e <script type="math/tex">D^{-1}b</script>. </li>
+</ul>
+<p><em>Observação:</em> Na notação do livro, troca-se <script type="math/tex">L</script> e <script type="math/tex">U</script> por <script type="math/tex">-L</script> e <script type="math/tex">-U</script> para não
+aparecer o sinal na expressão acima. </p>
+<p><strong>Acelerar a convergência:</strong> Colocar <script type="math/tex">a_{ii}</script> o máximo possível acelera a
+convergência do método. </p>
+<h2 id="metodo-de-gauss-seidel">Método de Gauss-Seidel</h2>
+<p>Observe que quando iteramos o processo no método de Jacobi, fixamos
+<script type="math/tex">x^{(k-1)}</script> e fazemos a operação <script type="math/tex">x^{(k)}</script>. Por esse motivo, podemos utilizar
+os valores já calculados <script type="math/tex">x_1^{(k)}, \dots, x_{i-1}^{(k)}</script> para atualizar
+o valor de <script type="math/tex">x_i^{(k)}</script>. Assim</p>
+<p>
+<script type="math/tex; mode=display">
+x_i^{(k)} = \frac{1}{a_{ii}} \left[ -\sum_{j=1}^{i-1} \left(a_{ij}
+x_j^{(k)}\right) - \sum_{j=i+1}^{n} \left(a_{ij}
+x_j^{(k-1)}\right) + b_i\right]
+</script>
+</p>
+<p>Essa simples modificação gerou o método de Gauss-Seidel. Para obter essa
+equação em formato matricial, precisamos de </p>
+<p>
+<script type="math/tex; mode=display">
+\sum_{j=1}^{i} \left(a_{ij}
+x_j^{(k)}\right) = - \sum_{j=i+1}^{n} \left(a_{ij}
+x_j^{(k-1)}\right) + b_i
+</script>
+</p>
+<p>Note que para cada linha <script type="math/tex">i</script>, estamos tomando todas as colunas <script type="math/tex">j \le i</script> no
+lado esquerdo. No lado direito é o contrário. Assim, </p>
+<p>
+<script type="math/tex; mode=display">
+(D + L)x^{(k)} = Ux^{(k-1)} + b \implies x^{(k)} = -(D+L)^{-1}Ux^{(k-1)} + (D +
+L)^{-1}b
+</script>
+</p>
+<p>O processo iterativo é similar ao Método de Jordan. </p>
+<p><strong>Teorema (Stein-Rosenberg):</strong> Se <script type="math/tex">a_{ij} \le 0</script> para cada <script type="math/tex">i \neq j</script> e
+<script type="math/tex">a_{ii} > 0</script>, para cada <script type="math/tex">i=1,2,\dots,n</script>, então uma, e somente uma, das
+afirmações vale: </p>
+<p><strong>(i)</strong> <script type="math/tex">0 \le \rho(T_g) < \rho(T_j) < 1</script>;</p>
+<p><strong>(ii)</strong> <script type="math/tex">1 < \rho(T_j) < \rho(T_g)</script>;</p>
+<p><strong>(iii)</strong> <script type="math/tex">\rho(T_g) = \rho(T_j) = 0</script>;</p>
+<p><strong>(iv)</strong> <script type="math/tex">\rho(T_g) = \rho(T_j) = 1</script>, </p>
+<p>em que <script type="math/tex">T_j = -D^{-1}(L+U)</script> e <script type="math/tex">T_g = -(D+L)^{-1}U</script> são as matrizes dos métodos
+de Jacobi e Gauss-Seidel. </p>
+<h2 id="metodo-successive-over-relaxation-sor">Método Successive Over-Relaxation (SOR)</h2></div>
         
         
     </div>
