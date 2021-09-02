@@ -136,6 +136,12 @@
                 
             <li class="second-level"><a href="#f-e-linear">F é linear</a></li>
                 
+            <li class="second-level"><a href="#condicoes-de-fronteira">Condições de fronteira</a></li>
+                
+            <li class="second-level"><a href="#existencia-local-de-solucoes">Existência local de soluções</a></li>
+                
+                <li class="third-level"><a href="#teorema-da-existencia-local">Teorema da Existência Local</a></li>
+        <li class="first-level "><a href="#leis-da-conservacao">Leis da Conservação</a></li>
             <li class="second-level"><a href="#solucao-fraca-ou-integral">Solução fraca (ou integral)</a></li>
                 
     </ul>
@@ -226,15 +232,99 @@ Com isso, mesmo sem saber <script type="math/tex">p</script>, ainda conseguimos 
 bastante o problema. </p>
 <p><img src="../example.png" alt="Exemplo de solução de EDP"
 style="width:500px;height:600px;"></p>
-<h2 id="solucao-fraca-ou-integral">Solução fraca (ou integral)</h2>
-<p>Nesse caso, temos a noção de que <script type="math/tex">u</script> não precisa ser diferenciável.
-Consideraremos um problema da forma</p>
+<h2 id="condicoes-de-fronteira">Condições de fronteira</h2>
+<p>Anteriormente, definimos um sistema de equações diferenciais para resolver
+<script type="math/tex">u(x)</script>. Todavia, esse sistema admite infinitas soluções quando não
+especificado uma condição inicial. Para isso, tome <script type="math/tex">x_0</script> na fronteira de <script type="math/tex">U</script>,
+onde sabemos que <script type="math/tex">u = g</script>. Em geral, assumimos que essa fronteira fica no plano
+<script type="math/tex">{x_n = 0}</script> próximo de <script type="math/tex">x_0</script>. Como assim? </p>
+<ul>
+<li>Suponha que estamos com <script type="math/tex">U \subseteq \mathbb{R}^2</script> e que a solução seja dada
+  pela função <script type="math/tex">u(x,t)</script>. Estamos dizendo que se <script type="math/tex">\gamma(0) = (x_0, 0)</script>, sendo
+  <script type="math/tex">\gamma</script> a curva característica. </li>
+<li>Suponha que <script type="math/tex">U \subseteq \mathbb{R}^4</script> e que a solução seja dada
+  pela função <script type="math/tex">u(x_1, \dots, x_4)</script>. Estamos dizendo que se <script type="math/tex">\gamma(0) =
+  (x^{1}_0, x^{2}_0, x^{3}_0, 0)</script>.</li>
+</ul>
+<p>Quando temos uma variável temporal, em geral denotada po <script type="math/tex">t</script>, dizemos que ela
+sempre começa em 0, uma forma de "padronizar". Sugiro o livro do Lawrence,
+seção 3.2.3 para uma demonstração de que essa suposição faz sentido. Dado um
+<script type="math/tex">x_0</script>, falta agora definir </p>
+<p>
+<script type="math/tex; mode=display">
+p(0) = p_0, z(0) = z_0, \gamma(0) = (x_0,0). 
+</script>
+</p>
+<p>Está claro que <script type="math/tex">z_0 = u(\gamma(0)) = u(x_0, 0) = g(x_0)</script>. Além disso, </p>
+<p>
+<script type="math/tex; mode=display">
+u(x_1, \dots, x_{n-1}, 0) = g(x_1, \dots, x_{n-1})
+</script>
+</p>
+<p>na vizinhança de <script type="math/tex">x_0</script> e, portanto, podemos diferenciar para obter </p>
+<p>
+<script type="math/tex; mode=display">
+u_{x_i}(x_0,0) = g_{x_i}(x_0), \text{ para } i = 1,\dots, n-1.
+</script>
+</p>
+<p>Dessa fora, <script type="math/tex">(p_0)^i = g_{x_i}(x_0)</script> para cada <script type="math/tex">i</script>. Para determinar <script type="math/tex">(p_0)^n</script>,
+usamos a relação dada por <script type="math/tex">F</script>, isto é, 
+<script type="math/tex; mode=display">
+F(p_0, z_0, x_0) = 0,
+</script>
+por definição. As relações de <script type="math/tex">z(0)</script> e <script type="math/tex">p(0)</script> são chamadas de <em>condições de
+compatibilidade</em>. Note que pode não existir ou pode não ser único a solução de
+<script type="math/tex">p_0</script> através da equação <script type="math/tex">F = 0</script>. </p>
+<h2 id="existencia-local-de-solucoes">Existência local de soluções</h2>
+<p>Dado <script type="math/tex">y = (y_1, \dots, y_{n-1}, 0)</script>, queremos resolver </p>
+<p>
+<script type="math/tex; mode=display">
+\begin{cases}
+    \dot{p}(s) = - D_x F(p(s), z(s), \gamma(s)) - D_z F(p(s), z(s),
+    \gamma(s))p(s) \\
+    \dot{z}(s) = D_p F(p(s), z(s), \gamma(s))\cdot p(s) = b(\gamma(s))\cdot
+    p(s) = -c(\gamma(s))z(s) \\
+    \dot{\gamma}(s) = D_p(p(s), z(s), \gamma(s)) = b(\gamma(s)),
+\end{cases}
+</script>
+</p>
+<p>com <script type="math/tex">\gamma(0) = y, p(0) = p_0, z(0) = z_0</script>, com as expressões de
+compatibilidade derivadas acima. </p>
+<p><strong>Lema (Uma aplicação do Teorema da Função Inversa):</strong> Assuma que
+<script type="math/tex">F_{p_n}(p_0, z_0, x_0) \neq 0</script>. Então existe <script type="math/tex">I \ni 0 \subseteq \mathbb{R}</script>,
+uma vizinhança <script type="math/tex">W</script> de <script type="math/tex">x_0</script> na fronteira de <script type="math/tex">U</script> e uma vizinhança <script type="math/tex">V</script> de <script type="math/tex">x_0</script>
+em <script type="math/tex">\mathbb{R}^n</script>   tal que para cada <script type="math/tex">x \in V</script>, existe um único <script type="math/tex">s \in I, y
+\in W</script> tal que 
+<script type="math/tex; mode=display">
+x = \gamma(y,s) = \gamma(y_1, \dots, y_{n-1},s).
+</script>
+</p>
+<p>Essa lema é uma consequência do Teorema da Função Inversa. Não se preocupe
+tanto com a demonstração. Mas a ideia é que se provarmos que <script type="math/tex">\det
+D\gamma(x_0, 0) \neq 0</script>, valerá a invertibilidade que estamos propondo, isto
+é, um mapa <script type="math/tex">x \mapsto (y,s)</script>. </p>
+<p>Assim, seja <script type="math/tex">y = y(x)</script> e <script type="math/tex">s = s(x)</script> de forma que <script type="math/tex">x = \gamma(y,s)</script> (que exite
+pelo que o lema prova). Assim, obtemos o seguinte Teorema:</p>
+<h3 id="teorema-da-existencia-local">Teorema da Existência Local</h3>
+<p>A função <script type="math/tex">u(x) := z(y(x), s(x))</script> é solução para a EDP </p>
+<p>
+<script type="math/tex; mode=display">
+F(Du(x), u(x), x) = 0,
+</script>
+em que <script type="math/tex">x \in V</script> e <script type="math/tex">u(x) = g(x)</script> para <script type="math/tex">x \in \partial U \cap V</script>, lembrando que
+<script type="math/tex">\partial U</script> é a fronteira de <script type="math/tex">U</script>. </p>
+<h1 id="leis-da-conservacao">Leis da Conservação</h1>
+<p>Considere o problema da lei de conservação para a dimensão 1</p>
 <p>
 <script type="math/tex; mode=display">
 u_t + [f(u)]_x = 0, x \in \mathbb{R}, t > 0 \\
 u(x,0) = \phi(x).
 </script>
 </p>
+<p>Como nem sempre temos soluções diferenciáveis para <script type="math/tex">u</script>, temos que relaxar um
+pouco nossa definição de solução, e para isso introduzimos as <em>soluções
+fracas</em>. </p>
+<h2 id="solucao-fraca-ou-integral">Solução fraca (ou integral)</h2>
 <p>Lembre que um conjunto em <script type="math/tex">\mathbb{R}^n</script> é <em>compacto</em> quando é fechado e
 limitado. Uma função tem suporte compacto quando existe um compacto <script type="math/tex">\Lambda</script>
 tal que para todo <script type="math/tex">x \in \mathbb{R}^n / \Lambda</script> a função se anula. Definimos
@@ -246,7 +336,8 @@ uma solução fraca <script type="math/tex">u</script> quando </p>
 </script>
 </p>
 <p>para todas as funções infinitamente diferenciáveis definidas em um conjunto
-compacto <script type="math/tex">v</script>. De forma equivalente, </p>
+compacto <script type="math/tex">v</script> (que chamamos de <em>função teste</em>). Assim, a suavidade é
+transferida para a função <script type="math/tex">v</script>. De forma equivalente, </p>
 <p>
 <script type="math/tex; mode=display">
 \int_0^{+\infty}\int_{-\infty}^{+\infty} v[u + f(u)_x] \, dx \, dt = 0,
