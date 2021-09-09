@@ -151,8 +151,8 @@
 <h1 id="o-metodo-das-caracteristicas">O Método das Características</h1>
 <p>Considere a Equação Diferencial Parcial (EDP) 
 <script type="math/tex; mode=display">
-F\left(x_1, \dots, x_n, u, \frac{\partial u}{\partial x_1}, \dots, \frac{\partial
-u}{\partial x_n}\right) = F(x, u, \nabla u) = F(x, u, Du) = 0,
+F\left(\frac{\partial u}{\partial x_1}, \dots, u, \frac{\partial
+u}{\partial x_n}, x_1, \dots, x_n\right) = F(x, u, \nabla u) = F(x, u, Du) = 0,
 </script>
 definida em um conjunto <script type="math/tex">U</script>. Além disso, suponha que <script type="math/tex">u = g</script> na fronteira
 de <script type="math/tex">U</script>, em que <script type="math/tex">g</script> é dada função suave. </p>
@@ -172,7 +172,7 @@ u_{x_n}(\gamma(s)))</script>. Temos que (Regra da Cadeia)
 </script>
 Voltando à EDP <script type="math/tex">F(x, u, Du) = 0</script>, derivando com respeito a <script type="math/tex">x_i</script>, 
 <script type="math/tex; mode=display">
-\sum_{j=1}^n F_{p_j} (Du, u, x)u_{x_j x_i} + F_z(Du, u, x)u_{x_i} +
+\sum_{j=1}^n F_{u_j} (Du, u, x)u_{x_j x_i} + F_z(Du, u, x)u_{x_i} +
 F_{x_i}(Du, u, x) = 0.
 </script>
 Vamos usar essa expressão para remover as segundas derivadas de <script type="math/tex">u</script> (que são
