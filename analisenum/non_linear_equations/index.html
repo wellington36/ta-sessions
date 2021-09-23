@@ -204,7 +204,22 @@ condição <script type="math/tex">f(a_n)f(b_n) < 0</script>, pois pode haver pr
 multiplicação. </p>
 <h2 id="regula-falsi">Regula-Falsi</h2>
 <h2 id="iteracao-de-ponto-fixo">Iteração de Ponto Fixo</h2>
+<p>Se <script type="math/tex">f : \mathbb{R}^n \to \mathbb{R}</script> é uma função, dizemos que <script type="math/tex">x</script> é ponto
+fixo de <script type="math/tex">f</script> quando <script type="math/tex">f(x) = x</script>. Esse nome fica claro pois <script type="math/tex">f(f(\dots(f(x)))) =
+x</script>. Note que se <script type="math/tex">g(x) = f(x) - x</script>, temos que <script type="math/tex">g(x) = 0 \equiv f(x) = x</script>, isto
+é, encontrar pontos fixos de <script type="math/tex">f</script> equivale a encontrar as raízes de <script type="math/tex">g</script>. </p>
 <h3 id="teorema-do-ponto-fixo">Teorema do Ponto Fixo</h3>
+<p>Existem alguns teoremas de garantia de existência e unicidade de pontos fixos,
+com diferentes hipóteses. <a href="https://en.wikipedia.org/wiki/Fixed-point_theorem#List_of_fixed-point_theorems">Aqui tem uma lista no
+Wikipedia</a>.</p>
+<p><strong>Teorema do Ponto Fixo de Brower</strong></p>
+<p>Seja <script type="math/tex">f</script> contínua em um conjunto convexo compacto <script type="math/tex">C</script> com imagem <script type="math/tex">f(C)
+\subseteq C</script>. Então <script type="math/tex">f</script> possui ponto fixo. <a href="https://www.math3ma.com/blog/brouwers-fixed-point-theorem-proof">Aqui uma
+demonstração</a>
+interessante com um pouquinho de topologia. No nosso caso, tomamos <script type="math/tex">C =
+[a,b]</script>, o intervalo limitado e fechado na reta, isto é, se <script type="math/tex">f</script> é contínua em <script type="math/tex">[a,b]</script> e <script type="math/tex">f(x) \in [a,b]</script> para todo <script type="math/tex">x \in [a,b]</script>, isto
+é, <script type="math/tex">f([a,b]) \subseteq [a,b]</script>, então <script type="math/tex">f</script> possui ponto fixo. </p>
+<p>**Teorema do Ponto Fixo de Banach</p>
 <h2 id="metodo-de-newton-raphson">Método de Newton-Raphson</h2>
 <p>Também chamado de método de Newton. </p></div>
         
