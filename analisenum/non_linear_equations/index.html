@@ -8,10 +8,10 @@
     
     
     
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="../../img/favicon.ico">
 
     
-    <title>Home - Teaching Assistant</title>
+    <title>Solução de equações não lineares - Teaching Assistant</title>
     
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="css/base.min.css" rel="stylesheet">
-    <link href="css/cinder.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../css/base.min.css" rel="stylesheet">
+    <link href="../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -40,7 +40,7 @@
      
 </head>
 
-<body class="homepage" >
+<body>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container">
@@ -59,7 +59,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href=".">Teaching Assistant</a>
+              <a class="navbar-brand" href="../..">Teaching Assistant</a>
             
         </div>
 
@@ -69,44 +69,44 @@
                 <ul class="nav navbar-nav">
                 
                 
-                    <li class="active">
-                        <a href=".">Home</a>
+                    <li >
+                        <a href="../..">Home</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="analisenum/info/">Análise Numérica</a>
+                        <a href="../info/">Análise Numérica</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="edp/info/">EDP</a>
+                        <a href="../../edp/info/">EDP</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="curvas/info/">Curvas</a>
+                        <a href="../../curvas/info/">Curvas</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="infestatistica/info/">Estatística</a>
+                        <a href="../../infestatistica/info/">Estatística</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="edo/info/">EDO</a>
+                        <a href="../../edo/info/">EDO</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="alglin/info/">Álgebra Linear</a>
+                        <a href="../../alglin/info/">Álgebra Linear</a>
                     </li>
                 
                 
@@ -116,16 +116,6 @@
                     <li>
                         <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
                             <i class="fas fa-search"></i> Search
-                        </a>
-                    </li>
-                    <li class="disabled">
-                        <a rel="prev" >
-                            <i class="fas fa-arrow-left"></i> Previous
-                        </a>
-                    </li>
-                    <li >
-                        <a rel="next" href="analisenum/info/">
-                            Next <i class="fas fa-arrow-right"></i>
                         </a>
                     </li>
                     <li>
@@ -141,61 +131,82 @@
         
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="first-level active"><a href="#monitorias">Monitorias</a></li>
-            <li class="second-level"><a href="#topicos-abordados">Tópicos abordados</a></li>
+        <li class="first-level active"><a href="#solucao-de-equacoes-nao-lineares">Solução de equações não lineares</a></li>
+            <li class="second-level"><a href="#metodo-da-bissecao">Método da Bisseção</a></li>
                 
-            <li class="second-level"><a href="#referencias-interessantes-de-matematica">Referências interessantes de matemática</a></li>
+            <li class="second-level"><a href="#regula-falsi">Regula-Falsi</a></li>
+                
+            <li class="second-level"><a href="#iteracao-de-ponto-fixo">Iteração de Ponto Fixo</a></li>
+                
+                <li class="third-level"><a href="#teorema-do-ponto-fixo">Teorema do Ponto Fixo</a></li>
+            <li class="second-level"><a href="#metodo-de-newton-raphson">Método de Newton-Raphson</a></li>
                 
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
-<h1 id="monitorias">Monitorias</h1>
-<p>Este website foi desenvolvido para concentrar as informações sobre as
-monitorias que dei ao longo da minha vida acadêmica. Em particular durante a
-Graduação na Escola de Matemática Aplicada na Fundação Getulio Vargas (EMAp/FGV). </p>
-<p>Eu espero que a informação aqui contida seja de interesse! Para sugestões e
-alterações, você pode usar o Issues do Github. </p>
-<h2 id="topicos-abordados">Tópicos abordados</h2>
+<h1 id="solucao-de-equacoes-nao-lineares">Solução de equações não lineares</h1>
+<p>Considere uma população com crescimento proporcional ao seu tamanho a cada
+tempo <script type="math/tex">t</script> sujeita a migrações constantes, isto, se <script type="math/tex">x(t)</script> é o tamanho da
+população no tempo <script type="math/tex">t</script>,</p>
+<p>
+<script type="math/tex; mode=display">
+\dot{x}(t) = \lambda x(t) + \nu \implies x(t) = x(0)e^{\lambda t } +
+\frac{\nu}{\lambda}(e^{\lambda t} - 1)
+</script>
+</p>
+<p>Se sabemos <script type="math/tex">x(t), x(0)</script> e <script type="math/tex">\nu</script>, ainda não conseguimos resolver para <script type="math/tex">\lambda</script>
+esse sistema. </p>
+<p><strong>Obsevação:</strong> Muitas vezes, simplificações em sistemas de equações ou
+equações podem ajudar a resolver o problema analiticamente, que é sempre mais
+preciso. Nem sempre só jogar um sistema num solver vai resolver o problema. </p>
+<p>De forma geral, queremos resolver <script type="math/tex">f(x) = 0</script> para <script type="math/tex">f : [a,b] \to \mathbb{R}</script>,
+em geral, precisamos que <script type="math/tex">f(a)</script> e <script type="math/tex">f(b)</script> tenham sinais diferentes e <script type="math/tex">f</script> seja
+pelo menos contínua, para garantir existência de solução através do Teorema do
+Valor Intermediário. </p>
+<h2 id="metodo-da-bissecao">Método da Bisseção</h2>
+<p>Esse é um método bem simples que se embasa totalmente no Teorema do Valor
+Intermediário. Seja <script type="math/tex">x^*</script> a solução do problema, isto é, <script type="math/tex">f(x^*) = 0</script>. Tome <script type="math/tex">a_1 = a, b_1 = b, x_1 = \frac{a_1 + b_1}{2}</script>. A partir de
+<script type="math/tex">x_1</script>, verificamos o sinal de <script type="math/tex">f(x_1)</script>. Assim</p>
 <ul>
-<li>Álgebra Linear (2019.2)<ul>
-<li>Professor <a href="https://emap.fgv.br/corpo-docente/eduardo-wagner">Eduardo Wagner</a></li>
+<li>
+<script type="math/tex">f(x_1) = 0</script>: Nesse caso a solução é <script type="math/tex">x^* = x_1</script>. </li>
+<li>
+<script type="math/tex">f(x_1) < 0</script>: Nesse caso, se <script type="math/tex">f(a) < 0</script> e <script type="math/tex">f(b) > 0</script>, deve haver uma solução
+  no intervalo <script type="math/tex">[x_1, b]</script>. Por isso, definimos <script type="math/tex">a_2 = x_1</script> e <script type="math/tex">b_2 = b</script> e
+  seguimos o procedimento. Se <script type="math/tex">f(a) > 0</script> e <script type="math/tex">f(b) < 0</script>, deve haver uma solução
+  em <script type="math/tex">[a, x_1]</script> e, portanto, <script type="math/tex">fa_2 = a, b_2 = x_1</script> e seguimos o procedimento. </li>
+<li>
+<script type="math/tex">f(x_1) > 0</script>: Nesse caso, se <script type="math/tex">f(a) > 0</script> e <script type="math/tex">f(b) < 0</script>, deve haver  uma solução
+  no intervalo <script type="math/tex">[x_1, b]</script>. Por isso, definimos <script type="math/tex">a_2 = x_1</script> e <script type="math/tex">b_2 = b</script> e
+  seguimos o procedimento. Se <script type="math/tex">f(a) < 0</script> e <script type="math/tex">f(b) > 0</script>, deve haver uma solução
+  em <script type="math/tex">[a, x_1]</script> e, portanto, <script type="math/tex">fa_2 = a, b_2 = x_1</script> e seguimos o procedimento. </li>
 </ul>
-</li>
-<li>Equações Diferenciais Ordinárias (2020.1)<ul>
-<li>Professora <a href="https://emap.fgv.br/corpo-docente/maria-izabel-tavares-camacho">Maria Izabel Camacho</a></li>
-</ul>
-</li>
-<li>Inferência à Estatística (2020.2)<ul>
-<li>Professor <a href="https://emap.fgv.br/corpo-docente/luiz-max-fagundes-de-carvalho">Luiz Max de Carvalho</a></li>
-</ul>
-</li>
-<li>Curvas e Superfícies (2021.1)<ul>
-<li>Professora <a href="https://sites.google.com/view/aslasa/home">Asla Medeiros e Sá</a></li>
-</ul>
-</li>
-<li>Introdução à Análise Numérica (2021.2)<ul>
-<li>Professor <a href="https://emap.fgv.br/corpo-docente/hugo-de-la-cruz-cancino">Hugo A. de la Cruz Cancino</a></li>
-</ul>
-</li>
-<li>Equações Diferenciais Parciais (2021.2)<ul>
-<li>Professor <a href="https://emap.fgv.br/corpo-docente/moacyr-alvim-horta-barbosa-silva">Moacyr Alvim Horta Barbosa da Silva</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="referencias-interessantes-de-matematica">Referências interessantes de matemática</h2>
-<ul>
-<li><a href="https://doc.sagemath.org/html/en/installation/">SageMath</a>: <em>software</em>
-  matemático que facilita cálculos. É uma possibilidade alternativa ao
-  <a href="https://www.wolframalpha.com/">WolframAlpha</a>, porém com código em Python. </li>
-<li><a href="https://github.com/3b1b/manim">Manin</a>: ferramenta para criar vídeos
-  matemáticos explicativos com animação programática, uma biblioteca para
-  Python. </li>
-<li><a href="https://seeing-theory.brown.edu/index.html#firstPage">Seeing Theory</a>:
-  visualização de conceitos de probabilidade e estatística. </li>
-<li><a href="https://ga-explorer.netlify.app/index.php/ga-software/">Softwares de Geometria Algébrica</a>: lista de
-  softwares relacionados com Geometria Algébrica. </li>
-</ul></div>
+<p>Assim, esse processo se resume a tomar o ponto médio do intervalo e ir
+cortando pela metade o intervalo a cada iteração. Precisamos de um critério de
+parada melhor do que <script type="math/tex">f(x_k) = 0</script>, pois estamos num âmbito contínuo. Como
+cortamos o intervalo pela metade a cada iteração, é fácil ver que </p>
+<p>
+<script type="math/tex; mode=display">
+|x_n - x^*| \le \frac{b-a}{2^n}, \forall n \ge 1.
+</script>
+</p>
+<p>Nesse caso, uma condição de parada possível é <script type="math/tex">(b-a) \le 2^n \epsilon</script>, em que
+<script type="math/tex">\epsilon</script> é a minha tolerância a erro. </p>
+<p>Alguns comentários importantes: calcular </p>
+<p>
+<script type="math/tex; mode=display">
+x_n = a_n + \frac{b_n - a_n}{2}
+</script>
+</p>
+<p>é melhor numericamente do que <script type="math/tex">x_n = (a_n + b_n)/2</script>. Além disso, cuidado com a
+condição <script type="math/tex">f(a_n)f(b_n) < 0</script>, pois pode haver problema de underflow na
+multiplicação. </p>
+<h2 id="regula-falsi">Regula-Falsi</h2>
+<h2 id="iteracao-de-ponto-fixo">Iteração de Ponto Fixo</h2>
+<h3 id="teorema-do-ponto-fixo">Teorema do Ponto Fixo</h3>
+<h2 id="metodo-de-newton-raphson">Método de Newton-Raphson</h2>
+<p>Também chamado de método de Newton. </p></div>
         
         
     </div>
@@ -215,7 +226,7 @@ alterações, você pode usar o Issues do Github. </p>
       </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../js/bootstrap-3.0.3.min.js"></script>
 
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
@@ -223,11 +234,11 @@ alterações, você pode usar o Issues do Github. </p>
     <script>hljs.initHighlightingOnLoad();</script>
     
 
-    <script>var base_url = "."</script>
+    <script>var base_url = "../.."</script>
     
-    <script src="js/base.js"></script>
+    <script src="../../js/base.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="search/main.js"></script>
+    <script src="../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -298,8 +309,3 @@ alterações, você pode usar o Issues do Github. </p>
     </body>
 
 </html>
-
-<!--
-MkDocs version : 1.1.2
-Build Date UTC : 2021-09-23 20:04:41.351849+00:00
--->
