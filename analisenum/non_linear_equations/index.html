@@ -245,12 +245,12 @@ interessante com um pouquinho de topologia. No nosso caso, tomamos <script type=
 <p><strong>Teorema do Ponto Fixo de Banach</strong></p>
 <p>Dizemos que uma função <script type="math/tex">f : X \to X</script>, em que <script type="math/tex">X</script> é um espaço normado completo
 é uma contração se existe <script type="math/tex">L \in [0,1)</script> tal que 
-<script type="math/tex; mode=display">||f(x) - f(y)|| \le r||x-y||.</script>
+<script type="math/tex; mode=display">||f(x) - f(y)|| \le L||x-y||.</script>
 Como exemplo, podemos tomar <script type="math/tex">X = [a,b]</script>. Se <script type="math/tex">X</script> não for vazio e <script type="math/tex">f</script> for uma
 contração, então <script type="math/tex">f</script> admite um <strong>único</strong> ponto fixo <script type="math/tex">x^*</script>. Além do mais, para
 todo <script type="math/tex">x_0 \in X</script>, a sequência iniciada em <script type="math/tex">x_0</script> que segue a iteração <script type="math/tex">x_k =
 f(x_{k-1})</script> converge para <script type="math/tex">x^*</script> (o que permite desenvolver um método). </p>
-<p>Podemos demonstrar que <script type="math/tex">||x^* - x_n|| \le \dfrac{r^n}{1 -r}||x_1 - x_0||</script>.  A
+<p>Podemos demonstrar que <script type="math/tex">||x^* - x_n|| \le \dfrac{L^n}{1 -L}||x_1 - x_0||</script>.  A
 prova pode ser <a href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem#Proof">facilmente
 encontrada</a>. </p>
 <p>Como já afirmei, se conseguirmos assegurar que <script type="math/tex">f</script> satisfaz as condições do
