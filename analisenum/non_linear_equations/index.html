@@ -177,12 +177,12 @@ Intermediário. Seja <script type="math/tex">x^*</script> a solução do problem
 <script type="math/tex">f(x_1) < 0</script>: Nesse caso, se <script type="math/tex">f(a) < 0</script> e <script type="math/tex">f(b) > 0</script>, deve haver uma solução
   no intervalo <script type="math/tex">[x_1, b]</script>. Por isso, definimos <script type="math/tex">a_2 = x_1</script> e <script type="math/tex">b_2 = b</script> e
   seguimos o procedimento. Se <script type="math/tex">f(a) > 0</script> e <script type="math/tex">f(b) < 0</script>, deve haver uma solução
-  em <script type="math/tex">[a, x_1]</script> e, portanto, <script type="math/tex">fa_2 = a, b_2 = x_1</script> e seguimos o procedimento. </li>
+  em <script type="math/tex">[a, x_1]</script> e, portanto, <script type="math/tex">a_2 = a, b_2 = x_1</script> e seguimos o procedimento. </li>
 <li>
 <script type="math/tex">f(x_1) > 0</script>: Nesse caso, se <script type="math/tex">f(a) > 0</script> e <script type="math/tex">f(b) < 0</script>, deve haver  uma solução
   no intervalo <script type="math/tex">[x_1, b]</script>. Por isso, definimos <script type="math/tex">a_2 = x_1</script> e <script type="math/tex">b_2 = b</script> e
   seguimos o procedimento. Se <script type="math/tex">f(a) < 0</script> e <script type="math/tex">f(b) > 0</script>, deve haver uma solução
-  em <script type="math/tex">[a, x_1]</script> e, portanto, <script type="math/tex">fa_2 = a, b_2 = x_1</script> e seguimos o procedimento. </li>
+  em <script type="math/tex">[a, x_1]</script> e, portanto, <script type="math/tex">a_2 = a, b_2 = x_1</script> e seguimos o procedimento. </li>
 </ul>
 <p>Assim, esse processo se resume a tomar o ponto médio do intervalo e ir
 cortando pela metade o intervalo a cada iteração. Precisamos de um critério de
@@ -218,7 +218,13 @@ pelo ponto médio, mas pelo ponto de intersecção da reta que passa por
 <p>A iteração desse método é dada por </p>
 <p>
 <script type="math/tex; mode=display">
-x_k = a - \frac{f(a_k)}{f(b_k) - f(a_k)}(b_k-a_k), 
+x_k = a_k - \frac{f(a_k)}{f(b_k) - f(a_k)}(b_k-a_k),  
+</script>
+</p>
+<p>que pode ser reescrita como </p>
+<p>
+<script type="math/tex; mode=display">
+x_k = \frac{a_k\cdot f(b_k) - b_k\cdot f(a_k)}{f(b_k) - f(a_k)},  
 </script>
 </p>
 <p>em que <script type="math/tex">a_k</script> e <script type="math/tex">b_k</script> são obtidos conforme o método da Bisseção.</p>
@@ -229,7 +235,7 @@ x_k = a - \frac{f(a_k)}{f(b_k) - f(a_k)}(b_k-a_k),
 <h2 id="iteracao-de-ponto-fixo">Iteração de Ponto Fixo</h2>
 <p>Se <script type="math/tex">f : \mathbb{R}^n \to \mathbb{R}</script> é uma função, dizemos que <script type="math/tex">x</script> é ponto
 fixo de <script type="math/tex">f</script> quando <script type="math/tex">f(x) = x</script>. Esse nome fica claro pois <script type="math/tex">f(f(\dots(f(x)))) =
-x</script>. Note que se <script type="math/tex">g(x) = f(x) - x</script>, temos que <script type="math/tex">g(x) = 0 \equiv f(x) = x</script>, isto
+x</script>. Note que se <script type="math/tex">g(x) = f(x) - x</script>, temos que <script type="math/tex">g(x) = 0 \iff f(x) = x</script>, isto
 é, encontrar pontos fixos de <script type="math/tex">f</script> equivale a encontrar as raízes de <script type="math/tex">g</script>. </p>
 <h3 id="teorema-do-ponto-fixo">Teorema do Ponto Fixo</h3>
 <p>Existem alguns teoremas de garantia de existência e unicidade de pontos fixos,
