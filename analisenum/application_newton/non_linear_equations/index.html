@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>Métodos numéricos para solução de equações não lineares - Teaching Assistant</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">Teaching Assistant</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../info/">Análise Numérica</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../edp/info/">EDP</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../curvas/info/">Curvas</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../infestatistica/info/">Estatística</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../edo/info/">EDO</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../alglin/info/">Álgebra Linear</a>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://lucasmoschen.github.io">Página Inicial</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#metodos-numericos-para-solucao-de-equacoes-nao-lineares">Métodos numéricos para solução de equações não lineares</a></li>
+            <li class="second-level"><a href="#iteracao-de-ponto-fixo">Iteração de Ponto Fixo</a></li>
+                
+            <li class="second-level"><a href="#metodo-de-newton">Método de Newton</a></li>
+                
+                <li class="third-level"><a href="#exemplo-adicional">Exemplo adicional</a></li>
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="metodos-numericos-para-solucao-de-equacoes-nao-lineares">Métodos numéricos para solução de equações não lineares</h1>
+<p>Escrevemos no <a href="/ta-sessions/analisenum/non_linear_equations">parte anterior</a> o resumo dos algoritmos de alguns métodos para solução de equações não lineares, e não são os únicos. Modificações desses métodos, em especial do Método de Newton são constantemente sugeridas para melhorar a
+convergência. Fica claro que muitos sistemas no mundo real são não lineares. Uma aplicação comum é resolver problemas de otimização. Por exemplo, quando queremos maximizar em conjuntos abertos, se conseguirmos provar algumas condições, podemos assegurar que o máximo se encontra quando <script type="math/tex">f'(x) = 0</script>. Logo, o problema de otimização se resume a um problema de encontrar raízes. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.special</span> <span class="k">as</span> <span class="nn">scis</span>
+<span class="kn">import</span> <span class="nn">scipy.optimize</span> <span class="k">as</span> <span class="nn">scop</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</code></pre></div>
+<p>Um jogador A ganha com placar (21-0) do jogador B em um jogo de <a href="https://pt.wikipedia.org/wiki/Raquetebol">raquetebol</a> com <a href="https://dokumen.tips/documents/probability-of-a-shutout-in-racquetball-58dea76bc2677.html">probabilidade</a>. </p>
+<p>
+<script type="math/tex; mode=display">
+P = \frac{p+1}{2}\left(\frac{p}{1-p+p^2}\right)^{21},
+</script>
+</p>
+<p>em que <script type="math/tex">p</script> é a probabilidade de <script type="math/tex">A</script> ganhar um rally qualquer. Qual o valor de <script type="math/tex">p</script> que assegura que <script type="math/tex">A</script> vencerá com esse placar em pelo menos metade dos jogos? Esse é um problema real proposto por Ralph Levine para Joseph Keller.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">P</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">p</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">p</span><span class="p">))</span><span class="o">**</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">p_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">P_values</span> <span class="o">=</span> <span class="n">P</span><span class="p">(</span><span class="n">p_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">P_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;darkblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Probabilidade de 21-0 para cada p&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="s1">&#39;$P = 0.5$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$P$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_4_0.png" /></p>
+<p>Vamos explorar métodos de resolver a equação <script type="math/tex">P(p) = 0.5</script> para <script type="math/tex">p</script>, isto é, <script type="math/tex">P(p) - 0.5 = 0</script>, através do método do Ponto Fixo e do Método de Newton.  </p>
+<h2 id="iteracao-de-ponto-fixo">Iteração de Ponto Fixo</h2>
+<p>Temos que </p>
+<p>
+<script type="math/tex; mode=display">
+f(p) = 0.5 - \frac{p+1}{2}\left(\frac{p}{1-p+p^2}\right)^{21} + p = p,
+</script>
+</p>
+<p>é a função que admite o ponto fixo que queremos. Um ponto importante seria provar as condições de funcionamento do método. Porém, não é difícil ver que <script type="math/tex">f([0,1]) \not \subseteq [0,1]</script>, o que já quebra nosso teorema.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">P</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">p</span>
+
+<span class="k">def</span> <span class="nf">fixed_point</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="n">max_ite</span> <span class="o">=</span> <span class="mf">1e4</span><span class="p">):</span> 
+
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">x1</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)]</span>
+    <span class="n">sols</span> <span class="o">=</span> <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">x1</span><span class="p">]</span>
+
+    <span class="k">while</span> <span class="n">err</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">tol</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">err</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">max_ite</span><span class="p">:</span> 
+
+        <span class="n">sols</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">sols</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">err</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">sols</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">sols</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;sol&#39;</span><span class="p">:</span> <span class="n">sols</span><span class="p">,</span> <span class="s1">&#39;errors&#39;</span><span class="p">:</span> <span class="n">err</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="mf">0.7</span><span class="p">))</span>
+</code></pre></div>
+<pre><code>1.1329638832103943
+</code></pre>
+<p>Bom, mas vamos supor que mesmo assim quiséssemos usar esse método.</p>
+<div class="highlight"><pre><span></span><code><span class="n">res</span> <span class="o">=</span> <span class="n">fixed_point</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="s1">&#39;sol&#39;</span><span class="p">])),</span> <span class="n">res</span><span class="p">[</span><span class="s1">&#39;sol&#39;</span><span class="p">])</span>
+</code></pre></div>
+<pre><code>&lt;matplotlib.collections.PathCollection at 0x7f38b6604908&gt;
+</code></pre>
+<p><img alt="png" src="../output_8_1.png" /></p>
+<p>Ele não converge! Mas a gente já devia ter ficado desconfiado, pois justamente as condições do Teorema não functionavam. Em particular, é fácil ver que ele não é nem não expansivo. Usando Scipy:</p>
+<div class="highlight"><pre><span></span><code><span class="n">scop</span><span class="o">.</span><span class="n">fixed_point</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.81</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;iteration&#39;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>---------------------------------------------------------------------------
+
+RuntimeError                              Traceback (most recent call last)
+
+&lt;ipython-input-6-93ff8160efab&gt; in &lt;module&gt;
+----&gt; 1 scop.fixed_point(func = f, x0 = 0.81, method = 'iteration')
+
+
+~/anaconda3/lib/python3.7/site-packages/scipy/optimize/minpack.py in fixed_point(func, x0, args, xtol, maxiter, method)
+    935     use_accel = {'del2': True, 'iteration': False}[method]
+    936     x0 = _asarray_validated(x0, as_inexact=True)
+--&gt; 937     return _fixed_point_helper(func, x0, args, xtol, maxiter, use_accel)
+
+
+~/anaconda3/lib/python3.7/site-packages/scipy/optimize/minpack.py in _fixed_point_helper(func, x0, args, xtol, maxiter, use_accel)
+    889         p0 = p
+    890     msg = "Failed to converge after %d iterations, value is %s" % (maxiter, p)
+--&gt; 891     raise RuntimeError(msg)
+    892 
+    893
+
+
+RuntimeError: Failed to converge after 500 iterations, value is 0.4998542288112865
+</code></pre>
+<p>Existe uma variação desse dado pelo método Steffensen com Aitken's <script type="math/tex">\Delta^2</script>, que constrói uma sequência com onvergência mais rápida, a partir da inicial. </p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">scop</span><span class="o">.</span><span class="n">fixed_point</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;del2&#39;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>747 µs ± 21.3 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">scop</span><span class="o">.</span><span class="n">fixed_point</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;del2&#39;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>array(0.84230479)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">scop</span><span class="o">.</span><span class="n">fixed_point</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;del2&#39;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>650 µs ± 31.7 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">scop</span><span class="o">.</span><span class="n">fixed_point</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;del2&#39;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>array(0.84230479)
+</code></pre>
+<p>Olhe o que acontece com <script type="math/tex">x_0 = 0.1</script>. </p>
+<div class="highlight"><pre><span></span><code><span class="n">scop</span><span class="o">.</span><span class="n">fixed_point</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">f</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s1">&#39;del2&#39;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>array(-3.51843721e+13)
+</code></pre>
+<h2 id="metodo-de-newton">Método de Newton</h2>
+<p>Agora vamos usar informação da derivada de <script type="math/tex">P</script> para nos ajudar com o problema de encontrar a raíz de <script type="math/tex">P(p) - 0.5 = 0</script>. Note que <script type="math/tex">P(0) < 0.5</script> e <script type="math/tex">P(1) > 0.5</script>. }Para nos ajudar com as contas, vamos considerar a versão com log, isto é, <script type="math/tex">\log(P(p)) = - \log(2)</script>. Assim, </p>
+<p>
+<script type="math/tex; mode=display"> 
+\log(p+1) - \log(2) + 21(\log(p) - \log(1 - p + p^2)) = -\log(2), 
+</script>
+</p>
+<p>o que simplica para <script type="math/tex">g(p) = \log(p+1) + 21(\log(p) - \log(1 - p + p^2)) = 0</script>. Aí temos que </p>
+<p>
+<script type="math/tex; mode=display">
+g'(p) = \frac{1}{p+1} + \frac{21}{p} - \frac{21}{1 - p + p^2}(2p - 1)
+</script>
+</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">21</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">p</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">p</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">g_prime</span><span class="p">(</span><span class="n">p</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">21</span> <span class="o">/</span> <span class="n">p</span> <span class="o">-</span> <span class="mi">21</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span> <span class="o">+</span> <span class="n">p</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<p>Podemos provar analiticamente que a derivada é estritamente positiva, mas faremos a observação numérica através do seguinte gráfico. </p>
+<div class="highlight"><pre><span></span><code><span class="n">g_values</span> <span class="o">=</span> <span class="n">g_prime</span><span class="p">(</span><span class="n">p_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">p_values</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">g_values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Derivada da função derivada&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$p$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$g</span><span class="se">\&#39;</span><span class="s2">(p)$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_21_0.png" /></p>
+<p>Aplicando o método de newton através do Scipy. Observe que o seu tempo deu bem menor que o anterior, mesmo com um valor de <script type="math/tex">x_0</script> bem distante. </p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">scop</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">g</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fprime</span> <span class="o">=</span> <span class="n">g_prime</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>368 µs ± 24.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">scop</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">g</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">fprime</span> <span class="o">=</span> <span class="n">g_prime</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>0.8423047910355657
+</code></pre>
+<p>Observe o método da Secante, um método que também usa a ideia de tangente, mas sem consultar a derivada. </p>
+<div class="highlight"><pre><span></span><code><span class="o">%</span><span class="n">timeit</span> <span class="n">scop</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">g</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>459 µs ± 31.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">scop</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">func</span> <span class="o">=</span> <span class="n">g</span><span class="p">,</span> <span class="n">x0</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>0.8423047910355633
+</code></pre>
+<h3 id="exemplo-adicional">Exemplo adicional</h3>
+<p>Nesse exemplo, a ideia é verificar que Newton pode dar errado. Considere: </p>
+<p>
+<script type="math/tex; mode=display">
+f(x) = x\sin(\pi x) - \exp(-x)
+</script>
+</p>
+<div class="highlight"><pre><span></span><code><span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span><span class="n">zorder</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.57</span><span class="p">,</span> <span class="mf">0.83</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.27</span><span class="p">]</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;raiz$_1$&#39;</span><span class="p">,</span> <span class="s1">&#39;raiz$_2$&#39;</span><span class="p">,</span> <span class="s1">&#39;mínimo local&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]],</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">])],</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">texts</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$f(x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$f(x)= x sin(\pi x) - exp(-x)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../output_30_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">xspace</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xspace</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Com x_0 = </span><span class="si">{0:5.2f}</span><span class="s1">, a raíz é </span><span class="si">{1:5.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">scop</span><span class="o">.</span><span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="n">x</span><span class="p">)))</span>
+</code></pre></div>
+<pre><code>Com x_0 = -0.70, a raíz é  2.02
+Com x_0 = -0.60, a raíz é  0.58
+Com x_0 = -0.50, a raíz é  1.27
+Com x_0 = -0.40, a raíz é  0.82
+Com x_0 = -0.30, a raíz é -0.30
+Com x_0 = -0.20, a raíz é  0.82
+Com x_0 = -0.10, a raíz é  2.02
+Com x_0 =  0.00, a raíz é  0.82
+Com x_0 =  0.10, a raíz é  0.58
+Com x_0 =  0.20, a raíz é  0.58
+Com x_0 =  0.30, a raíz é  0.58
+Com x_0 =  0.40, a raíz é  0.58
+Com x_0 =  0.50, a raíz é  0.58
+Com x_0 =  0.60, a raíz é  0.58
+Com x_0 =  0.70, a raíz é  0.58
+</code></pre></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
