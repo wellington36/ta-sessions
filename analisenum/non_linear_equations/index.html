@@ -134,12 +134,14 @@
         <li class="first-level active"><a href="#solucao-de-equacoes-nao-lineares">Solução de equações não lineares</a></li>
             <li class="second-level"><a href="#metodo-da-bissecao">Método da Bisseção</a></li>
                 
-            <li class="second-level"><a href="#regula-falsi">Regula-Falsi</a></li>
+            <li class="second-level"><a href="#regula-falsi-metodo-da-posicao-falsa">Regula-Falsi (Método da posição falsa)</a></li>
                 
             <li class="second-level"><a href="#iteracao-de-ponto-fixo">Iteração de Ponto Fixo</a></li>
                 
                 <li class="third-level"><a href="#teorema-do-ponto-fixo">Teorema do Ponto Fixo</a></li>
             <li class="second-level"><a href="#metodo-de-newton-raphson">Método de Newton-Raphson</a></li>
+                
+            <li class="second-level"><a href="#sugestoes">Sugestões</a></li>
                 
     </ul>
 </div></div>
@@ -202,7 +204,28 @@ x_n = a_n + \frac{b_n - a_n}{2}
 <p>é melhor numericamente do que <script type="math/tex">x_n = (a_n + b_n)/2</script>. Além disso, cuidado com a
 condição <script type="math/tex">f(a_n)f(b_n) < 0</script>, pois pode haver problema de underflow na
 multiplicação. </p>
-<h2 id="regula-falsi">Regula-Falsi</h2>
+<h2 id="regula-falsi-metodo-da-posicao-falsa">Regula-Falsi (Método da posição falsa)</h2>
+<p>Esse é outro método bem antigo, com as primeiras aparições nos registros
+babilônicos. A ideia era encontrar <script type="math/tex">x</script> tal que <script type="math/tex">ax + b = 0</script>. Essa ideia foi
+trazida para resolver o problema de encontrar raízes de <script type="math/tex">f</script>. Nesse caso, dados
+os pontos <script type="math/tex">(a, f(a)), (b, f(b))</script>, sabemos que existe <script type="math/tex">x^* \in (a,b)</script> tal que
+<script type="math/tex">f(x^*) = 0</script> quando os sinais são trocados e <script type="math/tex">f</script> é contínua. Traçando um
+segmento entre esses pontos, em algum momento ele vai atingir o eixo <script type="math/tex">x</script> e é
+nesse ponto que teremos a iteração. A continuação do algoritmo é o mesmo do
+método da Bisseção, isto é, o intervalo vai sendo reduzido, não mais
+pelo ponto médio, mas pelo ponto de intersecção da reta que passa por
+<script type="math/tex">(a,f(a))</script> e <script type="math/tex">(b, f(b))</script> e o eixo <script type="math/tex">x</script>. </p>
+<p>A iteração desse método é dada por </p>
+<p>
+<script type="math/tex; mode=display">
+x_k = a - \frac{f(a_k)}{f(b_k) - f(a_k)}(b_k-a_k), 
+</script>
+</p>
+<p>em que <script type="math/tex">a_k</script> e <script type="math/tex">b_k</script> são obtidos conforme o método da Bisseção.</p>
+<p>Se <script type="math/tex">|f'(x)| \ge d > 0</script> para todo <script type="math/tex">x \in [a,b]</script>, asseguramos que </p>
+<p>
+<script type="math/tex; mode=display">|x^* - x_k| \le |f(x_k)|/d.</script>
+</p>
 <h2 id="iteracao-de-ponto-fixo">Iteração de Ponto Fixo</h2>
 <p>Se <script type="math/tex">f : \mathbb{R}^n \to \mathbb{R}</script> é uma função, dizemos que <script type="math/tex">x</script> é ponto
 fixo de <script type="math/tex">f</script> quando <script type="math/tex">f(x) = x</script>. Esse nome fica claro pois <script type="math/tex">f(f(\dots(f(x)))) =
@@ -219,9 +242,83 @@ demonstração</a>
 interessante com um pouquinho de topologia. No nosso caso, tomamos <script type="math/tex">C =
 [a,b]</script>, o intervalo limitado e fechado na reta, isto é, se <script type="math/tex">f</script> é contínua em <script type="math/tex">[a,b]</script> e <script type="math/tex">f(x) \in [a,b]</script> para todo <script type="math/tex">x \in [a,b]</script>, isto
 é, <script type="math/tex">f([a,b]) \subseteq [a,b]</script>, então <script type="math/tex">f</script> possui ponto fixo. </p>
-<p>**Teorema do Ponto Fixo de Banach</p>
+<p><strong>Teorema do Ponto Fixo de Banach</strong></p>
+<p>Dizemos que uma função <script type="math/tex">f : X \to X</script>, em que <script type="math/tex">X</script> é um espaço normado completo
+é uma contração se existe <script type="math/tex">L \in [0,1)</script> tal que 
+<script type="math/tex; mode=display">||f(x) - f(y)|| \le r||x-y||.</script>
+Como exemplo, podemos tomar <script type="math/tex">X = [a,b]</script>. Se <script type="math/tex">X</script> não for vazio e <script type="math/tex">f</script> for uma
+contração, então <script type="math/tex">f</script> admite um <strong>único</strong> ponto fixo <script type="math/tex">x^*</script>. Além do mais, para
+todo <script type="math/tex">x_0 \in X</script>, a sequência iniciada em <script type="math/tex">x_0</script> que segue a iteração <script type="math/tex">x_k =
+f(x_{k-1})</script> converge para <script type="math/tex">x^*</script> (o que permite desenvolver um método). </p>
+<p>Podemos demonstrar que <script type="math/tex">||x^* - x_n|| \le \dfrac{r^n}{1 -r}||x_1 - x_0||</script>.  A
+prova pode ser <a href="https://en.wikipedia.org/wiki/Banach_fixed-point_theorem#Proof">facilmente
+encontrada</a>. </p>
+<p>Como já afirmei, se conseguirmos assegurar que <script type="math/tex">f</script> satisfaz as condições do
+Teorema, então a sequência <script type="math/tex">x_0, x_1, x_2, \dots, x_n, \dots</script> com <script type="math/tex">f(x_k) =
+x_{k-1}</script> converge para o ponto fixo <script type="math/tex">x^*</script>, que implica <script type="math/tex">g(x^*) = 0</script>.  </p>
 <h2 id="metodo-de-newton-raphson">Método de Newton-Raphson</h2>
-<p>Também chamado de método de Newton. </p></div>
+<p>Também chamado de método de Newton. Por Taylor, seja <script type="math/tex">f</script> pelo menos duas vezes
+derivável. Assim </p>
+<p>
+<script type="math/tex; mode=display">
+f(x^*) = f(x) + (x^* - x)f'(x) + \frac{(x^*-x)^2}{2}f''(x) + o((x^*-x)^2),
+</script>
+em que <script type="math/tex">o(x)</script> é qualquer função tal que <script type="math/tex">\lim_{x\to 0} o(x)/x = 0</script>. O método
+de Netwon assume que <script type="math/tex">(x^* - x)^2</script> é suficientemente pequeno, isto é, <script type="math/tex">x</script> está
+suficientemente próximo de <script type="math/tex">x^*</script>. Assim, </p>
+<p>
+<script type="math/tex; mode=display">
+0 \approx f(x) + f'(x)(x^* - x) \implies x^* \approx x - \frac{f(x)}{f'(x)}.
+</script>
+</p>
+<p>Com essa ideia em mente, definimos a iteração</p>
+<p>
+<script type="math/tex; mode=display">
+x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}, 
+</script>
+</p>
+<p>em que se <script type="math/tex">x_0</script> é suficientemente próximo de <script type="math/tex">x^*</script>, então <script type="math/tex">\lim_{k \to
++\infty} x_k = x^*</script>. A ideia é que as aproximações são dadas através da
+tangente, isto é, <script type="math/tex">x_{k+1}</script>  é o ponto da intersecção do eixo <script type="math/tex">x</script> com a
+tangente de <script type="math/tex">f</script> no ponto <script type="math/tex">x_k</script>. </p>
+<p><strong>Teorema de convergência:</strong> Seja <script type="math/tex">f</script> duas vezes continuamente diferenciável
+em <script type="math/tex">[a,b]</script>. Se <script type="math/tex">f'(x^*) \neq 0</script>, existe <script type="math/tex">\delta > 0</script> tal que a sequência de
+gerada pelo método de Newton converge para todo <script type="math/tex">x_0 \in [x^* - \delta, x^* +
+\delta]</script>. </p>
+<p>A ideia dessa demonstração é introduzir a função </p>
+<p>
+<script type="math/tex; mode=display">
+g(x) = x -\frac{f(x)}{f'(x)}
+</script>
+</p>
+<p>Note que quando <script type="math/tex">f(x) =0</script>, teremos que <script type="math/tex">g(x) = x</script>, isto é, <script type="math/tex">x</script> é ponto fixo de
+<script type="math/tex">g</script>, isto é, a prova se resume a verificar as condições do Teorema do Ponto
+Fixo de Banach para algum <script type="math/tex">\delta > 0</script>. A derivada de <script type="math/tex">g</script> vai ser controlada
+em um intervalo suficientemente pequeno.</p>
+<p><strong>Condição suficiente para convergência:</strong> Voltando a expansão de Taylor, </p>
+<p>
+<script type="math/tex; mode=display">
+f(x^*) = f(x) + (x^* - x)f'(x) + \frac{(x^*-x)^2}{2}f''(z)
+</script>
+para algum <script type="math/tex">z</script> entre <script type="math/tex">x</script> e <script type="math/tex">x^*</script>. Usando a iteração de Newton, isto é, <script type="math/tex">f(x_n)
+= f'(x_n)(x_n - x_{n+1})</script>, obtemos que</p>
+<p>
+<script type="math/tex; mode=display">
+0 = f'(x_n)(x^* - x_{n+1}) +  \frac{(x^*-x_n)^2}{2}f''(z_n).
+</script>
+</p>
+<p>Definindo <script type="math/tex">e_n = (x^* - x_n)</script>, temos que </p>
+<p>
+<script type="math/tex; mode=display">
+e_{n+1} = \frac{e_n^2}{2f'(x_n)}f''(z_n).
+</script>
+</p>
+<p>Assumindo que <script type="math/tex">f'(x), f''(x) \neq 0</script> para <script type="math/tex">x \in [a,b]</script>, temos que para todo
+<script type="math/tex">x_0</script> tal que <script type="math/tex">f(x_0)f''(x_0) > 0</script>.</p>
+<h2 id="sugestoes">Sugestões</h2>
+<ul>
+<li><a href="http://compmath-journal.org/dnload/Robin-Kumar-and-Vipan-/CMJV06I06P0290.pdf">Convergência de métodos numéricos</a>.</li>
+</ul></div>
         
         
     </div>
