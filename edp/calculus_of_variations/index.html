@@ -134,13 +134,11 @@
         <li class="first-level active"><a href="#calculo-de-variacoes">Cálculo de Variações</a></li>
             <li class="second-level"><a href="#equacoes-caracteristicas-hamilton-jacobi">Equações características Hamilton-Jacobi</a></li>
                 
-            <li class="second-level"><a href="#aplicacoes">Aplicações</a></li>
-                
             <li class="second-level"><a href="#o-calculo-das-variacoes">O cálculo das variações</a></li>
                 
                 <li class="third-level"><a href="#exemplo">Exemplo</a></li>
                 <li class="third-level"><a href="#equacoes-de-euler-lagrange">Equações de Euler-Lagrange</a></li>
-                <li class="third-level"><a href="#aplicacao-ao-exemplo">Aplicação ao exemplo</a></li>
+                <li class="third-level"><a href="#transformada-de-legendre">Transformada de Legendre</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -213,9 +211,9 @@ G(p, p_{n+1}, z, y) = p_{n+1} + H(p, x) = 0.
 </script>
 </p>
 <p>em que as primeiras duas equações são as <strong>equações de Hamilton</strong>.  A função
-<script type="math/tex">H</script> também é chamada de Hamiltoniano. </p>
-<h2 id="aplicacoes">Aplicações</h2>
-<p>XXX: TODO</p>
+<script type="math/tex">H</script> também é chamada de Hamiltoniano. Um exemplo muito conhecido
+na estatística é o <em>Hamiltonian Monte Carlo</em> (HMC), que usa
+essa estrutura para procurar no espaço dos parâmetros. </p>
 <h2 id="o-calculo-das-variacoes">O cálculo das variações</h2>
 <p>Introduzimos o Lagrangiano </p>
 <p>
@@ -256,8 +254,17 @@ equações Euler-Lagrange:</p>
 \le t.
 </script>
 </p>
-<p>Note que resolver as equações não nos dá as funções ótimas, da mesma forma que
-derivada igual a zero não implica mínimo local. </p>
+<p>Note que resolver as equações não nos dão as funções ótimas, da mesma forma
+que derivada igual a zero não implica mínimo local de forma geral. Por isso,
+dizemos que as soluções das equações de Euler-Lagrange 
+são pontos críticos de <script type="math/tex">I[\cdot]</script>. </p>
+<p><strong>Exemplo:</strong> Seja <script type="math/tex">L(v,x) = \frac{1}{2}m||v||^2 - \phi(x)</script>, 
+em que <script type="math/tex">m > 0</script>. Então a equação de Lagrange é 
+<script type="math/tex; mode=display">
+-m\dot{v}(s) + D_x\phi(x) = 0 \implies m\ddot{x}(s) = D_x \phi(x), 
+</script>
+que a lei de Newton para uma partícula de massa <script type="math/tex">m</script> e campo 
+de forças <script type="math/tex">D_x \phi</script>.   </p>
 <p>O interessante é que, dado uma Lagrangiano <script type="math/tex">L</script>, podemos introduzir o
 <strong>Hamiltoniano</strong></p>
 <p>
@@ -268,8 +275,72 @@ H(p,x) := p\cdot v(p,x) - L(v(p,x), x),
 <p>em que <script type="math/tex">v</script> é definido como a função tal que <script type="math/tex">p = D_vL(v,x)</script>. 
 Podemos demonstrar que a partir desse <script type="math/tex">H</script>, temos as equações de Hamilton, o
 que permite uma conexão entre as duas teorias. </p>
-<h3 id="aplicacao-ao-exemplo">Aplicação ao exemplo</h3>
-<p>XXX: TODO </p></div>
+<h3 id="transformada-de-legendre">Transformada de Legendre</h3>
+<p>Desconsidere a dependência de <script type="math/tex">H</script> em <script type="math/tex">x</script> e defina 
+<script type="math/tex">L^*(p) = \sup_{v \in \mathbb{R}^n} \{pv - L(v)\}</script>. 
+Chamamos <script type="math/tex">L^*</script> de <em>transformada de Lagrange</em>. Com 
+algumas hipóteses em <script type="math/tex">L</script> (convexidade e limitação superior 
+de <script type="math/tex">pv - L(v)</script>), sabemos que existe <script type="math/tex">v^*</script> tal que 
+<script type="math/tex; mode=display">
+L^*(v^*) = pv^* - L(v^*).
+</script>
+Se <script type="math/tex">L</script> for diferenciável, teremos que <script type="math/tex">D_vL(v^*) = p</script>
+(derive a equação a cima com respeito a <script type="math/tex">v</script> e avalie em 
+<script type="math/tex">v^*</script>). Então a equação <script type="math/tex">p = D_v L(v)</script> tem solução em <script type="math/tex">v</script>, 
+isto é, 
+<script type="math/tex; mode=display">
+L^*(p) = p v(p) - L(v(p)) = H(p).
+</script>
+Além disso, com algumas hipóteses sobre <script type="math/tex">H</script>, também podemos
+provar que <script type="math/tex">H^* = L</script>. Esse resultado é conhecido como 
+<strong>Dualidade convexa do Hamiltoniano e Lagrangiano</strong>. 
+A ideia de Dualidade vai ser melhor compreendida em 
+otimização, mas aqui, vale lembrar que 
+<script type="math/tex; mode=display">
+L^* = H, H^* = L.
+</script>
+</p>
+<p>Agora, sem a dependência do <script type="math/tex">x</script>, as equações
+características são </p>
+<p>
+<script type="math/tex; mode=display">
+\begin{cases}
+    \dot{\gamma}(t) = D_pH(p(t)) \\
+    \dot{p}(t) = 0 \\
+    \dot{z}(t) = D_pH(p(t)) - H(p(t))
+\end{cases}
+</script>
+</p>
+<p><strong>Exercício:</strong> Prove que <script type="math/tex">L^* = H, H^* = L</script> implica que 
+<script type="math/tex; mode=display">
+\begin{cases}
+   u\cdot v = L(v) + H(u) \\
+   u = D_vL(v) \\
+   v = D_uH(u)
+\end{cases}
+</script>
+</p>
+<p>Agora note que <script type="math/tex">\dot{z} = D_v H(p)\cdot p - H(p) = L(D_pH(p)) = 
+L(\dot{\gamma})</script>. Assim, para valores de tempo pequenos 
+<script type="math/tex; mode=display">
+u(x,t) = z(t) = \int_0^t L(\dot{\gamma}(s)) \, ds + g(x(0)),
+</script>
+em que <script type="math/tex">g</script> é condição de fronteira quando <script type="math/tex">t = 0</script>. Para 
+generalizar esse valor para valores de <script type="math/tex">t</script> grandes, </p>
+<p>
+<script type="math/tex; mode=display">
+u(x,t) = \inf_{w} \left\{\int_0^t L(\dot{w}(s)) \, ds + g(x(0) \mid w(t) =
+x\right\}.
+</script>
+</p>
+<p>Com mais algumas condições, conseguimos provar que essa 
+expressão tem de fato uma solução. A <strong>formula de Hopf-Lax</strong> 
+diz que a solução será </p>
+<p>
+<script type="math/tex; mode=display">
+u(x,t) = \min_{y \in \mathbb{R}^n} \left\{tL\left(\frac{x-y}{t}\right) + g(y)\right\}.
+</script>
+</p></div>
         
         
     </div>
