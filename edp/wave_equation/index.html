@@ -134,8 +134,6 @@
         <li class="first-level active"><a href="#equacao-da-onda">Equação da Onda</a></li>
             <li class="second-level"><a href="#interpretacao-fisica">Interpretação física</a></li>
                 
-            <li class="second-level"><a href="#discretizacao-no-espaco">Discretização no espaço</a></li>
-                
             <li class="second-level"><a href="#formula-dalembert">Fórmula d'Alembert</a></li>
                 
             <li class="second-level"><a href="#medias-esfericas-e-formulas-de-poisson-e-kirchhoff">Médias esféricas e fórmulas de Poisson e Kirchhoff</a></li>
@@ -157,15 +155,84 @@
 </p>
 <p>sujeita a condições iniciais e de fronteira. </p>
 <h2 id="interpretacao-fisica">Interpretação física</h2>
-<p>Pg. 82 (Lawrence) </p>
-<h2 id="discretizacao-no-espaco">Discretização no espaço</h2>
+<p>Em uma dimensão (mais outra temporal), a equação da onda é um modelo simpleficado de uma corda vibrando e 
+<script type="math/tex">u(x,t)</script> representa o deslocamento de um ponto <script type="math/tex">x</script> no tempo <script type="math/tex">t \ge 0</script>. Suponha que a massa da 
+corda seja <script type="math/tex">\rho = \rho(x)</script> e a elasticidade seja <script type="math/tex">k = k(x)</script>. Considere o pedaço da corda <script type="math/tex">[x, x + \Delta x]</script>. 
+Então, a massa desse pedaço será <script type="math/tex">\rho(x) \Delta x</script>, sua velocidade é dada por <script type="math/tex">u_t(x,t)</script> (a derivada do deslocamento 
+com respeito ao tempo) e a sua energia cinética é <script type="math/tex">\Delta K = \rho (u_t)^2 \Delta x / 2</script> (lembre que energia cinética 
+é proporcional à massa e ao quadrado da velocidade). </p>
+<p>Portanto, a enegia cinética total será 
+<script type="math/tex; mode=display">
+K(t) = \frac{1}{2} \int_0^L \rho(x) (u_t(x,t))^2 \, dx.
+</script>
+Pela <a href="https://en.wikipedia.org/wiki/Hooke%27s_law">Lei de Hooke</a>, a energia potencial da corda é <script type="math/tex">(k/2)y^2</script> em que <script type="math/tex">y</script> é o aumento da corda dado pelo comprimento de <script type="math/tex">u(x,t)</script> na variável <script type="math/tex">x</script>. Esse <a href="https://en.wikipedia.org/wiki/Arc_length#Finding_arc_lengths_by_integrating">comprimento pode ser medido</a> usando 
+<script type="math/tex; mode=display">
+\sqrt{1 + u_x^2}
+</script>
+e, portanto, a energia potencial é 
+<script type="math/tex; mode=display">
+P(t) = \frac{1}{2}\int_0^L k(x)(1 + (u_x(x,t))^2) \, dx.
+</script>
+A <a href="https://lucasmoschen.github.io/ta-sessions/edp/calculus_of_variations/#o-calculo-das-variacoes">ação da função</a> <script type="math/tex">u</script> é, portanto, 
+<script type="math/tex; mode=display">
+I(u) = \int_0^T K(t) - P(t) \, dt = \frac{1}{2} \int_0^T\int_0^L \rho(u_t)^2 - k(1 + u_x^2) \, dx \, dt.
+</script>
+</p>
+<p>Se <script type="math/tex">u</script> minimiza essa ação, pelo Teorema de Euler-Lagrange, derivando com respeito a <script type="math/tex">u_t</script> e <script type="math/tex">u_x</script>, 
+<script type="math/tex; mode=display">
+-2\rho u_{tt} - 2(k_xu_x + ku_{xx})  = 0,
+</script>
+que implica <script type="math/tex">\rho u_{tt} = -ku_{xx} - k_xu_x</script>, isto é, se a elasticidade for constante na corda, temos a equação da onda.</p>
+<p>Note que a nossa construção supõe a velocidade inicial conhecida. Portanto, além da condição de fronteira usal, precisamos de uma condição adicional (o que era de se esperar, pois nas EDOs, esse comportamento também acontecia).</p>
 <h2 id="formula-dalembert">Fórmula d'Alembert</h2>
+<p>Considere o problema 
+<script type="math/tex; mode=display">
+\begin{cases}
+    u_{tt} - u_{xx} = 0, \\
+    u(x,0) = g(x), u_t(x,0) = h(x),
+\end{cases}
+</script>
+em que <script type="math/tex">g</script> e <script type="math/tex">h</script> são dadas. Note que 
+<script type="math/tex; mode=display">
+u_{tt} - u_{xx} = u_{tt} + u_{tx} - u_{xt} - u_{xx} = \left(\frac{\partial}{\partial t} + \frac{\partial}{\partial x}\right)(u_t - u_x) = \left(\frac{\partial}{\partial t} + \frac{\partial}{\partial x}\right)\left(\frac{\partial}{\partial t} - \frac{\partial}{\partial x}\right)u.
+</script>
+Apesar de ser uma notação de funcional que pode ser complicada, ela é muito útil para definir 
+<script type="math/tex; mode=display">
+v(x,t) = \left(\frac{\partial}{\partial t} - \frac{\partial}{\partial x}\right)u, 
+</script>
+e, então, 
+<script type="math/tex; mode=display">
+v_t + v_x = 0, (x \in \mathbb{R}, t > 0),
+</script>
+que é a equação do transporte. Sabemos que a solução para esse problema é 
+<script type="math/tex; mode=display">
+v(x,t) = a(x - t), 
+</script>
+em que <script type="math/tex">a(x) := v(x,0)</script>, e, portanto 
+<script type="math/tex; mode=display">
+u_t(x,t) - u_x(x,t) = a(x,t), 
+</script>
+que também o problema do transporte não homogêneo. Esse problema <a href="https://www.youtube.com/watch?v=1emgOSiNocE">tem solução conhecida</a>: 
+<script type="math/tex; mode=display">
+u(x,t) = \int_0^t a(x + (t-s) - s) \, ds + b(x+t) = \frac{1}{2}\int_{x-t}^{x+t} a(y) \, dy + b(x,t).
+</script>
+Além disso, em <script type="math/tex">t=0</script>, temos que <script type="math/tex">b(x,0) = g(x)</script> e <script type="math/tex">a(x) = h(x) - g'(x)</script>. Portanto, 
+<script type="math/tex; mode=display">
+u(x,t) = \frac{1}{2} \int_{x-t}^{x+t} h(y) - g'(y) \,dy + g(x+t), 
+</script>
+que implica 
+<script type="math/tex; mode=display">
+u(x,t) = \frac{1}{2}[g(x+t) - g(x-t)] + \frac{1}{2}\int_{x-t}^{x+t} h(y) \, dy.
+</script>
+</p>
+<p>Esta é a fórmula de d'Alembert. Note que na solução, assumimos que <script type="math/tex">u</script> é suficientemente suave (classe <script type="math/tex">C^2</script>). </p>
 <h2 id="medias-esfericas-e-formulas-de-poisson-e-kirchhoff">Médias esféricas e fórmulas de Poisson e Kirchhoff</h2>
 <h2 id="metodos-de-energia">Métodos de energia</h2>
 <h2 id="corda-infinita">Corda infinita</h2>
 <h2 id="sugestoes">Sugestões</h2>
 <ul>
 <li><a href="">CFL (1928)</a></li>
+<li><a href="https://www.mtnmath.com/whatrh/node66.html">Discretização da equação da onda</a></li>
 </ul></div>
         
         
