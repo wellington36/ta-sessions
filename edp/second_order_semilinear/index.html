@@ -132,6 +132,8 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#equacoes-semiliares-de-segunda-ordem">Equações Semiliares de Segunda Ordem</a></li>
+            <li class="second-level"><a href="#curvas-caracteristicas">Curvas características</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -141,7 +143,86 @@
 <script type="math/tex; mode=display">
 a(x,y) u_{xx} + 2b(x,y)u_{xy} + c(x,y)u_{yy} = f(x,y,u,u_x,u_y),
 </script>
-cuja parte principal é o lado esquerdo da equação.</p></div>
+cuja parte principal é o lado esquerdo da equação. Suponha que as funções <script type="math/tex">a,b,c</script> sejam contínuas e defina a função <strong>discriminate</strong>:
+<script type="math/tex; mode=display">
+\delta(x,y) = b^2(x,y) - a(x,y)c(x,y).
+</script>
+</p>
+<p>O ponto <script type="math/tex">(x,y) \in \Omega</script> é dito </p>
+<ol>
+<li>Parabólico se <script type="math/tex">\delta(x,y) = 0</script>
+</li>
+<li>Hiperbólica se <script type="math/tex">\delta(x,y) > 0</script>
+</li>
+<li>Elíptica se <script type="math/tex">\delta(x,y) < 0</script>
+</li>
+</ol>
+<p>Se a condição (1), (2) ou (3) vale para todo o ponto em <script type="math/tex">\Omega</script>, então a EDP é dita parabólica, hiperbólica ou elíptica, respectivamente. </p>
+<p><strong>Propriedade importante:</strong> O tipo da EDP é invariante sob mudanças de variáveis se o Jacobiano da transformação for não nulo em uma vizinhança de cada ponto. </p>
+<h2 id="curvas-caracteristicas">Curvas características</h2>
+<p>Para EDPs de segunda ordem, as curvas características são curvas planas ao longo das quais a EDP pode ser escrita em uma forma que contenha as derivadas de <script type="math/tex">u_x</script> e <script type="math/tex">u_y</script>. Suponha que <script type="math/tex">a</script> não se anula na região de interesse. Caso se anule, considere <script type="math/tex">c</script> ou $b, pois uma delas não se anula na região de interesse, se não a EDP seria de primeira ordem. Reescreva o problema como </p>
+<p>
+<script type="math/tex; mode=display">
+\begin{cases}
+p = u_x \\ q = u_y \\ a(x,y)p_x + 2b(x,y)p_y + c(x,y)q_y = f(x,y,u,p,q).
+\end{cases}
+</script>
+</p>
+<p>Quando <script type="math/tex">u</script> é de classe <script type="math/tex">C^2</script> como é nosso caso, <script type="math/tex">p_y = q_x</script>. Assim, para qualquer função <script type="math/tex">\lambda(x,y) \neq 0</script> temos que 
+<script type="math/tex; mode=display">
+ap_x + 2bp_y + \lambda p_y - \lambda q_x + cq_y = 0.
+</script>
+Defina <script type="math/tex">P(x) = p(x,y(x))</script> e <script type="math/tex">Q(x) = q(x,y(x))</script> e teremos (sim, regra da cadeia de novo) que 
+<script type="math/tex; mode=display">
+a\frac{dP}{dx} - \lambda\frac{dQ}{dx} = 0,
+</script>
+em que 
+<script type="math/tex; mode=display">
+\frac{dy}{dx} = \frac{2b + \lambda}{a} = -\frac{c}{\lambda}.
+</script>
+Assim, a função <script type="math/tex">\lambda</script> deve satisfazer 
+<script type="math/tex; mode=display">
+\lambda^2 + 2b\lambda + ac = 0
+</script>
+</p>
+<p>Agora se <script type="math/tex">-c/\lambda = \mu</script>, então 
+<script type="math/tex; mode=display">
+\left(\frac{c}{\mu}\right)^2 - 2\frac{bc}{\mu} + ac =0 \overset{\times \mu^2/c}{\implies} a\mu^2 - 2b\mu + c = 0,
+</script>
+isto é, se <script type="math/tex">dy/dx = \mu(x,y)</script>, então <script type="math/tex">a\mu^2 - 2b\mu + c = 0</script>. Portanto, o sinal do discriminante <script type="math/tex">\delta = b^2 - ac</script> introduzido acima determina se existem uma, duas, ou nenhuma solução <script type="math/tex">\mu</script>. </p>
+<ul>
+<li>No caso parabólico, existe uma família de funções que satisfaz essa equação para <script type="math/tex">\mu</script>.</li>
+<li>No caso hiperbólico, duas famílias satisfazem. </li>
+<li>No caso elíptico, não existem soluções para <script type="math/tex">\mu</script>. </li>
+</ul>
+<p>As curvas definadas por 
+<script type="math/tex; mode=display">
+\frac{dy}{dx} = \mu(x,y)
+</script>
+são as <strong>curvas características</strong> da EDP.</p>
+<p><strong>Exemplo:</strong> Vamos encontrar as curvas características da equação da onda (que é hiperbólica)
+<script type="math/tex; mode=display">
+u_{tt} = c^2u_{xx}.
+</script>
+</p>
+<p>Nessse caso <script type="math/tex">a, b, c</script> são constantes com <script type="math/tex">a = 1, b = 0</script> e <script type="math/tex">c = -c^2</script>. Assim, 
+<script type="math/tex; mode=display">
+\mu^2 -c^2 = 0 \implies \mu \pm c.
+</script>
+Obtemos que 
+<script type="math/tex; mode=display">
+\frac{dx}{dt} = \pm c \implies x = \pm ct + x_0.
+</script>
+Logo as curvas são as famílias de retas <script type="math/tex">x + ct = k_1</script> e <script type="math/tex">x - ct = k_2</script>, para <script type="math/tex">k_1, k_2</script> constantes. </p>
+<p>A ideia para resolver esses problemas é, portanto, fazer a mudança de variáveis 
+<script type="math/tex; mode=display">
+\begin{cases}
+    \xi = x + ct \\
+    \eta = x - ct. 
+\end{cases}
+</script>
+e introduzir a função <script type="math/tex">v(\xi,\eta) = u(x(\xi,\eta),t(\xi,\eta))</script>. 
+Outra forma de resolver a equação da onda é introduzida <a href="https://lucasmoschen.github.io/ta-sessions/edp/wave_equation/">aqui</a>.</p></div>
         
         
     </div>
