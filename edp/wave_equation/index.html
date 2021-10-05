@@ -222,13 +222,13 @@ u(x,t) = \frac{1}{2} \int_{x-t}^{x+t} h(y) - g'(y) \,dy + g(x+t),
 </script>
 que implica 
 <script type="math/tex; mode=display">
-u(x,t) = \frac{1}{2}[g(x+t) - g(x-t)] + \frac{1}{2}\int_{x-t}^{x+t} h(y) \, dy.
+u(x,t) = \frac{1}{2}[g(x+t) + g(x-t)] + \frac{1}{2}\int_{x-t}^{x+t} h(y) \, dy.
 </script>
 </p>
 <p>Esta é a fórmula de d'Alembert. Note que na solução, assumimos que <script type="math/tex">u</script> é suficientemente suave (classe <script type="math/tex">C^2</script>). Essa condição é verificada se <script type="math/tex">g \in C^2(\mathbb{R})</script> e <script type="math/tex">h \in C^1(\mathbb{R})</script>. </p>
 <p>Dizemos, então, que a solução <script type="math/tex">u</script> tem a forma 
 <script type="math/tex; mode=display">
-u(x,t) = F(x+t) - G(x-t)
+u(x,t) = F(x+t) + G(x-t)
 </script>
 </p>
 <p><em>Observação: Esse desenvolvimento assume que a corda é infinita.</em></p>
@@ -251,7 +251,7 @@ u_t(x,0) = g(x), x \in [0,l].
 <p>Podemos provar o seguinte teorema: </p>
 <p><strong>Teorema:</strong> Seja <script type="math/tex">f \in C^2[0,l]</script> e <script type="math/tex">g \in C^1[0,l]</script> tais que <script type="math/tex">f, f''</script> e <script type="math/tex">g</script> se anulam em <script type="math/tex">x=0</script> e <script type="math/tex">x=l</script>, então 
 <script type="math/tex; mode=display">
-u(x,t) = \frac{F(x+ct) - F(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \, ds,
+u(x,t) = \frac{F(x+ct) + F(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \, ds,
 </script>
 em que <script type="math/tex">F</script> e <script type="math/tex">G</script> são extensões periódicas (período <script type="math/tex">2l</script>) e ímpares das funções <script type="math/tex">f</script> e <script type="math/tex">g</script>, respecticamente, é a única solução do problema de corda infinita. </p>
 <h4 id="o-que-e-extensao-periodica-e-impar">O que é extensão periódica e ímpar?</h4>
