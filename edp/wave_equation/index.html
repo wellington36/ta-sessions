@@ -136,11 +136,11 @@
                 
             <li class="second-level"><a href="#formula-dalembert">Fórmula d'Alembert</a></li>
                 
-            <li class="second-level"><a href="#medias-esfericas-e-formulas-de-poisson-e-kirchhoff">Médias esféricas e fórmulas de Poisson e Kirchhoff</a></li>
+            <li class="second-level"><a href="#extensoes">Extensões</a></li>
                 
+                <li class="third-level"><a href="#medias-esfericas-e-formulas-de-poisson-e-kirchhoff">Médias esféricas e fórmulas de Poisson e Kirchhoff</a></li>
+                <li class="third-level"><a href="#corda-finita">Corda finita</a></li>
             <li class="second-level"><a href="#metodos-de-energia">Métodos de energia</a></li>
-                
-            <li class="second-level"><a href="#corda-infinita">Corda infinita</a></li>
                 
             <li class="second-level"><a href="#sugestoes">Sugestões</a></li>
                 
@@ -231,12 +231,69 @@ u(x,t) = \frac{1}{2}[g(x+t) - g(x-t)] + \frac{1}{2}\int_{x-t}^{x+t} h(y) \, dy.
 u(x,t) = F(x+t) - G(x-t)
 </script>
 </p>
-<h2 id="medias-esfericas-e-formulas-de-poisson-e-kirchhoff">Médias esféricas e fórmulas de Poisson e Kirchhoff</h2>
+<p><em>Observação: Esse desenvolvimento assume que a corda é infinita.</em></p>
+<h2 id="extensoes">Extensões</h2>
+<p>Esse é um tópico muito rico que pode ter muitas variações. Aqui apresentarei duas extensões que podem ser mais estudadas nas referêncais do curso. </p>
+<h3 id="medias-esfericas-e-formulas-de-poisson-e-kirchhoff">Médias esféricas e fórmulas de Poisson e Kirchhoff</h3>
+<p>Para dimensões espaciais <script type="math/tex">n \ge 2</script>, a solução é um pouco mais complexa. Para isso, é preciso resolver a equação de <a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Poisson%E2%80%93Darboux_equation">Euler-Poisson-Darboux</a> e reduzir o problema ao formato que se possa aplicar a fórmula de d'Alembert. Para o detalhamento desse processo, o livro do professor Lawrence Evans é bastante indicado. </p>
+<h3 id="corda-finita">Corda finita</h3>
+<p>Nesse caso, temos restrições de contorno quando <script type="math/tex">x=0</script> e <script type="math/tex">x=l</script> (comprimento da corda): </p>
+<p>
+<script type="math/tex; mode=display">
+\begin{cases}
+u_{tt} = c^2u_{xx} \\
+u(0,t) = u(l,t) = 0, \forall t \ge 0, \\
+u(x,0) = f(x), x \in [0,l] \\ 
+u_t(x,0) = g(x), x \in [0,l].
+\end{cases}
+</script>
+</p>
+<p>Podemos provar o seguinte teorema: </p>
+<p><strong>Teorema:</strong> Seja <script type="math/tex">f \in C^2[0,l]</script> e <script type="math/tex">g \in C^1[0,l]</script> tais que <script type="math/tex">f, f''</script> e <script type="math/tex">g</script> se anulam em <script type="math/tex">x=0</script> e <script type="math/tex">x=l</script>, então 
+<script type="math/tex; mode=display">
+u(x,t) = \frac{F(x+ct) - F(x-ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} G(s) \, ds,
+</script>
+em que <script type="math/tex">F</script> e <script type="math/tex">G</script> são extensões periódicas (período <script type="math/tex">2l</script>) e ímpares das funções <script type="math/tex">f</script> e <script type="math/tex">g</script>, respecticamente, é a única solução do problema de corda infinita. </p>
+<h4 id="o-que-e-extensao-periodica-e-impar">O que é extensão periódica e ímpar?</h4>
+<p>Dizemos que uma função <script type="math/tex">f: A \to B</script> tem período <script type="math/tex">T</script> se para todo <script type="math/tex">x \in A</script>, temos que <script type="math/tex">x+ T \in A</script> e <script type="math/tex">f(x) = f(x+ T)</script>. A função será ímpar se <script type="math/tex">f(x) = -f(-x)</script> para <script type="math/tex">x \le -l</script> Assim, definimos a extensão periódica ímpar de <script type="math/tex">f</script> como 
+<script type="math/tex; mode=display">
+F(x) = \begin{cases}
+    -f(-x + 2kl ) &x \in [(2k-1)l, 2kl] \\
+    f(x - 2kl) &x \in [2kl, (2k+1)l],\\
+\end{cases}
+</script>
+que é definida em intervalor fechados.</p>
 <h2 id="metodos-de-energia">Métodos de energia</h2>
-<h2 id="corda-infinita">Corda infinita</h2>
+<p>Esses métodos nos ajudam a estudar a unicidade da solução <script type="math/tex">u</script> do problema. Considere novamente o problema 
+<script type="math/tex; mode=display">
+\begin{cases}
+    u_{tt} - u_{xx} = 0, \\
+    u(x,0) = g(x), u_t(x,0) = h(x),
+\end{cases}
+</script>
+Suponha que <script type="math/tex">u</script> e <script type="math/tex">v</script> sejam soluções para esse problema. Então <script type="math/tex">w = u - v</script> é uma solução para 
+<script type="math/tex; mode=display">
+\begin{cases}
+    u_{tt} - u_{xx} = 0, \\
+    u(x,0) =0, u_t(x,0) = 0.
+\end{cases}
+</script>
+Defina a energia 
+<script type="math/tex; mode=display">
+E(t) := \frac{1}{2}\int_U w_t^2(x,t) + w_x(x,t)^2 \, dx, 0 \le t \le T. 
+</script>
+Derivando com respeito a <script type="math/tex">t</script> e supondo <script type="math/tex">U</script> limitado com fronteira suave, temos que (Fórmula de Leibniz)
+<script type="math/tex; mode=display">
+\dot{E}(t) = \int_U w_tw_{tt} + w_xw_{tx} \, dx = \int_U w_t(w_{tt} - w_{xx}) = 0,
+</script>
+em que a segunda igualdade vem de uma integração por partes combinada com o fato de na fronteira <script type="math/tex">w = 0</script>. Portanto <script type="math/tex">E(t) = E(0)</script> para todo <script type="math/tex">T \ge t \ge 0</script>, que implica <script type="math/tex">E(t) = 0</script>. Em paricular, 
+<script type="math/tex; mode=display">
+w_t(x,t) = w_x(x,t) = 0, \forall x, t
+</script>
+e, portanto <script type="math/tex">w \equiv 0</script>. </p>
 <h2 id="sugestoes">Sugestões</h2>
 <ul>
-<li><a href="">CFL (1928)</a></li>
+<li><a href="https://web.stanford.edu/class/cme324/classics/courant-friedrichs-lewy.pdf">CFL (1928)</a></li>
 <li><a href="https://www.mtnmath.com/whatrh/node66.html">Discretização da equação da onda</a></li>
 </ul></div>
         
