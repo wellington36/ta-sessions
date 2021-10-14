@@ -141,7 +141,6 @@
             <li class="second-level"><a href="#quadratura-de-gauss-legendre">Quadratura de Gauss-Legendre</a></li>
                 
                 <li class="third-level"><a href="#polinomios-ortogonais">Polinômios Ortogonais</a></li>
-                <li class="third-level"><a href="#polinomios-de-legendre">Polinômios de Legendre</a></li>
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -246,8 +245,38 @@ f(x_{j}) + f(b)\right] -
 \frac{b-a}{12}h^2f^{(2)}(\xi).</script>
 </p>
 <h2 id="quadratura-de-gauss-legendre">Quadratura de Gauss-Legendre</h2>
+<p>Este método escolhe os pontos para a interpolação de forma ótima 
+ao invés de igualmente espaçada. Assim, os pontos <script type="math/tex">x_i</script> e os 
+coeficiente <script type="math/tex">c_i</script> são escolhidos a minimizar 
+<script type="math/tex; mode=display">\left|\int_a^b f(x) \, dx - \sum_{i=1}^n c_i f(x_i)\right|.</script>
+Para medir essa acurácia, assumimos que a escolha ótima desses 
+valores produzo maior grau de precisão, definido acima. </p>
 <h3 id="polinomios-ortogonais">Polinômios Ortogonais</h3>
-<h3 id="polinomios-de-legendre">Polinômios de Legendre</h3>
+<p>Considere o espaço das funções contínuas definidas em <script type="math/tex">[a,b]</script> (isso significa que um 
+elemento desse conjunto é uma função contínua definida em <script type="math/tex">[a,b]</script>) com 
+o seguinte produto interno: 
+<script type="math/tex; mode=display">\langle f, g \rangle = \int_a^b f(x)g(x) \, dx.</script>
+Observe como esse produto interno é uma extensão do somatório dos 
+produtos dos componentes de dois vetores. Dizemos que duas funções
+são ortogonais quando <script type="math/tex">\langle f,g \rangle = 0</script>. </p>
+<p>Considere o espaço dos polinômios de grau até <script type="math/tex">n</script> com o produto interno
+apresentado acima no intervalo <script type="math/tex">[-1,1]</script>. Os <strong>polinômios de Legendre</strong>
+são polinômios ortogonais e são obtidos fazendo o <a href="https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process">processo de
+Gram-Schmidt</a>
+sobre a base <script type="math/tex">\{1, x, x^2, x^3, \dots, x^n\}</script>. </p>
+<p>Abaixo estão alguns dos polinômios de Legendre: </p>
+<p>
+<script type="math/tex; mode=display">P_0(x) = 1, P_1(x) = x, P_2(x) = x^2 - \frac{1}{3}, P_3(x) = x^3 -
+\frac{3}{5}x, P_4(x) = x^4 - \frac{6}{7}x^2 + \frac{3}{35}.</script>
+</p>
+<blockquote>
+<p>Suponha que <script type="math/tex">x_1, \dots, x_n</script> são as raízes do polinômio de Legendre 
+<script type="math/tex">P_n(x)</script> e que 
+<script type="math/tex; mode=display"> c_i = \int_{-1}^1 \prod_{j \neq i} \frac{x-x_j}{x_i-x_j} \, dx. </script>
+Se <script type="math/tex">P(x)</script> é qualquer polinômio de grau menor do que <script type="math/tex">2n</script>, então, 
+<script type="math/tex; mode=display">\int_{-1}^1 P(x) \, dx = \sum_{i=1}^n c_iP(x_i).</script>
+</p>
+</blockquote>
 <h4 id="formula-de-bonnet">Fórmula de Bonnet</h4></div>
         
         
