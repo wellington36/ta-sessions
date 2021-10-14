@@ -137,8 +137,7 @@
                 <li class="third-level"><a href="#trapezio-simples">Trapézio Simples</a></li>
                 <li class="third-level"><a href="#formula-de-simpson-simples">Fórmula de Simpson Simples</a></li>
                 <li class="third-level"><a href="#precisao">Precisão</a></li>
-                <li class="third-level"><a href="#trapezio-composto">Trapézio composto</a></li>
-                <li class="third-level"><a href="#formula-de-simpson-composto">Fórmula de Simpson Composto</a></li>
+                <li class="third-level"><a href="#formulas-compostas">Fórmulas compostas</a></li>
             <li class="second-level"><a href="#quadratura-de-gauss-legendre">Quadratura de Gauss-Legendre</a></li>
                 
                 <li class="third-level"><a href="#polinomios-ortogonais">Polinômios Ortogonais</a></li>
@@ -228,10 +227,24 @@ positivo <script type="math/tex">n</script> tal que a fórmula seja exata para <
 <script type="math/tex">k = 0,\dots,n</script>. Para os exemplos desenvolvidos acima, basta olhar 
 qual o maior inteiro <script type="math/tex">n</script> tal que <script type="math/tex">f^{(2)} \equiv 0</script> no caso 
 do trapézio e <script type="math/tex">f^{(4)} = 0</script> no caso de Simpson. </p>
-<h3 id="trapezio-composto">Trapézio composto</h3>
-<p>-&gt; Estimativa do erro</p>
-<h3 id="formula-de-simpson-composto">Fórmula de Simpson Composto</h3>
-<p>-&gt; Estimativa do erro</p>
+<h3 id="formulas-compostas">Fórmulas compostas</h3>
+<p>É claro que as fórmulas deduzidas acima ficam bem ruins quando <script type="math/tex">b - a</script> é
+grande. Para isso, a ideia é subdividir o intervalo <script type="math/tex">[a,b]</script> em <script type="math/tex">a = x_0 <
+\dots < x_n = b</script> (de forma igualmente espaçada, em geral) e aplicar a
+quadratura numérica a cada um deles. Essa abordagem tira proveito da seguinte
+propriedade: 
+<script type="math/tex; mode=display">\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx.</script>
+</p>
+<p>Para a regra de Simpson composta teremos que 
+<script type="math/tex; mode=display">\int_a^b f(x) \, dx = \frac{h}{3}\left[f(a) + 2\sum_{j=1}^{n/2 - 1}
+f(x_{2j}) + 4\sum_{j=1}^{n/2} f(x_{2j-1}) + f(b)\right] -
+\frac{b-a}{180}h^4f^{(4)}(\xi),</script>
+para <script type="math/tex">\xi \in (a,b)</script> e <script type="math/tex">h = (b-a)/n</script>. O erro, portanto, é <script type="math/tex">O(h^4)</script>.</p>
+<p>A fórmula do trapézio é similar: 
+<script type="math/tex; mode=display">\int_a^b f(x) \, dx = \frac{h}{2}\left[f(a) + 2\sum_{j=1}^{n - 1}
+f(x_{j}) + f(b)\right] -
+\frac{b-a}{12}h^2f^{(2)}(\xi).</script>
+</p>
 <h2 id="quadratura-de-gauss-legendre">Quadratura de Gauss-Legendre</h2>
 <h3 id="polinomios-ortogonais">Polinômios Ortogonais</h3>
 <h3 id="polinomios-de-legendre">Polinômios de Legendre</h3>
