@@ -132,11 +132,12 @@
         <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
         <li class="first-level active"><a href="#integracao-numerica">Integração Numérica</a></li>
-            <li class="second-level"><a href="#formula-de-newton-cotes">Fórmula de Newton-Côtes</a></li>
+            <li class="second-level"><a href="#formula-de-newton-cotes">Fórmula de Newton-Cotes</a></li>
                 
                 <li class="third-level"><a href="#trapezio-simples">Trapézio Simples</a></li>
-                <li class="third-level"><a href="#trapezio-composto">Trapézio composto</a></li>
                 <li class="third-level"><a href="#formula-de-simpson-simples">Fórmula de Simpson Simples</a></li>
+                <li class="third-level"><a href="#precisao">Precisão</a></li>
+                <li class="third-level"><a href="#trapezio-composto">Trapézio composto</a></li>
                 <li class="third-level"><a href="#formula-de-simpson-composto">Fórmula de Simpson Composto</a></li>
             <li class="second-level"><a href="#quadratura-de-gauss-legendre">Quadratura de Gauss-Legendre</a></li>
                 
@@ -147,22 +148,88 @@
         <div class="col-md-9" role="main">
 
 <h1 id="integracao-numerica">Integração Numérica</h1>
-<p>XXX: em desenvolvimento!!</p>
 <p>O objetivo da integração numérica é estimar 
 <script type="math/tex; mode=display">I = \int_a^b f(x) \, dx,</script>
 principalmente quando não sabemos a antiderivada de <script type="math/tex">f</script>. Podemos extender para
 problemas de dimensão maior, isto é, integrar 
 <script type="math/tex; mode=display">I = \int_R f(x) \, dx,</script>
 em algum retângulo <script type="math/tex">R</script> em dimensão <script type="math/tex">\mathbb{R}^n</script>. </p>
-<h2 id="formula-de-newton-cotes">Fórmula de Newton-Côtes</h2>
-<p>-&gt; As fórmulas são exatas para polinômios de grau até m pontos com m pontos. </p>
-<p>-&gt; Escolha mais inteligente dos pontos</p>
+<p>Chamamos de <strong>quadratura numérica</strong> o método básico de aproximação de <script type="math/tex">I</script>
+através da soma <script type="math/tex">\sum_{i=0}^n a_i f(x_i)</script>. </p>
+<h2 id="formula-de-newton-cotes">Fórmula de Newton-Cotes</h2>
+<p>De forma geral, podemos
+integrar o polinômio interpolador de Lagrange que aproxima para aproximar 
+a integração da função aproximada pela função, isto é, </p>
+<p>
+<script type="math/tex; mode=display">\int_a^b f(x) \, dx = \int_a^b \sum_{i=0}^n f(x_i) L_i(x) + \int_a^b
+\prod_{i=0}^n (x - x_i)\frac{f^{(n+1)}(\xi(x))}{(n+1)!} \, dx</script>
+em que <script type="math/tex">\{L_i(x)\}_{i=0}^n</script> forma a base dos <a href="https://lucasmoschen.github.io/ta-sessions/analisenum/polynomial_interpolation/#polinomios-de-lagrange">polinômios de Lagrange</a>.</p>
+<p>Nesse caso, uma possível aproximação para essa integral é 
+<script type="math/tex; mode=display"> \int_a^b \sum_{i=0}^n f(x_i) L_i(x) \, dx = \sum_{i=0}^n a_if(x_i),</script>
+em que <script type="math/tex">a_i = \int_a^b L_i(x) \, dx</script>. O erro dessa estimação é dado por 
+<script type="math/tex; mode=display">E(f) = \int_a^b
+\prod_{i=0}^n (x - x_i)\frac{f^{(n+1)}(\xi(x))}{(n+1)!} \, dx.</script>
+</p>
+<p>A <strong>fórmula de Newton-Cotes <script type="math/tex">(n+1)</script>-pontos fechada</strong> usa os 
+pontos interpoladores <script type="math/tex">x_i = x_0 + ih</script> em que <script type="math/tex">h = (b-a)/n, x_0 = a</script> e 
+<script type="math/tex">x_n = b</script>. Ela é dita fechada por incluir os endpoints do intervalo. 
+Apresentamos dois métodos com esse tipo de fórmula. Além do fechado, podemos tomar os pontos igualmente espaçados no interior 
+do intervalo, isto é, <script type="math/tex">h = (b-a)/(n+2)</script> e <script type="math/tex">x_i = x_0 + (i+1)h</script> para <script type="math/tex">i = 0,
+\dots, n</script>. Essas são ditas <strong>fórmula de Newton-Cotes <script type="math/tex">(n+1)</script>-pontos aberta</strong>.
+Um exemplo conhecida é a regra do ponto médio que toma apenas um ponto 
+<script type="math/tex">x_0 = (a + b)/2</script>. </p>
 <h3 id="trapezio-simples">Trapézio Simples</h3>
-<p>-&gt; Estimativa do erro
--&gt; Valor médio integral generalizado </p>
+<p>Nesse caso, definimos <script type="math/tex">x_0 = a, x_1 = b</script> e <script type="math/tex">h=b-a</script>. Assim 
+<script type="math/tex; mode=display">a_0 = \int_{x_0}^{x_1} \frac{(x - x_1)}{(x_0-x_1)} \quad \text{ e } a_1 =
+\int_{x_0}^{x_1} \frac{(x - x_0)}{(x_1-x_0)}.</script>
+</p>
+<p>Vamos utilizar o <a href="math.usm.edu/lambers/mat460/fall09/lecture3.pdf">Teorema do Valor Médio Ponderado para Integrais</a> 
+(página 5) para estimar o erro. Nesse caso, ele é da seguinte forma: 
+<script type="math/tex; mode=display">\begin{split}
+  E(f) &= \int_{x_0}^{x_1} (x - x_0)(x - x_1)\frac{f^{(2)}(\xi(x))}{2!} \, dx
+\\
+&= \frac{f^{(2)}(\xi)}{2}\left[\frac{x^3}{3} - 
+\frac{(x_0 + x_1)}{2}x^2 + x_0x_1x\right]_{x_0}^{x_1} \\
+&= -\frac{h^3}{6}f^{(2)}(\xi),  
+\end{split}</script>
+para algum <script type="math/tex">\xi \in (a,b)</script>.</p>
+<p>A regra do trapézio se resume, então, a 
+<script type="math/tex; mode=display">\int_a^b f(x) \, dx = \frac{h}{2}[f(a) + f(b)] - \frac{h^3}{12}f''(\xi).</script>
+</p>
+<h3 id="formula-de-simpson-simples">Fórmula de Simpson Simples</h3>
+<p>Para a fórmula de Simpson, fazemos <script type="math/tex">x_0 = a, x_2 = b</script> e <script type="math/tex">x_1 = a + h</script>, 
+para <script type="math/tex">h = (b-a)/2</script>, isto é, adicionamos mais um ponto para a aproximação 
+polinomial. Nesse caso, </p>
+<p>
+<script type="math/tex; mode=display">a_0 = \int_{x_0}^{x_2} \frac{(x - x_1)(x - x_2)}{(x_0-x_1)(x_0 - x_2)}, a_1 =
+ \int_{x_0}^{x_2} \frac{(x - x_0)(x - x_2)}{(x_1-x_0)(x_1 - x_2)} \text{ e }a_2 =
+ \int_{x_0}^{x_2} \frac{(x - x_0)(x - x_1)}{(x_2-x_0)(x_2 - x_1)}.</script>
+</p>
+<p>Com essa derivação, vamos obter um erro <script type="math/tex">O(h^4)</script> com um 
+termo relacionado a <script type="math/tex">f^{(3)}</script>. Podemos reduzir esse erro com 
+esses mesmos pontos usando uma abordagem levemente diferente.
+É usada a expansão de Taylor em <script type="math/tex">x_1</script> até ordem e um pouco de
+simetria <script type="math/tex">x_2 - x_1 = x_1 - x_0</script> para verificar que 
+<script type="math/tex; mode=display">\int_{x_0}^{x_2} f(x) \, dx = 2hf(x_1) + \frac{h^3}{3}f''(x_1) + \frac{f^{(4)}(\xi')}{60}h^5.</script>
+</p>
+<p>Além disso, é usada a seguinte aproximação para <script type="math/tex">f''(x_1)</script>: </p>
+<p>
+<script type="math/tex; mode=display">f''(x_1) = \frac{1}{h^2}[f(x_0) - 2f(x_1) + f(x_2)] -
+\frac{h^2}{12}f^{(4)}(\xi'')</script>
+</p>
+<p>a fim de obter a fórmula de Simpson </p>
+<p>
+<script type="math/tex; mode=display">\int_{a}^{b} f(x) \, dx = \frac{h}{3}[f(a) + 4f(a/2+b/2) + f(b)] -
+\frac{h^5}{90}f^{(4)}(\xi).</script>
+</p>
+<h3 id="precisao">Precisão</h3>
+<p>O <strong>grau de precisão</strong> da fórmula de quadratura é o maior inteiro 
+positivo <script type="math/tex">n</script> tal que a fórmula seja exata para <script type="math/tex">x^k</script> para cada
+<script type="math/tex">k = 0,\dots,n</script>. Para os exemplos desenvolvidos acima, basta olhar 
+qual o maior inteiro <script type="math/tex">n</script> tal que <script type="math/tex">f^{(2)} \equiv 0</script> no caso 
+do trapézio e <script type="math/tex">f^{(4)} = 0</script> no caso de Simpson. </p>
 <h3 id="trapezio-composto">Trapézio composto</h3>
 <p>-&gt; Estimativa do erro</p>
-<h3 id="formula-de-simpson-simples">Fórmula de Simpson Simples</h3>
 <h3 id="formula-de-simpson-composto">Fórmula de Simpson Composto</h3>
 <p>-&gt; Estimativa do erro</p>
 <h2 id="quadratura-de-gauss-legendre">Quadratura de Gauss-Legendre</h2>
