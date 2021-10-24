@@ -8,7 +8,7 @@
     
     
     
-    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
 
     
     <title>Lista 5 - Equações Diferenciais Parciais - Teaching Assistant</title>
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
     <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
     <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
-    <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
-    <link href="../../css/base.min.css" rel="stylesheet">
-    <link href="../../css/cinder.min.css" rel="stylesheet">
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
 
     
         
@@ -59,7 +59,7 @@
             <!-- Main title -->
 
             
-              <a class="navbar-brand" href="../..">Teaching Assistant</a>
+              <a class="navbar-brand" href="../../..">Teaching Assistant</a>
             
         </div>
 
@@ -70,43 +70,43 @@
                 
                 
                     <li >
-                        <a href="../..">Home</a>
+                        <a href="../../..">Home</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../analisenum/info/">Análise Numérica</a>
+                        <a href="../../../analisenum/info/">Análise Numérica</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../info/">EDP</a>
+                        <a href="../../info/">EDP</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../curvas/info/">Curvas</a>
+                        <a href="../../../curvas/info/">Curvas</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../infestatistica/info/">Estatística</a>
+                        <a href="../../../infestatistica/info/">Estatística</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../edo/info/">EDO</a>
+                        <a href="../../../edo/info/">EDO</a>
                     </li>
                 
                 
                 
                     <li >
-                        <a href="../../alglin/info/">Álgebra Linear</a>
+                        <a href="../../../alglin/info/">Álgebra Linear</a>
                     </li>
                 
                 
@@ -147,22 +147,22 @@
 <h3 id="exercicios-teoricos">Exercícios Teóricos</h3>
 <p>Nesse parte, exponho os exercícios propostos para serem realizados de forma
 teórica.</p>
-<p><img src="Teoricos/Lista4_1.jpg" alt="drawing" width="800"/>
-<img src="Teoricos/Lista4_2.jpg" alt="drawing" width="800"/>
-<img src="Teoricos/Lista4_3.jpg" alt="drawing" width="800"/>
-<img src="Teoricos/Lista4_4.jpg" alt="drawing" width="800"/>
-<img src="Teoricos/Lista4_5.jpg" alt="drawing" width="800"/>
-<img src="Teoricos/Lista4_6.jpg" alt="drawing" width="800"/></p>
+<p><img src="../Teoricos/Lista4_1.jpg" alt="drawing" width="800"/>
+<img src="../Teoricos/Lista4_2.jpg" alt="drawing" width="800"/>
+<img src="../Teoricos/Lista4_3.jpg" alt="drawing" width="800"/>
+<img src="../Teoricos/Lista4_4.jpg" alt="drawing" width="800"/>
+<img src="../Teoricos/Lista4_5.jpg" alt="drawing" width="800"/>
+<img src="../Teoricos/Lista4_6.jpg" alt="drawing" width="800"/></p>
 <h3 id="exercicios-computacionais">Exercícios Computacionais</h3>
 <h4 id="afinador">Afinador</h4>
 <p>Nessa seção, apresentados um simples afinador construído com Matlab. O
 princípio é bem básico: Faço a transformação do espaço temporal para o espaço
-das frequências utilizando a tranformada de Fourier FFT. Depois, observamos
+das frequências utilizando a transformada de Fourier FFT. Depois, observamos
 que teremos a frequência dominante e seus harmônicos, dado o comportamento da
 onda. Por esse motivo, precisamos de uma técnica para, dentre os harmônicos,
 ver qual de fato é o dominante. </p>
 <p>A técnica utilizada é o HPS (Harmonic Product Spectrum). Ele se utiliza do
-fato de um harmônico ter frequênica múltipla daa frequência dominante. A
+fato de um harmônico ter frequência múltipla daa frequência dominante. A
 técnica funciona rapidamente, o que é interessante. Não há nenhuma outra filtragem, portanto, em um local muito ruidoso, talvez
 não funcione o afinador. </p>
 <p>A entrada é uma <code>string</code> com o nome do arquivo <code>.wav</code> e a saída é a nota com
@@ -172,7 +172,7 @@ disp(&#39;A nota tocada foi: &#39;)
 disp(note)
 
 function [note] = hps(yhat, n, N)
-    % Esta função tem o objetivo de calcular o espectro produto hamonico
+    % Esta função tem o objetivo de calcular o espectro produto harmônico
     % A partir de uma yhat na frequência e de um número N de harmônicos 
     % calcula média geométrica. 
 
@@ -225,7 +225,7 @@ end
 <h4 id="o-polvo">O Polvo</h4>
 <p>Nesse exercício, primeiro temos o polvo, representado pelos vetores <script type="math/tex">x</script> e <script type="math/tex">y</script>
 </p>
-<p><img alt="" src="Imagens/opolvo.png" /></p>
+<p><img alt="" src="../Imagens/opolvo.png" /></p>
 <p>Na letra b somos indagados a produzir sequências <script type="math/tex">(x_1(t), x_2(t), ... , x_n(t))</script> e <script type="math/tex">(y_1(t), y_2(t), ... , y_n(t))</script> que
 sejam versões suavizadas das sequências. Para isso, é sugerido utilizar a
 solução da equação do calor. </p>
@@ -247,17 +247,17 @@ que resolvem a equação <script type="math/tex">\lambda^n = 1</script>. E porta
 Fourier na primeira linha de <script type="math/tex">L</script>! (Sei que estava no lembrete já, mas quis
 conferir as contas).</p>
 <p>Aqui segue o código que gera uma sequência de 10 iterações do Polvo. Eu faço
-um pré-cálculo da matriz diagonal do sistema como mensionado acima e, se <script type="math/tex">F</script> é
-a matriz da tranformada de Fourier: </p>
+um pré-cálculo da matriz diagonal do sistema como mencionado acima e, se <script type="math/tex">F</script> é
+a matriz da transformada de Fourier: </p>
 <p>
 <script type="math/tex; mode=display">x(t) = e^{-cLt}x_0 = Fe^{-Dt}F^{-1}x_0 = \text{fft}(e^{-Dt}\cdot\text{ifft}(x_0))</script>
 <script type="math/tex; mode=display">y(t) = e^{-cLt}y_0 = Fe^{-Dt}F^{-1}y_0 = \text{fft}(e^{-Dt}\cdot\text{ifft}(y_0))</script>
 </p>
 <p>Aqui vemos o polvo com <script type="math/tex">c = 0.5</script> e <script type="math/tex">t = 501, 5001, 10001, 14501</script>. </p>
-<p><img src="Imagens/Polvo-501.png" alt="drawing" width="400"/>
-<img src="Imagens/Polvo-5001.png" alt="drawing" width="400"/>
-<img src="Imagens/Polvo-10001.png" alt="drawing" width="400"/>
-<img src="Imagens/Polvo-14501.png" alt="drawing" width="400"/></p>
+<p><img src="../Imagens/Polvo-501.png" alt="drawing" width="400"/>
+<img src="../Imagens/Polvo-5001.png" alt="drawing" width="400"/>
+<img src="../Imagens/Polvo-10001.png" alt="drawing" width="400"/>
+<img src="../Imagens/Polvo-14501.png" alt="drawing" width="400"/></p>
 <p>Como conclusão, conseguimos sequências <script type="math/tex">\vec{x}(t)</script> e <script type="math/tex">\vec{y}(t)</script> que sejam
 versões suavizadas de <script type="math/tex">\vec{x}</script> e <script type="math/tex">\vec{y}</script>. </p>
 <div class="highlight"><pre><span></span><code>polvo = csvread(&#39;Polvo.csv&#39;);
@@ -293,7 +293,7 @@ clear x0;
 clear y0;
 
 function [D, x0, y0] = pre_calculation(x, y, c)
-    % Calculate the diagonal matrix of convolutional matrix of size n
+    % Calculate the diagonal matrix of convolucional matrix of size n
     n = length(x);
     D = fft(c*[-2,1,zeros(1,n-3),1]&#39;);
     x0 = ifft(x);
@@ -301,7 +301,7 @@ function [D, x0, y0] = pre_calculation(x, y, c)
 end
 
 function  [filter] = heat_filter(u0, t, D)
-    % This function get a vector, make a convolutional filter (gaussian),
+    % This function get a vector, make a convolucional filter (gaussian),
     % that is equivalent to the solution of heat equation and return, for
     % each t, the x(t) smoothed.
     filter = exp(D*t).*u0;
@@ -327,7 +327,7 @@ end
       </footer>
     
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="../../js/bootstrap-3.0.3.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
 
     
     <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
@@ -335,11 +335,11 @@ end
     <script>hljs.initHighlightingOnLoad();</script>
     
 
-    <script>var base_url = "../.."</script>
+    <script>var base_url = "../../.."</script>
     
-    <script src="../../js/base.js"></script>
+    <script src="../../../js/base.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script src="../../search/main.js"></script>
+    <script src="../../../search/main.js"></script>
 
     <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
