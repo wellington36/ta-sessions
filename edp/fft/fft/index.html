@@ -140,6 +140,8 @@
                 
             <li class="second-level"><a href="#transformada-de-fourier-em-espaco-finito">Transformada de Fourier em Espaço Finito</a></li>
                 
+            <li class="second-level"><a href="#resolvendo-uma-edp-com-fourier">Resolvendo uma EDP com Fourier</a></li>
+                
             <li class="second-level"><a href="#adicionais">Adicionais</a></li>
                 
     </ul>
@@ -302,6 +304,47 @@ ki}.</script>
 é 
 <script type="math/tex; mode=display">f = \sum_{w=0}^{N-1} \hat{f}_w e_w.</script>
 </p>
+<h2 id="resolvendo-uma-edp-com-fourier">Resolvendo uma EDP com Fourier</h2>
+<p>Vamos lembrar que se <script type="math/tex">g(x) = f'(x)</script> para uma função diferenciável <script type="math/tex">g</script>, então a
+transformada de Fourier de <script type="math/tex">g</script> é 
+<script type="math/tex; mode=display">\hat{g}(w) = 2\pi w i \hat{f}(w).</script>
+Isso é "uma mão na roda", porque quando aplicamos a transformada na derivada
+de uma função, estamos voltando para a transformada da própria função
+multiplicada por uma função linear em <script type="math/tex">w</script>. Isso acontece quando a função é
+definida na reta. Para funções definidas apenas em um intervalo, é importante 
+observar <a href="https://en.wikipedia.org/wiki/Fourier_transform#:~:text=More%20precisely%2C%20suppose%20T%20is%20large%20enough%20that%20the%20interval">o seguinte trecho do site do Wikipedia</a>.
+Nesse caso, é muito comum também encontrar a fórmula 
+<script type="math/tex; mode=display">\hat{g}(w) = w i \hat{f}(w)</script>
+para funções definidas em <script type="math/tex">[-\pi, \pi]</script>. São algumas complicações
+relacionadas à própria derivação do método. Vamos aplicar esse método na
+equação de difusão 
+<script type="math/tex; mode=display">\frac{\partial^2 u(x,t)}{\partial x^2} = c\frac{\partial u(x,t)}{\partial
+t}.</script>
+</p>
+<p>O primeiro passo é aplicar a transformação de Fourier em ambos os lados da
+equação. Na prática, o que se faz é multiplicar por <script type="math/tex">e^{-i w x}</script> (ou <script type="math/tex">e^{-2\pi
+i w x}</script>, mas lembre que é questão de parametrização) e integrar de <script type="math/tex">x = -\infty</script> a
+<script type="math/tex">x = +\infty</script>. Se a função for definida em <script type="math/tex">[-\pi, \pi]</script>, você integra nesse
+intervalo, respectivamente. Nesse caso, observe que 
+<script type="math/tex; mode=display">\widehat{u_{xx}}(w,t) = ik \widehat{u_x} = -w^2\hat{u}(w, t).</script>
+Com algumas hipóteses de regularidade, pela Regra de Leibniz,
+<script type="math/tex; mode=display">\int_{-\infty}^{+\infty} u_t(x,t)e^{-i w x} \, dx =
+\frac{d}{dt}\int_{-\infty}^{+\infty} u(x,t)e^{-i w x} \, dx</script>
+Dessa forma 
+<script type="math/tex; mode=display">\widehat{u_t}(w,t) = \frac{\partial \hat{u}}{\partial t}(w,t).</script>
+</p>
+<p>Isso faz com que tenhamos o sistema 
+<script type="math/tex; mode=display">-w^2\hat{u}(w,t) = c\hat{u}_t(w,t)</script>
+que é uma EDO com solução 
+<script type="math/tex; mode=display">\hat{u}(w,t) = \hat{u}(w,0)e^{-w^2 t/c}.</script>
+Agora, basta aplicar a transformada inversa 
+<script type="math/tex; mode=display">u(x,t) = \int_{-\infty}^{\infty} \hat{u}(w,t)e^{iw x} \, dw.</script>
+</p>
+<p>Você deve ter observado que nessa parametrização (sem o <script type="math/tex">2\pi</script> no expoente),
+eu deveria dividir cada integral por <script type="math/tex">2\pi</script> para corretamente aplicar a
+Transformada de Fourier. Acontece que elas vão se anular por esse motivo. Para
+obter <script type="math/tex">\hat{u}(w,0)</script> basta aplicar a transformada de Fourier em <script type="math/tex">u(x,0)</script>, que
+é usualmente dado. </p>
 <h2 id="adicionais">Adicionais</h2>
 <ul>
 <li><a href="https://www.youtube.com/watch?v=spUNpyF58BY">Mas o que é a Transformada de Fourier? Uma introdução visual. 3B1B</a></li>
