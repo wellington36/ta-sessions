@@ -139,6 +139,8 @@
                 <li class="third-level"><a href="#metodo-de-heun">Método de Heun</a></li>
                 <li class="third-level"><a href="#metodos-de-taylor">Métodos de Taylor</a></li>
                 <li class="third-level"><a href="#metodos-runge-kutta">Métodos Runge-Kutta</a></li>
+            <li class="second-level"><a href="#equacoes-diferenciais-stiff-rigida-dificil">Equações diferenciais Stiff (rígida, difícil)</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -260,11 +262,63 @@ Runge-Kutta clássico de ordem 4 tem que <script type="math/tex">r = 4</script>,
 <script type="math/tex; mode=display">\alpha_1 = \alpha_4 = 1/6, \alpha_2 = \alpha_3 = 2/6,</script>
 <script type="math/tex; mode=display">\mu_2 = \mu_3 = 1/2, \mu_4 = 1.</script>
 </p>
-<p><a href="https://www.math.auckland.ac.nz/~butcher/ODE-book-2008/Tutorials/RK-methods.pdf">Esse é um
-tutorial</a>
+<p><a href="https://www.math.auckland.ac.nz/~butcher/ODE-book-2008/Tutorials/RK-methods.pdf">Esse é um tutorial</a>
 que pode ser útil. Não se deixe enganar pelo "tutorial", tem bastante
 matemática. <a href="https://www.johndcook.com/blog/2020/02/13/runge-kutta-methods/">Esse também é um bom
-resumo</a>. </p></div>
+resumo</a>. </p>
+<h2 id="equacoes-diferenciais-stiff-rigida-dificil">Equações diferenciais Stiff (rígida, difícil)</h2>
+<p>Os métodos numéricos para resolver EDOs têm erros inerentes que envolvem
+derivadas de ordem maior. Se essas derivadas são razoavelmente limitadas, o
+erro vai ficar controlado. Problemas de valor inicial cuja magnitude da
+derivada cresce, mas a função não, são chamados de <strong>equações stiff</strong> ou
+equações rígidas/difíceis. A solução exata delas tem termo com forma <script type="math/tex">e^{-ct}</script> em que
+<script type="math/tex">c</script> é grande.  </p>
+<p>Vamos ilustrar esse problema com o seguinte exemplo:
+<script type="math/tex; mode=display">x_1' = 9x_1 + 24x_2 + 5\cos(t) - \frac{1}{3}\sin(t), x_1(0) = 4/3,</script>
+<script type="math/tex; mode=display">x_2' = - 24x_1 - 51u_2 - 9\cos(t) + \frac{1}{3}\sin(t), x_1(0) = 2/3.</script>
+</p>
+<p>Sabemos calcular a solução desse sistema exatamente usando EDOs. Nesse caso, 
+<script type="math/tex; mode=display">x_1(t) = 2e^{-3t} -e^{-39t} + \frac{1}{3}\cos(t), \quad x_2(t) = -e^{-3t} +
+2e^{-39t} - \frac{1}{3}\cos(t).</script>
+A solução é a seguinte:</p>
+<p><img alt="example 1" src="../exact_solution_edo_example1.png" /></p>
+<p>É fácil ver que quando <script type="math/tex">t</script> cresce, ambas as funções convergem para a função
+cosseno:</p>
+<p><img alt="example 1, parte 2" src="../exact_solution_edo_example1_b.png" /></p>
+<p>Vamos aplicar o Runge Kutta com o passo <script type="math/tex">h=0.1</script> e com <script type="math/tex">h=0.05</script>. Note como a
+solução fica bem ruim para o primeiro caso: </p>
+<p><img alt="RUnge-kutta para o exemplo 1" src="../runge_kutta_solution_edo_example1.png" /></p>
+<p>Isso dá uma ideia do quão ruim uma solução pode acabar ficando dependendo do
+<script type="math/tex">h</script> escolhido. Para analisar o erro produzido por equações desse tipo, usamos
+uma <strong>equação de teste</strong>:</p>
+<p>
+<script type="math/tex; mode=display">x'(t) = Ax(t), \quad x(0) = x_0</script>
+</p>
+<p>Note que se a parte real dos autovalores de <script type="math/tex">A</script> forem todos negativos, teremos
+que a solução converge para 0. No método de Euler, por exemplo, </p>
+<p>
+<script type="math/tex; mode=display">x_n = x_{n-1} + hAx_{n-1} = (I + hA)x_{n-1},</script>
+</p>
+<p>que estabelece uma recursividade cuja solução é </p>
+<p>
+<script type="math/tex; mode=display">x_n = (I + hA)^n x_0.</script>
+</p>
+<p>Queremos, em particular, que <script type="math/tex">(I + hA)^n \to 0</script> quando <script type="math/tex">n \to \infty</script>. Se <script type="math/tex">A =
+PDP^{-1}</script> para uma matriz diagonal <script type="math/tex">D</script> e uma invertível <script type="math/tex">P</script>, então 
+<script type="math/tex; mode=display">(I +hA) = (PIP^{-1} + hPDP^{-1}) = P(I + hD)P^{-1} \implies (I +hA)^n = P(I+hD)^nP^{-1}.</script>
+</p>
+<p>Isso permite concluir que <script type="math/tex">x_n \to 0</script> somente se para cada autovalor
+<script type="math/tex">\lambda_i</script> de <script type="math/tex">A</script>, tenhamos que <script type="math/tex">|1 + \lambda_i h| < 1</script>.</p>
+<p><strong>Domínio de estabilidade:</strong> <script type="math/tex">D = \{z \in \mathbb{C} \mid |Re(z)| < 1\}</script>. </p>
+<p>Dizemos que um método é <script type="math/tex">A</script>-estável quando for aplicado à equação de teste 
+<script type="math/tex">x'(t) = \lambda x(t)</script> para <script type="math/tex">Re(\lambda) < 0</script> e <script type="math/tex">\lim x_n = 0</script> para a
+sequência gerada pelo método, para qualquer <script type="math/tex">h > 0</script> escolhido. 
+O método de Euler implícito é <script type="math/tex">A</script>-estável, pois 
+<script type="math/tex; mode=display">x_{n+1} = x_n + \lambda x_{n+1} h \implies x_{n+1} = \frac{1}{1 - \lambda
+h}x_n</script>
+e, portanto, 
+<script type="math/tex; mode=display">x_{n+1} = \left(\frac{1}{1 - \lambda h}\right)^{n+1}x_0.</script>
+</p></div>
         
         
     </div>
