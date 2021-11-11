@@ -134,6 +134,8 @@
         <li class="first-level active"><a href="#metodos-numericos-para-edps">Métodos numéricos para EDPs</a></li>
             <li class="second-level"><a href="#equacoes-parabolicas">Equações Parabólicas</a></li>
                 
+            <li class="second-level"><a href="#equacoes-elipticas">Equações Elípticas</a></li>
+                
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
@@ -147,6 +149,16 @@ Parciais. Para detalhes sobre os tipos de equações, consulte <a href="https://
 com condições 
 <script type="math/tex; mode=display">u(x,0) = f(x), u(0,t) = a(t), \text{ e } u(1,t) = b(t).</script>
 </p>
+<h2 id="equacoes-elipticas">Equações Elípticas</h2>
+<p>Considere a equação de Poisson 
+<script type="math/tex; mode=display">\nabla^2 u(x,y) := u_{xx}(x,y) + u_{yy}(x,y) = f(x,y)</script>
+definida em um conjunto <script type="math/tex">U</script> tal que <script type="math/tex">u(x,y) = g(x,y)</script> em <script type="math/tex">(x,y)</script> na fronteira
+de <script type="math/tex">U</script>. Em geral, tomamos <script type="math/tex">U = \{(x,y) \mid a < x < b, c < y < d\}</script>.</p>
+<p>O método consiste na aplicação do método das Diferenças Finitas em um grid de
+duas dimensões. Seja <script type="math/tex">h = (b-a)/n</script> e <script type="math/tex">k = (d-c)/m</script> o tamanho do passo, em que 
+<script type="math/tex">n</script> e <script type="math/tex">m</script> indicam a quantidade deles em cada direção. </p>
+<p><img src="https://sites.me.ucsb.edu/~moehlis/APC591/tutorials/tutorial5/img31.png",
+alt = "grid de pontos."></p>
 <blockquote>
 <p>Métodos de diferenças finitas 
 Forward, backward e central difference. 
